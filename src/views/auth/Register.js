@@ -1,5 +1,3 @@
-import "./Register.css";
-
 import { LOGIN, REGISTER } from "constants/routes";
 import React, { useState } from "react";
 import {
@@ -7,6 +5,8 @@ import {
   signInWithGoogle,
 } from "firebase-config";
 
+import  Card from 'components/Card';
+import Center from 'components/Center';
 import { Link } from "react-router-dom";
 import useAuthentication from "hooks/useAuthentication";
 
@@ -23,8 +23,8 @@ function Register() {
   };
 
   return (
-    <div className="register">
-      <div className="register__container">
+    <Center>
+      <Card>
         <input
           type="text"
           className="register__textBox"
@@ -59,8 +59,8 @@ function Register() {
         <div>
           Already have an account? <Link to={LOGIN}>Login</Link> now.
         </div>
-      </div>
-    </div>
+      </Card>
+    </Center>
   );
 }
 

@@ -1,8 +1,8 @@
-import "./Reset.css";
-
 import { REGISTER, RESET } from "constants/routes";
 import { React, useState } from "react";
 
+import Card from "components/Card";
+import Center from "components/Center";
 import { Link } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase-config";
 import useAuthentication from 'hooks/useAuthentication';
@@ -12,8 +12,8 @@ function Reset() {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="reset">
-      <div className="reset__container">
+    <Center>
+      <Card>
         <input
           type="text"
           className="reset__textBox"
@@ -31,8 +31,8 @@ function Reset() {
         <div>
           Don't have an account? <Link to={REGISTER}>Register</Link> now.
         </div>
-      </div>
-    </div>
+      </Card>
+    </Center>
   );
 }
 
