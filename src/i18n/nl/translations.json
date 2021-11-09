@@ -1,4 +1,8 @@
 {
+    "next": "Volgende",
+    "previous": "Vorige",
+    "start": "Starten",
+    "step": "Stap",
     "email": {
         "label": "Email",
         "placeholder": "janmodaal@email.be"
@@ -10,6 +14,10 @@
     "name": {
         "label": "Naam",
         "placeholder": "Jan Modaal"
+    },
+    "titles": {
+        "sign_in": "Meld je aan bij Bianca",
+        "register": "Maak een account aan bij Bianca"
     },
     "actions": {
         "sign_in": "Aanmelden",

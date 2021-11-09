@@ -9,6 +9,28 @@
     border-radius: $radius-base;
     cursor: pointer;
     margin: 0.5rem 0;
+    text-decoration: none;
+    box-shadow: $shadow;
+    background-color: $white;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+        background-color: darken($color: $primary, $amount: 10);
+        color: $white;
+        outline: none;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        &:hover,
+        &:focus {
+            background-color: initial;
+            color: inherit;
+        }
+    }
 }
 
 .success {

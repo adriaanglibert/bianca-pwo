@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Welkom bij Bianca, jouw activiteitenweger!",
+        "prefix": "Voor we aan de slag gaan laten we je even kennis maken met Bianca.",
+        "image": "avatar.svg",
+        "suffix": "Doorloop deze rondleiding op je eigen tempo. Indien je deze rondleiding reeds hebt gedaan kan je deze overslaan door te duwen op de knop rechts bovenaan. Geen zorgen, je zal deze uitleg later op ieder moment kunnen raadplegen."
+    },
+    {
+        "title": "Bianca helpt je om je week beter in te plannen",
+        "prefix": "Vermoeidheid is een veelvoorkomend probleem bij Dialysepatiënten. Dankzij een goede planning kan je de week beter doorkomen zonder in te boeten.",
+        "image": "calendar.png"
+    },
+    {
+        "title": "Duid de dagen aan waarop je naar de dialyse moet",
+        "prefix": "Op deze dagen wordt aangeraden het niet te druk in te plannen.",
+        "image": "settings.png"
+    },
+    {
+        "title": "Voeg standaardactiviteiten toe aan de planner",
+        "prefix": "Dit zijn activiteiten zoals ontbijten, zich wassen of andere activiteiten die deel uitmaken van je routine.",
+        "image": "plan.png"
+    },
+    {
+        "title": "Ontvang gepersonaliseerde feedback",
+        "prefix": "Op basis van je planning kom je te weten of je een te drukke planning hebt.",
+        "image": "feedback.png"
+    }
+]

@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword, signInWithGoogle } from "firebase-config";
 import Button from "components/Button";
 import Card from "components/Card";
 import Center from "components/Center";
+import Heading from 'components/Heading';
 import Input from "components/Input";
 import Route from 'components/Route';
 import Tab from "components/Tab";
@@ -22,6 +23,10 @@ function Login() {
 
   return (
     <Center styling={general.column}>
+      <Heading srOnly={true}>
+        {t('titles.sign_in')}
+      </Heading>
+
       <Tabs>
         <Tab active={true} to={LOGIN}>
           {t('actions.sign_in')}

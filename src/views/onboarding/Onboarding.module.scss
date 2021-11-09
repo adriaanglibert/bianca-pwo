@@ -1,0 +1,66 @@
+@import 'styling/variables';
+
+.container {
+    + div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin: 2rem 0;
+        justify-content: space-around;
+    }
+}
+
+.bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 2rem 1rem;
+    width: calc(100% - 2rem);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.dots {
+    display: none;
+    align-items: center;
+}
+
+.dot {
+    width: 2rem;
+    height: 2rem;
+    background-color: $white;
+    outline: none;
+    box-shadow: $shadow;
+    margin: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover,
+    &:focus {
+        background-color: darken($color: $primary, $amount: 10);
+        color: $white;
+        outline: none;
+    }
+}
+
+.active {
+    background-color: $primary;
+}
+
+@media (min-width: 769px) {
+    .button {
+        min-width: 155px;
+        padding: 1rem;
+    }
+
+    .dots {
+        display: flex;
+    }
+}

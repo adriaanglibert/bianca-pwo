@@ -8,6 +8,7 @@ import {
 import Button from 'components/Button';
 import  Card from 'components/Card';
 import Center from 'components/Center';
+import Heading from 'components/Heading';
 import Input from "components/Input";
 import Route from 'components/Route';
 import Tab from "components/Tab";
@@ -32,6 +33,10 @@ function Register() {
 
   return (
     <Center styling={general.column}>
+      <Heading srOnly={true}>
+        {t('titles.register')}
+      </Heading>
+
       <Tabs>
         <Tab to={LOGIN}>
           {t('actions.sign_in')}
