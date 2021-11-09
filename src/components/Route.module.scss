@@ -1,0 +1,10 @@
+@import 'styling/variables';
+
+.link {
+    color: $gray;
+    margin: 0.25rem 0;
+
+    &:hover {
+        color: $primary;
+    }
+}

@@ -1,5 +1,6 @@
 import { HOME } from "../constants/routes";
 import { auth } from "../firebase-config";
+import { toast } from 'react-hot-toast';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
@@ -17,7 +18,7 @@ const useAuthentication = (path = HOME) => {
 
         if (error) {
             // trigger error screen
-            alert(error);
+            toast.error(error);
             return;
         }
 

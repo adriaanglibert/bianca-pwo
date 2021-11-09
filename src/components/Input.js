@@ -1,10 +1,10 @@
-import React from 'react'
-import styles from './Input.module.scss'
+import React from 'react';
+import styles from './Input.module.scss';
 
-const Input = ({ children, value, type = 'text', onChange, placeholder }) => {
+const Input = ({ children, value, type = 'text', styling, onChange, placeholder }) => {
     return (
         <label className={styles.wrapper}>
-            <span className={styles.label}>
+            <span className={`${styles.label} ${styling}`}>
                 {children}
             </span>
 

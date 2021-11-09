@@ -4,8 +4,8 @@
     max-width: 30rem;
     margin: 1rem;
     background-color: $white;
-    border-radius: 0.4rem;
-    box-shadow: 0.25rem 0.25rem 0.5rem rgba($dark, 0.10);
+    border-radius: $radius-base;
+    box-shadow: $shadow;
 }
 
 .inner {

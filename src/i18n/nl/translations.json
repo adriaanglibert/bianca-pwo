@@ -2,5 +2,25 @@
     "email": {
         "label": "Email",
         "placeholder": "janmodaal@email.be"
+    },
+    "password": {
+        "label": "Wachtwoord",
+        "placeholder": "************"
+    },
+    "name": {
+        "label": "Naam",
+        "placeholder": "Jan Modaal"
+    },
+    "actions": {
+        "sign_in": "Aanmelden",
+        "google_sign_in": "Aanmelden met Google",
+        "register": "Registreren",
+        "google_register": "Registeren met Google",
+        "reset": "Email versturen",
+        "reset_password": "Wachtwoord vergeten?",
+        "resetting_password": "Wachtwoord opnieuw instellen",
+        "resetting_password_instructions": "Gelieve je email in te vullen. We versturen je zo dadelijk een bericht met instructies om je wachtwoord opnieuw in te stellen.",
+        "already_registered": "Heb je al een account?",
+        "not_registered": "Nog geen account?"
     }
   }

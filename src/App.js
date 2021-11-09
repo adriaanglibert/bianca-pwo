@@ -4,7 +4,8 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "views/Home";
 import Login from "views/auth/Login";
 import Register from "views/auth/Register";
-import Reset from "views/auth/Reset";
+import Reset from "views/auth/Reset"
+import Toast from "components/Toast";
 import styles from './App.module.scss';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
           <Route component={Home} />
         </Switch>
       </Router>
+
+      <Toast/>
     </div>
   );
 }

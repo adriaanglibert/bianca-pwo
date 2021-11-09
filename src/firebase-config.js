@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import toast from "react-hot-toast";
 
 // Configuration
 const firebaseConfig = {
@@ -32,7 +33,7 @@ const signInWithGoogle = async () => {
     });
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toast.error(err.message);
   }
 };
 
@@ -40,8 +41,8 @@ const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
   } catch (err) {
+    toast.error(err.message);
     console.error(err);
-    alert(err.message);
   }
 };
 
@@ -57,17 +58,17 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     });
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toast.error(err.message);
   }
 };
 
 const sendPasswordResetEmail = async (email) => {
   try {
     await auth.sendPasswordResetEmail(email);
-    alert("Password reset link sent!");
+    toast.error("Password reset link sent!");
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toast.error(err.message);
   }
 };
 

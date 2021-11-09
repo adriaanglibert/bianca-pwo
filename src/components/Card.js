@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Card.module.scss';
 
-const Card = ({children}) => {
+const Card = ({children, styling}) => {
     return (
-        <article className={styles.card}>
+        <article className={`${styles.card} ${styling}`}>
             <div className={styles.inner}>
                 {children}
             </div>

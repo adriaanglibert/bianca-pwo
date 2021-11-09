@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { db, logout } from "firebase-config";
 
 import { LOGIN } from "constants/routes";
+import { toast } from 'react-hot-toast';
 import useAuthentication from 'hooks/useAuthentication';
 
 function Home() {
@@ -21,7 +22,7 @@ function Home() {
       setName(usr.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      toast.error("An error occured while fetching user data");
     }
   }, [user]);
 

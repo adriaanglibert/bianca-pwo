@@ -22,3 +22,9 @@
         border-color: $dark;
     }
 }
+
+@media (min-width: 360px) {
+    .input {
+        min-width: 280px;
+    }
+}
