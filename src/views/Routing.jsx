@@ -1,13 +1,15 @@
-import { HOME, LOGIN, ONBOARDING } from "constants/routes";
+import { HOME, LOGIN, ONBOARDING, RESET, SETTINGS } from "constants/routes";
 import React, { useCallback, useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { db, logout } from "firebase-config";
 
-import Dashboard from './Dashboard';
+import Dashboard from 'views/Dashboard';
 import Loading from "views/Loading";
 import Onboarding from 'views/onboarding/Onboarding';
 import { Redirect } from 'react-router-dom';
+import Reset from 'views/auth/Reset';
+import Settings from 'views/Settings';
 import { UserContext } from "context";
+import { db } from "firebase-config";
 import { toast } from 'react-hot-toast';
 import useAuthentication from 'hooks/useAuthentication';
 
@@ -53,8 +55,10 @@ function Routing() {
                   <Route exact path={ONBOARDING} component={Onboarding} />
                 </> :
                 <>
+                  <Route exact path={RESET} component={Reset} />
                   <Route exact path={ONBOARDING} component={Onboarding} />
-                  <Route component={Dashboard} />
+                  <Route exact path={SETTINGS} component={Settings} />
+                  <Route exact path={HOME} component={Dashboard} />
                 </>
               }
           </Switch>

@@ -18,7 +18,12 @@ const Step = ({step}) => {
 
             {
                 step.image &&
-                <img src={`/images/${step.image}`} />
+                <img
+                    loading="eager"
+                    width={600}
+                    height={550}
+                    alt={step.title}
+                    src={`/images/${step.image}`} />
             }
 
             {

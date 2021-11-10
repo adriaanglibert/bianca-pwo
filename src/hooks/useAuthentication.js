@@ -22,11 +22,11 @@ const useAuthentication = (path = HOME) => {
             return;
         }
 
-        if (user) {
-            return history.replace(HOME);
+        if (!user) {
+            console.log('No user');
         };
 
-        return history.replace(path);
+        // return history.replace(path);
     }, [user, loading, error, history, path]);
 
     return [user, loading, error];

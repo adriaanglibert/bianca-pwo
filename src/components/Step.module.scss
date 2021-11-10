@@ -9,7 +9,9 @@
     }
 
     img {
-        max-width: 560px;
+        max-width: 100%;
         margin: 1rem auto;
+        height: 100%;
+        width: auto;
     }
 }

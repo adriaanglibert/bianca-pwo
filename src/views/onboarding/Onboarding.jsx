@@ -1,18 +1,28 @@
 import Button from 'components/Button';
 import Center from 'components/Center';
-import React from 'react'
-import Route from 'components/Route';
+import React from 'react';
 import { SETTINGS } from 'constants/routes';
 import Step from '../../components/Step';
 import general from 'styling/general.module.scss';
 import steps from 'data/onboarding.json';
 import styles from 'views/onboarding/Onboarding.module.scss'
+import useData from 'hooks/useData';
+import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Onboarding = () => {
+    let history = useHistory();
     const [activeStep, setActiveStep] = useState(0);
     const {t} = useTranslation();
+    const [, setData] = useData(null, () => history.push(SETTINGS));
+
+    const updateSeenOnboarding = () => {
+        console.log('Update the seen onboarding.');
+        setData({
+            seenOnboarding: true
+        })
+    }
 
     return (
         <Center styling={styles.container}>
@@ -54,9 +64,9 @@ const Onboarding = () => {
                             {t('next')}
                         </Button> :
                         <Button
+                            onClick={() => updateSeenOnboarding()}
                             variant="success"
-                            styling={styles.button}
-                            to={SETTINGS}>
+                            styling={styles.button}>
                             {t('start')}
                         </Button>
                     }

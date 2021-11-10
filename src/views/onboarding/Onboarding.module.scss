@@ -1,6 +1,9 @@
 @import 'styling/variables';
 
 .container {
+    max-height: 90vh;
+    padding: 2rem 0;
+
     + div {
         display: flex;
         flex-direction: column;
@@ -42,9 +45,14 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
 
-    &:hover,
+    &:active,
     &:focus {
-        background-color: darken($color: $primary, $amount: 10);
+        background-color: $primary;
+        outline: darken($color: $primary, $amount: 0) solid 2px;
+    }
+
+    &:hover {
+        background-color: $primary-light;
         color: $white;
         outline: none;
     }

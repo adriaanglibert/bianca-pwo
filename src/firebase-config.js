@@ -79,6 +79,7 @@ const logout = () => {
 export {
   auth,
   db,
+  USERS_COLLECTION,
   signInWithGoogle,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
