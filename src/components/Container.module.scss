@@ -1,0 +1,42 @@
+$col-sm: 540px; // (max-width: 540px)
+$col-md: 720px; // (max-width: 720px)
+$col-lg: 960px; // (max-width: 960px)
+$col-xl: 1140px; // (max-width: 1140px)
+
+$breakpoints: (
+  sm: 36em,
+  md: 48em,
+  lg: 62em,
+  xl: 75em,
+);
+
+@mixin mq($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+}
+
+.container {
+  padding: 2rem 1rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 768px;
+
+  @include mq(sm) {
+    max-width: $col-sm;
+  }
+
+  @include mq(md) {
+    max-width: $col-md;
+  }
+
+  @include mq(lg) {
+    max-width: $col-lg;
+  }
+
+  @include mq(xl) {
+    max-width: $col-xl;
+  }
+}

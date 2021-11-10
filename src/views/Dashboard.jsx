@@ -11,7 +11,7 @@ const Dashboard = () => {
     return (
         <>
             <Nav>
-                <Button to={SETTINGS}>
+                <Button to={SETTINGS} variant="light">
                     {t('actions.settings')}
                 </Button>
             </Nav>

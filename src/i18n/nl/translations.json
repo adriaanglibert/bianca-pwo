@@ -24,6 +24,9 @@
     "errors": {
         "sign_out": "Er is iets misgelopen bij het afmelden."
     },
+    "settings": {
+        "when": "Duid aan op welke dagen je naar de dialyse moet."
+    },
     "actions": {
         "settings": "Instellingen",
         "sign_in": "Aanmelden",
