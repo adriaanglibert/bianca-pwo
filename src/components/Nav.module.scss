@@ -1,0 +1,11 @@
+@import 'styling/variables';
+
+.navbar {
+    display: flex;
+    background-color: $white;
+    padding: 0.5rem 1rem;
+
+    img {
+        width: 70px;
+    }
+}
