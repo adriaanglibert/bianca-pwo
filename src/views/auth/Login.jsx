@@ -7,7 +7,6 @@ import Card from "components/Card";
 import Center from "components/Center";
 import Heading from "components/Heading";
 import Input from "components/Input";
-import Nav from "components/Nav";
 import Route from "components/Route";
 import Tab from "components/Tab";
 import Tabs from "components/Tabs";

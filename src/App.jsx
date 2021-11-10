@@ -6,7 +6,7 @@ import {
   RESET,
   SETTINGS,
 } from "constants/routes";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Dashboard from "views/Dashboard";
@@ -17,13 +17,25 @@ import Onboarding from "views/onboarding/Onboarding";
 import { Redirect } from "react-router-dom";
 import Register from "views/auth/Register";
 import Reset from "views/auth/Reset";
-import Settings from "views/Settings";
+import Settings from "views/settings/Settings";
 import Toast from "components/Toast";
 import { UserContext } from "context";
 import { db } from "firebase-config";
 import styles from "./App.module.scss";
 import { toast } from "react-hot-toast";
 import useAuthentication from "hooks/useAuthentication";
+
+const flatten = (target, children) => {
+  React.Children.forEach(children, child => {
+    if (React.isValidElement(child)) {
+      if (child.type === Fragment) {
+        flatten(target, child.props.children);
+      } else {
+        target.push(child);
+      }
+    }
+  });
+}
 
 function App() {
   const [user, loading, error] = useAuthentication(LOGIN);
@@ -45,6 +57,12 @@ function App() {
     }
   }, [user]);
 
+  const FragmentSupportingSwitch = ({children}) => {
+    const flattenedChildren = [];
+    flatten(flattenedChildren, children);
+    return React.createElement.apply(React, [Switch, null].concat(flattenedChildren));
+  }
+
   useEffect(() => {
     if (user && !loading && !error) {
       fetchData();
@@ -56,34 +74,38 @@ function App() {
       <UserContext.Provider value={[data, setData]}>
         <Nav />
         <Router>
-          <Switch>
+          <FragmentSupportingSwitch>
             {!loading ? (
               user ? (
                 !data ? (
                   <Loading />
                 ) : !data.seenOnboarding ? (
                   <>
-                    <Redirect from={HOME} to={ONBOARDING} />
                     <Route exact path={ONBOARDING} component={Onboarding} />
+                    <Redirect to={ONBOARDING} />
                   </>
                 ) : (
                   <>
                     <Route exact path={ONBOARDING} component={Onboarding} />
                     <Route exact path={SETTINGS} component={Settings} />
                     <Route exact path={HOME} component={Dashboard} />
+
+                    <Redirect to={HOME} />
                   </>
                 )
               ) : (
                 <>
                   <Route exact path={RESET} component={Reset} />
                   <Route exact path={REGISTER} component={Register} />
-                  <Route path={LOGIN} component={Login} />
+                  <Route exact path={LOGIN} component={Login} />
+
+                  <Redirect to={LOGIN} />
                 </>
               )
             ) : (
               <Loading />
             )}
-          </Switch>
+          </FragmentSupportingSwitch>
         </Router>
       </UserContext.Provider>
 

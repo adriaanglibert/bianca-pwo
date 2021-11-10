@@ -19,8 +19,12 @@
         "sign_in": "Meld je aan bij Bianca",
         "register": "Maak een account aan bij Bianca"
     },
+    "errors": {
+        "sign_out": "Er is iets misgelopen bij het afmelden."
+    },
     "actions": {
         "sign_in": "Aanmelden",
+        "sign_out": "Afmelden",
         "google_sign_in": "Aanmelden met Google",
         "register": "Registreren",
         "google_register": "Registeren met Google",

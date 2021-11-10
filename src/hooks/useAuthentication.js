@@ -3,11 +3,9 @@ import { auth } from "../firebase-config";
 import { toast } from 'react-hot-toast';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
 const useAuthentication = (path = HOME) => {
     const [user, loading, error] = useAuthState(auth);
-    const history = useHistory();
 
     useEffect(() => {
         if (loading) {
@@ -25,9 +23,7 @@ const useAuthentication = (path = HOME) => {
         if (!user) {
             console.log('There is no user signed in.');
         };
-
-        // return history.replace(path);
-    }, [user, loading, error, history, path]);
+    }, [user, loading, error, path]);
 
     return [user, loading, error];
 }

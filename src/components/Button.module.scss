@@ -44,6 +44,17 @@
     }
 }
 
+.danger {
+    background-color: $danger;
+    color: $white;
+
+    &:hover,
+    &:focus {
+        background-color: darken($color: $danger, $amount: 20);
+        outline: none;
+    }
+}
+
 .google {
     background-color: $light;
     color: $gray;

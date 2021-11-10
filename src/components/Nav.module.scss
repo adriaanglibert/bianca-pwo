@@ -2,10 +2,12 @@
 
 .navbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: $white;
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
 
     img {
-        width: 70px;
+        width: 75px;
     }
 }
