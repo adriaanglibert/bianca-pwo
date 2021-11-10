@@ -43,7 +43,7 @@ function Routing() {
   }, [user, loading, error, fetchData]);
 
   return (
-    <UserContext.Provider value={data}>
+    <UserContext.Provider value={[data, setData]}>
       {
         data ?
         <Router>

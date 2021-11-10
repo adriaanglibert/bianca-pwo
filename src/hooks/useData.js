@@ -5,13 +5,18 @@ import { UserContext } from 'context';
 import { toast } from 'react-hot-toast';
 
 const useData = (dt = null, callback = null) => {
-    const d = useContext(UserContext);
+    const [d, setD] = useContext(UserContext);
     const [data, setData] = useState(dt);
-
+    console.log(d);
     useEffect(() => {
-        async function fetchData() {
+        async function postData() {
             try {
                 await db.collection(USERS_COLLECTION).doc(d.uid).update(data);
+
+                setD({
+                    ...d,
+                    ...data
+                });
             } catch (e) {
                 toast.error(e.message);
                 console.error(e);
@@ -21,9 +26,9 @@ const useData = (dt = null, callback = null) => {
         };
 
         if (data) {
-            fetchData();
+            postData();
         }
-    }, [data, d, dt, callback]);
+    }, [data, d, dt, callback, setD]);
 
     return [data, setData];
 }
