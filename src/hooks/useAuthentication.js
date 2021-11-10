@@ -23,7 +23,7 @@ const useAuthentication = (path = HOME) => {
         }
 
         if (!user) {
-            console.log('No user');
+            console.log('There is no user signed in.');
         };
 
         // return history.replace(path);

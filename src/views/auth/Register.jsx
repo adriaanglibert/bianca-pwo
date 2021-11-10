@@ -5,16 +5,16 @@ import {
   signInWithGoogle,
 } from "firebase-config";
 
-import Button from 'components/Button';
-import  Card from 'components/Card';
-import Center from 'components/Center';
-import Heading from 'components/Heading';
+import Button from "components/Button";
+import Card from "components/Card";
+import Center from "components/Center";
+import Heading from "components/Heading";
 import Input from "components/Input";
-import Route from 'components/Route';
+import Route from "components/Route";
 import Tab from "components/Tab";
 import Tabs from "components/Tabs";
-import general from 'styling/general.module.scss';
-import { toast } from 'react-hot-toast';
+import general from "styling/general.module.scss";
+import { toast } from "react-hot-toast";
 import useAuthentication from "hooks/useAuthentication";
 import { useTranslation } from "react-i18next";
 
@@ -33,17 +33,13 @@ function Register() {
 
   return (
     <Center styling={general.column}>
-      <Heading srOnly={true}>
-        {t('titles.register')}
-      </Heading>
+      <Heading srOnly={true}>{t("titles.register")}</Heading>
 
       <Tabs>
-        <Tab to={LOGIN}>
-          {t('actions.sign_in')}
-        </Tab>
+        <Tab to={LOGIN}>{t("actions.sign_in")}</Tab>
 
         <Tab active={true} to={REGISTER}>
-          {t('actions.register')}
+          {t("actions.register")}
         </Tab>
       </Tabs>
 
@@ -55,7 +51,7 @@ function Register() {
           onChange={(e) => setName(e.target.value)}
           placeholder={t("name.placeholder")}
         >
-          {t('name.label')}
+          {t("name.label")}
         </Input>
 
         <Input
@@ -65,32 +61,28 @@ function Register() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t("email.placeholder")}
         >
-          {t('email.label')}
+          {t("email.label")}
         </Input>
 
         <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder={t('password.placeholder')}
-            >
-            {t('password.label')}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder={t("password.placeholder")}
+        >
+          {t("password.label")}
         </Input>
 
-        <Button
-            variant="success"
-            onClick={register}>
-            {t('actions.register')}
+        <Button variant="success" onClick={register}>
+          {t("actions.register")}
         </Button>
 
-        <Button
-            variant="google"
-            onClick={signInWithGoogle}>
-            {t('actions.google_register')}
+        <Button variant="google" onClick={signInWithGoogle}>
+          {t("actions.google_register")}
         </Button>
 
         <Route styling={general.center} to={LOGIN}>
-            {t('actions.already_registered')}
+          {t("actions.already_registered")}
         </Route>
       </Card>
     </Center>
