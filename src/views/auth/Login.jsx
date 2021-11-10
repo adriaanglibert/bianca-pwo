@@ -7,6 +7,7 @@ import Card from "components/Card";
 import Center from "components/Center";
 import Heading from "components/Heading";
 import Input from "components/Input";
+import Nav from "components/Nav";
 import Route from "components/Route";
 import Tab from "components/Tab";
 import Tabs from "components/Tabs";
@@ -22,6 +23,9 @@ function Login() {
   const [password, setPassword] = useState("");
 
   return (
+    <>
+      <Nav />
+
       <Center styling={general.column}>
         <Heading srOnly={true}>{t("titles.sign_in")}</Heading>
 
@@ -69,6 +73,7 @@ function Login() {
           </Route>
         </Card>
       </Center>
+    </>
   );
 }
 

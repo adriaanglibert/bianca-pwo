@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
-const Nav = () => {
+const Nav = ({ children }) => {
   const { t } = useTranslation();
   const [user, setData] = useContext(UserContext);
 
@@ -30,11 +30,14 @@ const Nav = () => {
         <img src="/images/logo.png" alt="logo" />
       </a>
 
-      {user && (
-        <Button onClick={() => signOut()} variant="danger">
-          {t("actions.sign_out")}
-        </Button>
-      )}
+      <div className={styling.buttons}>
+        {children}
+        {user && (
+          <Button onClick={() => signOut()} variant="danger">
+            {t("actions.sign_out")}
+          </Button>
+        )}
+      </div>
     </nav>
   );
 };

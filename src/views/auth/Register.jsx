@@ -10,6 +10,7 @@ import Card from "components/Card";
 import Center from "components/Center";
 import Heading from "components/Heading";
 import Input from "components/Input";
+import Nav from "components/Nav";
 import Route from "components/Route";
 import Tab from "components/Tab";
 import Tabs from "components/Tabs";
@@ -32,60 +33,64 @@ function Register() {
   };
 
   return (
-    <Center styling={general.column}>
-      <Heading srOnly={true}>{t("titles.register")}</Heading>
+    <>
+      <Nav/>
 
-      <Tabs>
-        <Tab to={LOGIN}>{t("actions.sign_in")}</Tab>
+      <Center styling={general.column}>
+        <Heading srOnly={true}>{t("titles.register")}</Heading>
 
-        <Tab active={true} to={REGISTER}>
-          {t("actions.register")}
-        </Tab>
-      </Tabs>
+        <Tabs>
+          <Tab to={LOGIN}>{t("actions.sign_in")}</Tab>
 
-      <Card styling={general.mt0}>
-        <Input
-          styling={general.mt0}
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder={t("name.placeholder")}
-        >
-          {t("name.label")}
-        </Input>
+          <Tab active={true} to={REGISTER}>
+            {t("actions.register")}
+          </Tab>
+        </Tabs>
 
-        <Input
-          styling={general.mt0}
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={t("email.placeholder")}
-        >
-          {t("email.label")}
-        </Input>
+        <Card styling={general.mt0}>
+          <Input
+            styling={general.mt0}
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder={t("name.placeholder")}
+          >
+            {t("name.label")}
+          </Input>
 
-        <Input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder={t("password.placeholder")}
-        >
-          {t("password.label")}
-        </Input>
+          <Input
+            styling={general.mt0}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={t("email.placeholder")}
+          >
+            {t("email.label")}
+          </Input>
 
-        <Button variant="success" onClick={register}>
-          {t("actions.register")}
-        </Button>
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={t("password.placeholder")}
+          >
+            {t("password.label")}
+          </Input>
 
-        <Button variant="google" onClick={signInWithGoogle}>
-          {t("actions.google_register")}
-        </Button>
+          <Button variant="success" onClick={register}>
+            {t("actions.register")}
+          </Button>
 
-        <Route styling={general.center} to={LOGIN}>
-          {t("actions.already_registered")}
-        </Route>
-      </Card>
-    </Center>
+          <Button variant="google" onClick={signInWithGoogle}>
+            {t("actions.google_register")}
+          </Button>
+
+          <Route styling={general.center} to={LOGIN}>
+            {t("actions.already_registered")}
+          </Route>
+        </Card>
+      </Center>
+    </>
   );
 }
 

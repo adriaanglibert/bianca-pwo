@@ -3,6 +3,8 @@
     "previous": "Vorige",
     "start": "Starten",
     "step": "Stap",
+    "save": "Opslaan",
+    "skip": "Overslaan",
     "email": {
         "label": "Email",
         "placeholder": "janmodaal@email.be"
@@ -23,6 +25,7 @@
         "sign_out": "Er is iets misgelopen bij het afmelden."
     },
     "actions": {
+        "settings": "Instellingen",
         "sign_in": "Aanmelden",
         "sign_out": "Afmelden",
         "google_sign_in": "Aanmelden met Google",

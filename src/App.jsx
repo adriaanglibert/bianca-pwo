@@ -12,7 +12,6 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Dashboard from "views/Dashboard";
 import Loading from "views/Loading";
 import Login from "views/auth/Login";
-import Nav from "components/Nav";
 import Onboarding from "views/onboarding/Onboarding";
 import { Redirect } from "react-router-dom";
 import Register from "views/auth/Register";
@@ -72,7 +71,6 @@ function App() {
   return (
     <div className={styles.app}>
       <UserContext.Provider value={[data, setData]}>
-        <Nav />
         <Router>
           <FragmentSupportingSwitch>
             {!loading ? (

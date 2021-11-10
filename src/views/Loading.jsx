@@ -1,12 +1,17 @@
 import Center from 'components/Center';
+import Nav from 'components/Nav';
 import React from 'react'
 import Spinner from 'components/Spinner';
 
 const Loading = () => {
     return (
-        <Center>
-            <Spinner />
-        </Center>
+        <>
+            <Nav/>
+
+            <Center>
+                <Spinner />
+            </Center>
+        </>
     )
 }
 
