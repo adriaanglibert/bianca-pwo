@@ -1,4 +1,5 @@
 import Button from "components/Button";
+import { FiLogOut } from "react-icons/fi";
 import React from "react";
 import { UserContext } from "context";
 import { logout } from "firebase-config";
@@ -33,7 +34,11 @@ const Nav = ({ children }) => {
       <div className={styling.buttons}>
         {children}
         {user && (
-          <Button onClick={() => signOut()} variant="danger">
+          <Button
+            onClick={() => signOut()}
+            variant="danger"
+            icon={<FiLogOut />}
+          >
             {t("actions.sign_out")}
           </Button>
         )}

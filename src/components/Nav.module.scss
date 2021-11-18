@@ -6,6 +6,7 @@
   align-items: center;
   background-color: $white;
   padding: 0rem 1rem;
+  min-height: 82px;
 
   img {
     width: 75px;
@@ -17,6 +18,7 @@
 
   a,
   button {
+    box-shadow: none;
     margin-left: 0.5rem;
   }
 }

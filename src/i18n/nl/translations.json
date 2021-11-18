@@ -25,7 +25,11 @@
         "sign_out": "Er is iets misgelopen bij het afmelden."
     },
     "settings": {
-        "when": "Duid aan op welke dagen je naar de dialyse moet."
+        "when": "Duid aan op welke dagen je naar de dialyse moet.",
+        "default": {
+            "title": "Dialysemomenten en andere herhalende activiteiten inplannen.",
+            "description": "Jouw weekactiviteit ziet er meestal hetzelfde uit.\n\nZodat je niet steeds opnieuw activiteiten zoals 'Naar de dialyse gaan', 'ontbijten' of 'wassen' moet instellen kan je hier je standaardweek samenstellen.\n\nLet wel op dat dit enkel activiteiten zijn die je elke week zal doen. Dit kan je later wel aanpassen, maar niet retroactief."
+        }
     },
     "actions": {
         "settings": "Instellingen",
@@ -40,5 +44,19 @@
         "resetting_password_instructions": "Gelieve je email in te vullen. We versturen je zo dadelijk een bericht met instructies om je wachtwoord opnieuw in te stellen.",
         "already_registered": "Heb je al een account?",
         "not_registered": "Nog geen account?"
+    },
+    "activities": {
+        "breakfast": {
+            "title": "Ontbijten",
+            "description": "Ontbijten is elke dag..."
+        },
+        "work": {
+            "title": "Werken",
+            "description": "Werken omschrijving"
+        },
+        "shower": {
+            "title": "Douchen",
+            "description": "Douchen is elke dag..."
+        }
     }
   }

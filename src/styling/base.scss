@@ -1,40 +1,63 @@
-@import 'styling/variables';
+@import "styling/variables";
 
 body {
-    margin: 0;
-    background-color: $light;
+  margin: 0;
+  background-color: $light;
 
-    &, & button, & input {
-      font-size: $font-base;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  &,
+  & button,
+  & input {
+    font-size: $font-base;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+}
 
-  p {
-    max-width: 460px;
-    margin-bottom: 1rem;
-  }
+p {
+  max-width: 460px;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 
-  img {
-    width: 100%;
-  }
+img {
+  width: 100%;
+}
 
-  #root, body, html {
-    width: 100%;
-    height: 100%;
-  }
+#root,
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
 
-  input:-webkit-autofill,
-  input:autofill {
-    background-color: initial;
-    border: initial;
-  }
+input:-webkit-autofill,
+input:autofill {
+  background-color: initial;
+  border: initial;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+  background: $primary-light;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background: darken($primary-light, 15);
+}
+::-webkit-scrollbar-track {
+  background: darken($light, 2);
+  border-radius: 30px;
+  box-shadow: inset 0px 0px 0px 0px darken($light, 2);
+}

@@ -1,0 +1,41 @@
+@import 'styling/variables';
+
+.container {
+    background-color: $white;
+    border-radius: 0 1rem 1rem 0;
+}
+
+.inner {
+    padding: 0.75rem 1rem;
+}
+
+.time,
+.name {
+    display: block;
+}
+
+.time {
+    color: $faded;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+
+    .change {
+        display: flex;
+        button:not(:last-child) {
+            margin-right: 0.25rem;
+        }
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    outline: none;
+    border: none;
+}

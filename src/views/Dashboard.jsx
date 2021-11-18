@@ -1,4 +1,5 @@
 import Button from 'components/Button';
+import {FiSettings} from "react-icons/fi";
 import Nav from 'components/Nav';
 import React from 'react'
 import { SETTINGS } from 'constants/routes';
@@ -11,7 +12,7 @@ const Dashboard = () => {
     return (
         <>
             <Nav>
-                <Button to={SETTINGS} variant="light">
+                <Button to={SETTINGS} variant="light" icon={<FiSettings/>}>
                     {t('actions.settings')}
                 </Button>
             </Nav>

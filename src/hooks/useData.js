@@ -7,7 +7,9 @@ import { toast } from 'react-hot-toast';
 const useData = (dt = null, callback = null) => {
     const [d, setD] = useContext(UserContext);
     const [data, setData] = useState(dt);
-    console.log(d);
+
+    console.log('Data ✨', d);
+
     useEffect(() => {
         async function postData() {
             try {

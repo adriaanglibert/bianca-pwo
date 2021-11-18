@@ -21,7 +21,7 @@ const useAuthentication = (path = HOME) => {
         }
 
         if (!user) {
-            console.log('There is no user signed in.');
+            console.log('There is no user signed in.', loading);
         };
     }, [user, loading, error, path]);
 

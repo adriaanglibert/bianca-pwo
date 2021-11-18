@@ -1,9 +1,11 @@
 import Button from "components/Button";
 import Container from "components/Container";
+import {FiSave} from "react-icons/fi";
 import { HOME } from "constants/routes";
 import Heading from "components/Heading";
 import Nav from "components/Nav";
 import React from "react";
+import Week from "views/settings/Week";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -18,7 +20,7 @@ const Settings = () => {
   return (
     <>
       <Nav>
-        <Button onClick={() => saveSettings()} variant="success">
+        <Button onClick={() => saveSettings()} variant="success" icon={<FiSave/>}>
           {t("save")}
         </Button>
       </Nav>
@@ -28,9 +30,7 @@ const Settings = () => {
             {t("actions.settings")}
           </Heading>
 
-          <strong>
-            {t("settings.when")}
-          </strong>
+          <Week />
       </Container>
     </>
   );
