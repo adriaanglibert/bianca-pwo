@@ -3,7 +3,7 @@ import React from "react";
 import days from "data/days.json";
 import styles from "./WeekContainer.module.scss";
 
-const WeekContainer = ({ children, activities }) => {
+const WeekContainer = ({ children, activities, handleDeleteActivity }) => {
   const keys = Object.keys(days);
   console.log("Passed act: ", activities);
   return (
@@ -28,7 +28,9 @@ const WeekContainer = ({ children, activities }) => {
                 activities[day]?.map((activity, index) => (
                   <Activity
                     key={`${day}-${index}-${activity.name}`}
-                    {...activity}
+                    activity={activity}
+                    day={day}
+                    handleDeleteActivity={handleDeleteActivity}
                   />
                 ))}
             </div>

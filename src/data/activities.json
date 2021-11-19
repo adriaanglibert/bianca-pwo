@@ -1,5 +1,14 @@
 {
-    "breakfast": 7,
-    "shower": 5,
-    "work": 9
+    "breakfast": {
+        "weight": 15,
+        "strategy": [5, 8]
+    },
+    "shower": {
+        "weight": 36,
+        "strategy": [5, 8]
+    },
+    "work": {
+        "weight": 65,
+        "strategy": [5, 8]
+    }
 }

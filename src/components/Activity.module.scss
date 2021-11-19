@@ -3,6 +3,7 @@
 .container {
     background-color: $white;
     border-radius: 0 1rem 1rem 0;
+    margin-bottom: $gap;
 }
 
 .inner {
@@ -15,13 +16,14 @@
 }
 
 .time {
-    color: $faded;
+    color: $gray;
 }
 
 .actions {
     display: flex;
     justify-content: space-between;
     padding: 0.75rem;
+    background-color: $white;
 
     .change {
         display: flex;
@@ -38,4 +40,16 @@
     background: none;
     outline: none;
     border: none;
+    color: $gray;
+    padding: 0.15rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    &:focus {
+        outline: 2px solid $primary-light;
+    }
+}
+
+.delete {
+    color: $danger;
 }

@@ -7,12 +7,14 @@ import { toast } from 'react-hot-toast';
 const useData = (dt = null, callback = null) => {
     const [d, setD] = useContext(UserContext);
     const [data, setData] = useState(dt);
+    const [loading, setLoading] = useState(false);
 
     console.log('Data ✨', d);
 
     useEffect(() => {
         async function postData() {
             try {
+                setLoading(true);
                 await db.collection(USERS_COLLECTION).doc(d.uid).update(data);
 
                 setD({
@@ -24,15 +26,16 @@ const useData = (dt = null, callback = null) => {
                 console.error(e);
             } finally {
                 callback();
+                setLoading(false);
             }
         };
 
         if (data) {
             postData();
         }
-    }, [data, d, dt, callback, setD]);
+    }, [data, d, callback, setD]);
 
-    return [data, setData];
+    return [data, setData, loading];
 }
 
 export default useData;
