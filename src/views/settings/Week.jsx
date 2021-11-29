@@ -5,15 +5,21 @@ import general from "styling/general.module.scss";
 import useData from "hooks/useData";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import Info from "components/Info";
 
 const Week = ({activities, handleAddActivity, handleDeleteActivity}) => {
   const { t } = useTranslation();
 
   return (
     <WeekContainer activities={activities} handleDeleteActivity={handleDeleteActivity}>
-      <Label>{t("settings.default.title")}</Label>
+      <Label>
+        {t("settings.default.title")}
+        
+        <Info>
+          <p className={general.preLine}>{t("settings.default.description")}</p>
+        </Info>
+      </Label>
 
-      <p className={general.preLine}>{t("settings.default.description")}</p>
 
       <button
         onClick={() =>
