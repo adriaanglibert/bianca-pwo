@@ -33,6 +33,17 @@
     }
 }
 
+.primary {
+    background-color: $primary;
+    color: $white;
+
+    &:hover,
+    &:focus {
+        background-color: darken($color: $primary, $amount: 10);
+        outline: none;
+    }
+}
+
 .success {
     background-color: $success;
     color: $white;

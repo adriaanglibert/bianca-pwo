@@ -44,11 +44,11 @@ function App() {
     try {
       const query = await db.collection("users").doc(user?.uid).get();
       const data = await query;
-      const usr = data.data();
+      const res = data.data();
 
       // Set fake 500ms delay so you see the spinner
       setTimeout(() => {
-        setData(usr);
+        setData(res);
       }, 500);
     } catch (err) {
       console.error(err);

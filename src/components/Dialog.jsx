@@ -10,28 +10,28 @@ import { FiX } from "react-icons/fi";
 const customStyles = {
     ...defaultStyles,
     content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
         border: 'none',
         borderRadius: '0.4rem',
         boxShadow: '0.25rem 0.25rem 0.5rem rgba(16,16,16, 0.10)',
         padding: '0',
         maxWidth: '90%',
-        maxHeight: '90%'
+        maxHeight: '90%',
+        position: 'relative',
+        inset: '0',
+        overflow: 'visible'
     },
     overlay: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: 'rgba(16, 16, 16, 0.75)',
         padding: '1rem'
     },
 };
 
 
-const Dialog = ({ title, variant, children, open = false, setOpen, icon }) => {
-    const {t} = useTranslation();
+const Dialog = ({ title, variant, children, open = false, setOpen, icon, actions = false }) => {
+    const { t } = useTranslation();
 
     return (
         <Modal
@@ -55,11 +55,16 @@ const Dialog = ({ title, variant, children, open = false, setOpen, icon }) => {
             </article>
 
             <div className={styles.actions}>
-                <Button variant="light" onClick={() => setOpen(false)}>
-                    {t('close')}
-                </Button>
+                {actions ?
+                    actions :
+                    <Button variant="light" onClick={() => setOpen(false)}>
+                        {t('close')}
+                    </Button>}
             </div>
 
+            <button onClick={() => setOpen(false)} className={styles.close}>
+                <FiX />
+            </button>
         </Modal>
     )
 }

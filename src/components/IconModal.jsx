@@ -21,6 +21,7 @@ const IconModal = ({ title, children, type = 'info', variant = 'primary', icon =
                 open={open}
                 setOpen={setOpen}
                 icon={icon}
+                variant={variant}
                 >
                 {children}
             </Dialog>

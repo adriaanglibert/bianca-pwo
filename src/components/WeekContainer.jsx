@@ -9,6 +9,7 @@ const WeekContainer = ({ children, activities, handleDeleteActivity }) => {
   return (
     <>
       {children}
+
       <div className={styles.container}>
         <div
           className={styles.grid}
