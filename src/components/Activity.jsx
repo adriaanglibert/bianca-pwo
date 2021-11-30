@@ -5,6 +5,7 @@ import React from "react";
 import activities from "data/activities.json";
 import styles from "./Activity.module.scss";
 import { useTranslation } from "react-i18next";
+import IconModal from "components/IconModal";
 
 const Activity = ({ activity, day, handleDeleteActivity }) => {
   const { t } = useTranslation();
@@ -28,9 +29,9 @@ const Activity = ({ activity, day, handleDeleteActivity }) => {
       </div>
       <Progress value={activities[activity.id].weight} />
       <div className={styles.actions}>
-        <button className={styles.button}>
-          <FiInfo />
-        </button>
+        <IconModal variant="gray" title={t(`activities.${activity.id}.title`)}>
+          {t(`activities.${activity.id}.description`)}
+        </IconModal>
         <div className={styles.change}>
           <button className={styles.button}>
             <FiEdit />

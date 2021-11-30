@@ -13,9 +13,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 2px;
-    color: $primary;
+    flex-shrink: 0;
 
     &:focus {
         outline: 1px solid $faded;

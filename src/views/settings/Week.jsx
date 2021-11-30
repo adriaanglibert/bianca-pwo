@@ -5,7 +5,7 @@ import general from "styling/general.module.scss";
 import useData from "hooks/useData";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Info from "components/Info";
+import IconModal from "components/IconModal";
 
 const Week = ({activities, handleAddActivity, handleDeleteActivity}) => {
   const { t } = useTranslation();
@@ -15,9 +15,9 @@ const Week = ({activities, handleAddActivity, handleDeleteActivity}) => {
       <Label>
         {t("settings.default.title")}
           
-        <Info title={t("settings.default.title")}>
+        <IconModal title={t("settings.default.title")}>
           <p className={general.preLine}>{t("settings.default.description")}</p>
-        </Info>
+        </IconModal>
       </Label>
 
 
