@@ -1,0 +1,40 @@
+@import 'styling/variables';
+
+$spacing: $gap * 2;
+
+.header, 
+.content,
+.actions {
+    padding: $spacing;
+}
+
+.header {
+    display: flex;
+    border-bottom: 1px solid $faded;
+    max-width: $text-width;
+
+    h2 {
+        margin-bottom: 0;
+        font-size: $font-medium;
+    }
+}
+
+.icon {
+    color: lighten($primary, 10);
+    font-size: $font-medium;
+    position: relative;
+    top: 3px;
+    margin-right: 0.75rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid $faded;
+    padding: $gap $spacing;
+
+    .btn {
+        margin-left: $gap;
+        box-shadow: none;
+    }
+}

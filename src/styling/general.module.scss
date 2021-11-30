@@ -1,3 +1,5 @@
+@import 'styling/variables';
+
 .center {
     display: flex;
     align-items: center;
@@ -30,4 +32,21 @@
 	position: absolute !important;
 	width: 1px !important;
 	white-space: nowrap !important;
+}
+
+
+.text-primary {
+    color: $primary;
+}
+
+.text-success {
+    color: $success;
+}
+
+.text-danger {
+    color: $danger;
+}
+
+.text-light {
+    color: $primary-light;
 }

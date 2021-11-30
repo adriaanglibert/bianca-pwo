@@ -1,0 +1,23 @@
+
+@import 'styling/variables';
+
+.button {
+    background: none;
+    border: none;
+    border-radius: 2px;
+    box-shadow: none;
+    outline: none;
+    padding: $gap;
+    margin: 0 $gap / 2;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 2px;
+    color: $primary;
+
+    &:focus {
+        outline: 1px solid $faded;
+    }
+}

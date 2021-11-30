@@ -14,8 +14,8 @@ const Week = ({activities, handleAddActivity, handleDeleteActivity}) => {
     <WeekContainer activities={activities} handleDeleteActivity={handleDeleteActivity}>
       <Label>
         {t("settings.default.title")}
-        
-        <Info>
+          
+        <Info title={t("settings.default.title")}>
           <p className={general.preLine}>{t("settings.default.description")}</p>
         </Info>
       </Label>
