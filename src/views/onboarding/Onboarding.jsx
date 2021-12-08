@@ -19,7 +19,6 @@ const Onboarding = () => {
     const [, setData] = useData(null, () => history.push(SETTINGS));
 
     const updateSeenOnboarding = () => {
-        console.log('Update the seen onboarding.');
         setData({
             seenOnboarding: true
         })

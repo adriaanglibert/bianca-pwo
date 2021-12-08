@@ -5,7 +5,6 @@ import Container from "components/Container";
 import { FiSave } from "react-icons/fi";
 import { HOME } from "constants/routes";
 import Heading from "components/Heading";
-import Loading from "views/Loading";
 import Nav from "components/Nav";
 import { UserContext } from "context";
 import Week from "views/settings/Week";
@@ -38,7 +37,6 @@ const Settings = () => {
   };
 
   const handleDeleteActivity = (day, activity) => {
-    console.log(activities);
     setActivities({
       ...activities,
       [day]: activities[day].filter(act => act !== activity)

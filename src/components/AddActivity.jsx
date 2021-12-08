@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react'
+import React, { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Button from 'components/Button';
 import { FiPlus, FiCalendar } from 'react-icons/fi';
@@ -8,7 +8,7 @@ import activities from 'data/activities.json';
 import days from 'data/days.json';
 import TimeRange from 'components/TimeRange';
 
-const Actions = ({ addActivity, activityInfo, setIsOpen }) => {
+const Actions = ({ saveActivity, activityInfo, setIsOpen, enabled }) => {
     const { t } = useTranslation();
 
     return (
@@ -18,8 +18,9 @@ const Actions = ({ addActivity, activityInfo, setIsOpen }) => {
             </Button>
 
             <Button
+                disabled={!enabled}
                 variant="success"
-                onClick={() => addActivity(activityInfo)}>
+                onClick={() => saveActivity(activityInfo)}>
                 {t('actions.plan')}
             </Button>
         </>
@@ -28,11 +29,10 @@ const Actions = ({ addActivity, activityInfo, setIsOpen }) => {
 
 const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
     const { t } = useTranslation();
-    const [activityInfo, setActivityInfo] = useState({
-        from: '0800',
-        to: '0830',
-    });
+    const [activityInfo, setActivityInfo] = useState({});
+    const [errors, ] = useState({});
 
+    // Transform data
     const acts = useMemo(() => {
         return Object.keys(activities).map(activity => {
             return {
@@ -41,7 +41,7 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
                 type: 'activity'
             }
         })
-      }, []);
+    }, [t]);
 
     const dys = useMemo(() => {
         return Object.keys(days).map(day => {
@@ -51,8 +51,9 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
                 type: 'day'
             }
         })
-      }, []);
+    }, []);
 
+    // Events
     const handleInput = (val) => {
         switch (val.type) {
             case 'day':
@@ -67,9 +68,28 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
                     id: val.value
                 })
                 break;
+            case 'from':
+                setActivityInfo({
+                    ...activityInfo,
+                    from: val.value
+                })
+                break;
+            case 'to':
+                setActivityInfo({
+                    ...activityInfo,
+                    to: val.value
+                })
+                break;
             default:
                 break;
         }
+    }
+
+    const saveActivity = (info) => {
+        addActivity(info);
+
+        // Reset activity
+        setActivityInfo({});
     }
 
     return (
@@ -80,9 +100,10 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
 
             <Dialog
                 actions={<Actions
-                    addActivity={addActivity}
+                    saveActivity={saveActivity}
                     activityInfo={activityInfo}
                     setIsOpen={setIsOpen}
+                    enabled={Boolean(!Object.keys(errors).length && Object.keys(activityInfo).length === 4)}
                 />}
                 icon={<FiCalendar />}
                 title={t('actions.default_plan')}
@@ -92,7 +113,7 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
                     value={activityInfo?.id}
                     options={acts}
                     handleInput={handleInput}
-                    >
+                >
                     {t('actions.select_activity')}
                 </SelectInput>
 
@@ -100,11 +121,11 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
                     value={activityInfo?.day}
                     options={dys}
                     handleInput={handleInput}
-                    >
+                >
                     {t('actions.select_day')}
                 </SelectInput>
 
-                <TimeRange  handleInput={handleInput} />
+                <TimeRange from={activityInfo?.from} to={activityInfo?.to} handleInput={handleInput} />
             </Dialog>
         </>
     )

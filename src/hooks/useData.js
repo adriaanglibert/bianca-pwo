@@ -9,8 +9,6 @@ const useData = (dt = null, callback = null) => {
     const [data, setData] = useState(dt);
     const [loading, setLoading] = useState(false);
 
-    console.log('Data ✨', d);
-
     useEffect(() => {
         async function postData() {
             try {

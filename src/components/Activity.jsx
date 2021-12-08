@@ -1,4 +1,4 @@
-import { FiEdit, FiInfo, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 import Progress from "components/Progress";
 import React from "react";

@@ -11,6 +11,10 @@ const customStyles = {
         margin: 0,
         cursor: 'pointer'
     }),
+    menuList: (provided) => ({
+        ...provided,
+        padding: 0
+    }),
     option: (provided, state) => ({
       ...provided,
       borderBottom: '1px solid #CECECE',
@@ -28,7 +32,7 @@ const customStyles = {
     })
   }
 
-const SelectInput = ({children, options, handleInput}) => {
+const SelectInput = ({value, children, options, handleInput}) => {
     const {t} = useTranslation();
 
     return (
@@ -38,6 +42,7 @@ const SelectInput = ({children, options, handleInput}) => {
             </Label>
 
             <Select
+                value={options.find(option => option.value === value)}
                 noOptionsMessage={t('no_options')}
                 styles={customStyles}
                 options={options}

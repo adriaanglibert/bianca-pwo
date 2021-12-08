@@ -63,10 +63,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('user', user);
-    console.log('loading', loading);
-    console.log('error', error);
-
     if (user && !loading && !error) {
       fetchData();
     }

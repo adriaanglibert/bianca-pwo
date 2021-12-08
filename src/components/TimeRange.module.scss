@@ -1,8 +1,24 @@
 @import 'styling/variables';
 
-.container {
+.fields {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    margin-bottom: $gap;
+
+    input {
+        width: 100%;
+        padding: 0.25rem;
+        color: $dark;
+
+        &:focus {
+            outline-color: $primary-light;
+        }
+    }
+
+    span {
+        display: inline-block;
+        margin: 0 $gap * 2;
+    }
 }
 
 .time {
@@ -10,7 +26,8 @@
     border-bottom: 1px solid $faded;
 
     &::-webkit-calendar-picker-indicator {
-        filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+        color: $primary-light;
+        // filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
      }
 }
 

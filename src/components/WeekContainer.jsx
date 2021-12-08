@@ -5,7 +5,7 @@ import styles from "./WeekContainer.module.scss";
 
 const WeekContainer = ({ children, activities, handleDeleteActivity }) => {
   const keys = Object.keys(days);
-  console.log("Passed act: ", activities);
+  
   return (
     <>
       {children}
