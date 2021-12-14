@@ -1,4 +1,5 @@
 
+@use "sass:math";
 @import 'styling/variables';
 
 .button {
@@ -8,7 +9,7 @@
     box-shadow: none;
     outline: none;
     padding: $gap;
-    margin: 0 $gap / 2;
+    margin: 0 math.div($gap, 2);
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
