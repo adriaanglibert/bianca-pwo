@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Button from 'components/Button';
 import { FiPlus, FiCalendar } from 'react-icons/fi';
@@ -8,17 +8,17 @@ import activities from 'data/activities.json';
 import days from 'data/days.json';
 import TimeRange from 'components/TimeRange';
 
-const Actions = ({ saveActivity, activityInfo, setIsOpen, enabled }) => {
+const Actions = ({ saveActivity, activityInfo, cancelActivity, disabled }) => {
     const { t } = useTranslation();
 
     return (
         <>
-            <Button onClick={() => setIsOpen(false)}>
+            <Button onClick={() => cancelActivity()}>
                 {t('actions.cancel')}
             </Button>
 
             <Button
-                disabled={!enabled}
+                disabled={disabled}
                 variant="success"
                 onClick={() => saveActivity(activityInfo)}>
                 {t('actions.plan')}
@@ -27,10 +27,15 @@ const Actions = ({ saveActivity, activityInfo, setIsOpen, enabled }) => {
     )
 }
 
-const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
+const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, addActivity }) => {
     const { t } = useTranslation();
+    console.log('defaultActivity', defaultActivity);
     const [activityInfo, setActivityInfo] = useState({});
-    const [errors, ] = useState({});
+    console.log('activityInfo',  activityInfo, activityInfo?.from, activityInfo?.to);
+    const [validation, setValidation] = useState({
+        filledRequired: false,
+        timeValidation: true
+    });
 
     // Transform data
     const acts = useMemo(() => {
@@ -54,7 +59,32 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
     }, []);
 
     // Events
+    useEffect(() => {
+        console.log('useEffect');
+        if (Object.keys(activityInfo).length === 4) {
+            setValidation(v => ({
+                ...v,
+                filledRequired: true
+            }));
+        }
+
+        return () => {
+            setValidation(v => ({
+                ...v,
+                filledRequired: false
+            }));
+        }
+    }, [activityInfo]);
+
+    useEffect(() => {
+        setActivityInfo(defaultActivity)
+        return () => {
+            setActivityInfo({});
+        }
+    }, [defaultActivity])
+
     const handleInput = (val) => {
+        console.log('Handle Input');
         switch (val.type) {
             case 'day':
                 setActivityInfo({
@@ -86,10 +116,17 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
     }
 
     const saveActivity = (info) => {
+        console.log('Save activity');
         addActivity(info);
 
         // Reset activity
         setActivityInfo({});
+        setDefaultActivity({});
+    }
+
+    const cancelActivity = () => {
+        setIsOpen(false);
+        setDefaultActivity({});
     }
 
     return (
@@ -100,10 +137,10 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
 
             <Dialog
                 actions={<Actions
-                    saveActivity={saveActivity}
                     activityInfo={activityInfo}
-                    setIsOpen={setIsOpen}
-                    enabled={Boolean(!Object.keys(errors).length && Object.keys(activityInfo).length === 4)}
+                    saveActivity={saveActivity}
+                    cancelActivity={cancelActivity}
+                    disabled={Object.values(validation).some(val => !val)}
                 />}
                 icon={<FiCalendar />}
                 title={t('actions.default_plan')}
@@ -125,7 +162,12 @@ const AddActivity = ({ isOpen, setIsOpen, addActivity }) => {
                     {t('actions.select_day')}
                 </SelectInput>
 
-                <TimeRange from={activityInfo?.from} to={activityInfo?.to} handleInput={handleInput} />
+                <TimeRange
+                    from={activityInfo?.from}
+                    to={activityInfo?.to}
+                    handleInput={handleInput}
+                    validation={validation}
+                    setValidation={setValidation} />
             </Dialog>
         </>
     )

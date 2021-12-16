@@ -3,7 +3,7 @@ import React from "react";
 import days from "data/days.json";
 import styles from "./WeekContainer.module.scss";
 
-const WeekContainer = ({ children, activities, handleDeleteActivity }) => {
+const WeekContainer = ({ children, activities, handleDeleteActivity, handleEditActivity }) => {
   const keys = Object.keys(days);
   
   return (
@@ -32,6 +32,7 @@ const WeekContainer = ({ children, activities, handleDeleteActivity }) => {
                     activity={activity}
                     day={day}
                     handleDeleteActivity={handleDeleteActivity}
+                    handleEditActivity={handleEditActivity}
                   />
                 ))}
             </div>

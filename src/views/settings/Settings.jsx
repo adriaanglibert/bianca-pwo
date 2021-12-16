@@ -43,6 +43,12 @@ const Settings = () => {
     })
   }
 
+  const handleEditActivity = (activity) => {
+    console.log('====================================');
+    console.log(activity);
+    console.log('====================================');
+  }
+
   const saveSettings = () => {
     setData({
       settings: activities,
@@ -64,7 +70,11 @@ const Settings = () => {
       <Container>
         <Heading>{t("actions.settings")}</Heading>
 
-        <Week activities={activities} handleAddActivity={handleAddActivity} handleDeleteActivity={handleDeleteActivity} />
+        <Week
+          activities={activities}
+          handleAddActivity={handleAddActivity}
+          handleDeleteActivity={handleDeleteActivity}
+          handleEditActivity={handleEditActivity} />
       </Container>
     </>
   );

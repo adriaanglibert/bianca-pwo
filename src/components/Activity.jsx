@@ -7,7 +7,7 @@ import styles from "./Activity.module.scss";
 import { useTranslation } from "react-i18next";
 import IconModal from "components/IconModal";
 
-const Activity = ({ activity, day, handleDeleteActivity }) => {
+const Activity = ({ activity, day, handleDeleteActivity, handleEditActivity }) => {
   const { t } = useTranslation();
 
   const formatDate = (from, to) => {
@@ -33,9 +33,15 @@ const Activity = ({ activity, day, handleDeleteActivity }) => {
           {t(`activities.${activity.id}.description`)}
         </IconModal>
         <div className={styles.change}>
-          <button className={styles.button}>
-            <FiEdit />
-          </button>
+          {
+            handleEditActivity &&
+            <button
+              className={styles.button}
+              onClick={() => handleEditActivity(activity)}
+            >
+              <FiEdit />
+            </button>
+          }
           <button
             className={`${styles.button} ${styles.delete}`}
             onClick={() => handleDeleteActivity(day, activity)}

@@ -8,19 +8,30 @@ import IconModal from "components/IconModal";
 import AddActivity from "components/AddActivity";
 
 
-const Week = ({ activities, handleAddActivity, handleDeleteActivity }) => {
+const Week = ({ activities, handleAddActivity, handleDeleteActivity, handleEditActivity }) => {
   const { t } = useTranslation();
+  const [defaultActivity, setDefaultActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
 
 
   const addActivity = (obj) => {
     handleAddActivity(obj.day, obj);
-
     setIsOpen(false);
+    setDefaultActivity({});
   }
 
+  const editActivity = (act) => {
+    handleEditActivity(act);
+    setDefaultActivity(act);
+    setIsOpen(true);
+  } 
+
   return (
-    <WeekContainer activities={activities} handleDeleteActivity={handleDeleteActivity}>
+    <WeekContainer
+      activities={activities}
+      handleDeleteActivity={handleDeleteActivity}
+      handleEditActivity={editActivity}
+      >
       <Label>
         {t("settings.default.title")}
 
@@ -29,7 +40,13 @@ const Week = ({ activities, handleAddActivity, handleDeleteActivity }) => {
         </IconModal>
       </Label>
 
-      <AddActivity isOpen={isOpen} setIsOpen={setIsOpen} addActivity={addActivity} />
+      <AddActivity
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        addActivity={addActivity}
+        defaultActivity={defaultActivity}
+        setDefaultActivity={setDefaultActivity}
+      />
     </WeekContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Label from './Label';
 import styles from './TimeRange.module.scss';
@@ -7,8 +7,29 @@ const formatTime = (time) => {
     return `${time.slice(0, 2)}:${time.slice(2, 4)}:00`;
 }
 
-const TimeRange = ({ handleInput, from, to }) => {
+const TimeRange = ({ handleInput, from, to, setValidation, validation }) => {
     const { t } = useTranslation();
+    const [error, setError] = useState();
+
+    const validateInput = (type, val) => {
+        const timeAsNumber = val.replace(':', '');
+
+        if ((type === 'to' && from >= timeAsNumber) || (type === 'from' && to <= timeAsNumber)) {
+            setError(t('errors.time_range'));
+            setValidation({
+                ...validation,
+                timeValidation: false
+            });
+        } else {
+            setError(null);
+            setValidation({
+                ...validation,
+                timeValidation: true
+            });
+        }
+
+        return handleInput({ type: type, value: val.replace(':', '') });
+    }
 
 
     return (
@@ -22,16 +43,20 @@ const TimeRange = ({ handleInput, from, to }) => {
                     className={styles.time}
                     type="time"
                     defaultValue={from ? formatTime(from) : null}
-                    onChange={e => handleInput({ type: 'from', value: e.target.value.replace(':', '') })} />
-                
-                <span>tot</span>
+                    onChange={e => validateInput('from', e.target.value)} />
+
+                <span>{t('until')}</span>
 
                 <input
                     className={styles.time}
                     type="time"
                     defaultValue={to ? formatTime(to) : null}
-                    onChange={e => handleInput({ type: 'to', value: e.target.value.replace(':', '') })} />
+                    onChange={e => validateInput('to', e.target.value)} />
             </div>
+
+            {
+                error && <span className={styles.error}>{error}</span>
+            }
         </div>
     )
 }

@@ -7,6 +7,7 @@
     "skip": "Overslaan",
     "close": "Sluiten",
     "info": "Meer info",
+    "until": "tot",
     "no_options": "Geen resultaten",
     "email": {
         "label": "Email",
@@ -25,7 +26,8 @@
         "register": "Maak een account aan bij Bianca"
     },
     "errors": {
-        "sign_out": "Er is iets misgelopen bij het afmelden."
+        "sign_out": "Er is iets misgelopen bij het afmelden.",
+        "time_range": "Je eindtijd moet voor je starttijd zijn."
     },
     "settings": {
         "when": "Duid aan op welke dagen je naar de dialyse moet.",
