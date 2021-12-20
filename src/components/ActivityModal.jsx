@@ -8,30 +8,28 @@ import activities from 'data/activities.json';
 import days from 'data/days.json';
 import TimeRange from 'components/TimeRange';
 
-const Actions = ({ saveActivity, activityInfo, cancelActivity, disabled }) => {
+const Actions = ({ save, info, cancel, disabled }) => {
     const { t } = useTranslation();
 
     return (
         <>
-            <Button onClick={() => cancelActivity()}>
+            <Button onClick={() => cancel()}>
                 {t('actions.cancel')}
             </Button>
 
             <Button
                 disabled={disabled}
                 variant="success"
-                onClick={() => saveActivity(activityInfo)}>
+                onClick={() => save(info)}>
                 {t('actions.plan')}
             </Button>
         </>
     )
 }
 
-const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, addActivity }) => {
+const ActivityModal = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, saveActivity }) => {
     const { t } = useTranslation();
-    console.log('defaultActivity', defaultActivity);
     const [activityInfo, setActivityInfo] = useState({});
-    console.log('activityInfo',  activityInfo, activityInfo?.from, activityInfo?.to);
     const [validation, setValidation] = useState({
         filledRequired: false,
         timeValidation: true
@@ -58,10 +56,9 @@ const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, a
         })
     }, []);
 
-    // Events
+    // Validation
     useEffect(() => {
-        console.log('useEffect');
-        if (Object.keys(activityInfo).length === 4) {
+        if (Object.keys(activityInfo).length >= 4) {
             setValidation(v => ({
                 ...v,
                 filledRequired: true
@@ -76,15 +73,16 @@ const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, a
         }
     }, [activityInfo]);
 
+    // Initial Values
     useEffect(() => {
-        setActivityInfo(defaultActivity)
+        setActivityInfo(defaultActivity);
+
         return () => {
             setActivityInfo({});
         }
     }, [defaultActivity])
 
     const handleInput = (val) => {
-        console.log('Handle Input');
         switch (val.type) {
             case 'day':
                 setActivityInfo({
@@ -95,7 +93,7 @@ const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, a
             case 'activity':
                 setActivityInfo({
                     ...activityInfo,
-                    id: val.value
+                    value: val.value
                 })
                 break;
             case 'from':
@@ -115,9 +113,8 @@ const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, a
         }
     }
 
-    const saveActivity = (info) => {
-        console.log('Save activity');
-        addActivity(info);
+    const save = (info) => {
+        saveActivity(info);
 
         // Reset activity
         setActivityInfo({});
@@ -137,17 +134,19 @@ const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, a
 
             <Dialog
                 actions={<Actions
-                    activityInfo={activityInfo}
-                    saveActivity={saveActivity}
-                    cancelActivity={cancelActivity}
+                    info={activityInfo}
+                    save={save}
+                    cancel={cancelActivity}
                     disabled={Object.values(validation).some(val => !val)}
                 />}
                 icon={<FiCalendar />}
                 title={t('actions.default_plan')}
                 open={isOpen}
-                setOpen={setIsOpen}>
+                setOpen={setIsOpen}
+                onClose={cancelActivity}
+            >
                 <SelectInput
-                    value={activityInfo?.id}
+                    value={activityInfo?.value}
                     options={acts}
                     handleInput={handleInput}
                 >
@@ -173,4 +172,4 @@ const AddActivity = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, a
     )
 }
 
-export default AddActivity
+export default ActivityModal

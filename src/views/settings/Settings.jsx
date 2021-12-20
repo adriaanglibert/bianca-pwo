@@ -11,6 +11,7 @@ import Week from "views/settings/Week";
 import useData from "hooks/useData";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { v4 as uuid } from 'uuid';
 
 const Settings = () => {
   let history = useHistory();
@@ -20,18 +21,33 @@ const Settings = () => {
   const [, setData] = useData(null, () => history.push(HOME));
   const [activities, setActivities] = useState(d?.settings);
 
-  const handleAddActivity = (day, activity) => {
-    const daysActivities = [];
+  const handleSaveActivity = (day, activity) => {
+    let activityToUpload = activity;
+    let activitiesToUpload = activities;
 
-    if (activities?.[day]) {
-      daysActivities.push(...activities[day]);
+    // Remove original if you're updating.
+    if (activity.uuid) {
+      Object.keys(activities).forEach(day => {
+        return activitiesToUpload[day] = activitiesToUpload[day].filter(act => act.uuid !== activity.uuid);
+      });
+    } else {
+      activityToUpload = {
+        ...activity,
+        uuid: uuid()
+      }
     }
 
-    daysActivities.push(activity);
-    daysActivities.sort((a, b) => parseInt(a.from) - parseInt(b.from));
+    const daysActivities = [];
 
+    if (activitiesToUpload?.[day]) {
+      daysActivities.push(...activitiesToUpload[day]);
+    }
+
+    daysActivities.push(activityToUpload);
+    daysActivities.sort((a, b) => parseInt(a.from) - parseInt(b.from));
+    
     setActivities({
-      ...activities,
+      ...activitiesToUpload,
       [day]: daysActivities,
     });
   };
@@ -41,12 +57,6 @@ const Settings = () => {
       ...activities,
       [day]: activities[day].filter(act => act !== activity)
     })
-  }
-
-  const handleEditActivity = (activity) => {
-    console.log('====================================');
-    console.log(activity);
-    console.log('====================================');
   }
 
   const saveSettings = () => {
@@ -72,9 +82,9 @@ const Settings = () => {
 
         <Week
           activities={activities}
-          handleAddActivity={handleAddActivity}
+          handleSaveActivity={handleSaveActivity}
           handleDeleteActivity={handleDeleteActivity}
-          handleEditActivity={handleEditActivity} />
+        />
       </Container>
     </>
   );

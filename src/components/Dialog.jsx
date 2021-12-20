@@ -30,7 +30,7 @@ const customStyles = {
 };
 
 
-const Dialog = ({ title, variant, children, open = false, setOpen, icon, actions = false }) => {
+const Dialog = ({ title, variant, children, open = false, setOpen, icon, actions = false, onClose }) => {
     const { t } = useTranslation();
 
     return (
@@ -39,6 +39,8 @@ const Dialog = ({ title, variant, children, open = false, setOpen, icon, actions
             onRequestClose={() => setOpen(false)}
             contentLabel={title}
             style={customStyles}
+            shouldCloseOnOverlayClick={true}
+            onAfterClose={onClose}
         >
             {
                 title &&

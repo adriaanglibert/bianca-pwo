@@ -23,25 +23,27 @@ const Activity = ({ activity, day, handleDeleteActivity, handleEditActivity }) =
         <span className={styles.time}>
           {formatDate(activity.from, activity.to)}
         </span>
+
         <span className={styles.name}>
-          {t(`activities.${activity.id}.title`)}
+          {t(`activities.${activity.value}.title`)}
         </span>
       </div>
-      <Progress value={activities[activity.id].weight} />
+
+      <Progress value={activities[activity.value].weight} />
+
       <div className={styles.actions}>
-        <IconModal variant="gray" title={t(`activities.${activity.id}.title`)}>
-          {t(`activities.${activity.id}.description`)}
+        <IconModal variant="gray" title={t(`activities.${activity.value}.title`)}>
+          {t(`activities.${activity.value}.description`)}
         </IconModal>
+
         <div className={styles.change}>
-          {
-            handleEditActivity &&
-            <button
-              className={styles.button}
-              onClick={() => handleEditActivity(activity)}
-            >
-              <FiEdit />
-            </button>
-          }
+          <button
+            className={styles.button}
+            onClick={() => handleEditActivity(activity)}
+          >
+            <FiEdit />
+          </button>
+
           <button
             className={`${styles.button} ${styles.delete}`}
             onClick={() => handleDeleteActivity(day, activity)}

@@ -5,23 +5,22 @@ import general from "styling/general.module.scss";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import IconModal from "components/IconModal";
-import AddActivity from "components/AddActivity";
+import ActivityModal from "components/ActivityModal";
 
 
-const Week = ({ activities, handleAddActivity, handleDeleteActivity, handleEditActivity }) => {
+const Week = ({ activities, handleSaveActivity, handleDeleteActivity }) => {
   const { t } = useTranslation();
   const [defaultActivity, setDefaultActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
 
 
-  const addActivity = (obj) => {
-    handleAddActivity(obj.day, obj);
+  const saveActivity = (obj) => {
+    handleSaveActivity(obj.day, obj);
     setIsOpen(false);
     setDefaultActivity({});
   }
 
   const editActivity = (act) => {
-    handleEditActivity(act);
     setDefaultActivity(act);
     setIsOpen(true);
   } 
@@ -40,10 +39,10 @@ const Week = ({ activities, handleAddActivity, handleDeleteActivity, handleEditA
         </IconModal>
       </Label>
 
-      <AddActivity
+      <ActivityModal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        addActivity={addActivity}
+        saveActivity={saveActivity}
         defaultActivity={defaultActivity}
         setDefaultActivity={setDefaultActivity}
       />
