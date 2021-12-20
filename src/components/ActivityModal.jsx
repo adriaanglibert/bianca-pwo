@@ -27,7 +27,16 @@ const Actions = ({ save, info, cancel, disabled }) => {
     )
 }
 
-const ActivityModal = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen, saveActivity }) => {
+const ActivityModal = ({
+    label = "settings.default.button",
+    title = "actions.default_plan",
+    setTitle,
+    defaultActivity,
+    setDefaultActivity,
+    isOpen,
+    setIsOpen,
+    saveActivity
+}) => {
     const { t } = useTranslation();
     const [activityInfo, setActivityInfo] = useState({});
     const [validation, setValidation] = useState({
@@ -82,6 +91,24 @@ const ActivityModal = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen,
         }
     }, [defaultActivity])
 
+    const open = () => {
+        setTitle('actions.default_plan');
+        setIsOpen(true);
+    }
+
+    const save = (info) => {
+        saveActivity(info);
+
+        // Reset activity
+        setActivityInfo({});
+        setDefaultActivity({});
+    }
+
+    const cancel = () => {
+        setIsOpen(false);
+        setDefaultActivity({});
+    }
+
     const handleInput = (val) => {
         switch (val.type) {
             case 'day':
@@ -113,37 +140,29 @@ const ActivityModal = ({ defaultActivity, setDefaultActivity, isOpen, setIsOpen,
         }
     }
 
-    const save = (info) => {
-        saveActivity(info);
-
-        // Reset activity
-        setActivityInfo({});
-        setDefaultActivity({});
-    }
-
-    const cancelActivity = () => {
-        setIsOpen(false);
-        setDefaultActivity({});
-    }
-
     return (
         <>
-            <Button onClick={() => setIsOpen(true)} icon={<FiPlus />} variant="primary">
-                {t('settings.default.button')}
+            <Button
+                styling="add-activity-button"
+                onClick={() => open()} 
+                icon={<FiPlus />} 
+                variant="primary"
+            >
+                {t(label)}
             </Button>
 
             <Dialog
                 actions={<Actions
                     info={activityInfo}
                     save={save}
-                    cancel={cancelActivity}
+                    cancel={cancel}
                     disabled={Object.values(validation).some(val => !val)}
                 />}
                 icon={<FiCalendar />}
-                title={t('actions.default_plan')}
+                title={t(title)}
                 open={isOpen}
                 setOpen={setIsOpen}
-                onClose={cancelActivity}
+                onClose={cancel}
             >
                 <SelectInput
                     value={activityInfo?.value}

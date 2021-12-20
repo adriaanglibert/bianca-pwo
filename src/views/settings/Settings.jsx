@@ -12,6 +12,9 @@ import useData from "hooks/useData";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { v4 as uuid } from 'uuid';
+import Label from "components/Label";
+import IconModal from "components/IconModal";
+import general from "styling/general.module.scss";
 
 const Settings = () => {
   let history = useHistory();
@@ -45,7 +48,7 @@ const Settings = () => {
 
     daysActivities.push(activityToUpload);
     daysActivities.sort((a, b) => parseInt(a.from) - parseInt(b.from));
-    
+
     setActivities({
       ...activitiesToUpload,
       [day]: daysActivities,
@@ -84,7 +87,15 @@ const Settings = () => {
           activities={activities}
           handleSaveActivity={handleSaveActivity}
           handleDeleteActivity={handleDeleteActivity}
-        />
+        >
+          <Label>
+            {t("settings.default.title")}
+
+            <IconModal title={t("settings.default.title")} variant='dark'>
+              <p className={general.preLine}>{t("settings.default.description")}</p>
+            </IconModal>
+          </Label>
+        </Week>
       </Container>
     </>
   );

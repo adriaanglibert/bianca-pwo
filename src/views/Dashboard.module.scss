@@ -1,0 +1,32 @@
+.sidebar {
+    min-width: 240px;
+    margin-right: 3rem;
+    margin-top: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+
+    :global .add-activity-button {
+        margin: 1rem;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        flex-direction: row;    
+    }
+
+    .sidebar {
+        margin-top: 0;
+    }
+}

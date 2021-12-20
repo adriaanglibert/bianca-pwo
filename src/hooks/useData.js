@@ -31,7 +31,12 @@ const useData = (dt = null, callback = null) => {
         if (data) {
             postData();
         }
-    }, [data, d, callback, setD]);
+
+        return () => {
+            setData(dt);
+            setLoading(false);
+        }
+    }, [data, d, dt, callback, setD]);
 
     return [data, setData, loading];
 }
