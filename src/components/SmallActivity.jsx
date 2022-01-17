@@ -1,9 +1,4 @@
-import { FiEdit, FiTrash2 } from "react-icons/fi";
-
-import IconModal from "components/IconModal";
-import Progress from "components/Progress";
 import React from "react";
-import activities from "data/activities.json";
 import styles from "./Activity.module.scss";
 import { useTranslation } from "react-i18next";
 

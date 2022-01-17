@@ -30,6 +30,10 @@
   color: $gray;
 }
 
+.active {
+  color: $primary;
+}
+
 .line {
   border: 1px solid $faded;
   opacity: 0.25;

@@ -30,7 +30,7 @@ const WeekContainer = ({
           {keys.map((day, index) => (
             <div key={day} className={styles.column}>
               <header className={styles.header}>
-                <strong className={styles.title}>{days[day]}</strong>
+                <strong className={`${styles.title} ${moment().isSame(moment(firstMoment).add(index, "day"), 'day') && styles.active}`}>{days[day]}</strong>
                 {firstMoment && (
                   <span className={styles.date}>
                     {moment(firstMoment).add(index, "day").format("DD/MM")}

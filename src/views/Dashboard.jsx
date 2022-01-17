@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 
 import Button from "components/Button";
 import Card from "components/Card";
-import Container from "components/Container";
 import { FiSettings } from "react-icons/fi";
 import Heading from "components/Heading";
 import Nav from "components/Nav";
