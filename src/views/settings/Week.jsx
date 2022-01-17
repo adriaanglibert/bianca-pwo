@@ -3,7 +3,7 @@ import React from "react";
 import WeekContainer from "components/WeekContainer";
 import { useState } from "react";
 
-const Week = ({ activities, children, handleSaveActivity, handleDeleteActivity }) => {
+const Week = ({ activities, defaultActivities, children, handleSaveActivity, handleDeleteActivity }) => {
   const [defaultActivity, setDefaultActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState();
@@ -23,6 +23,7 @@ const Week = ({ activities, children, handleSaveActivity, handleDeleteActivity }
   return (
     <WeekContainer
       activities={activities}
+      defaultActivities={defaultActivities}
       handleDeleteActivity={handleDeleteActivity}
       handleEditActivity={editActivity}
     >

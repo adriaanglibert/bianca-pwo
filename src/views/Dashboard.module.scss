@@ -7,6 +7,9 @@
 .container {
     display: flex;
     flex-direction: column-reverse;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    max-width: 95%;
 }
 
 .main {
@@ -21,9 +24,27 @@
     }
 }
 
+.date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .actions {
+        display: flex;
+        margin-bottom: 1rem;
+
+        button {
+            margin-left: 0.5rem;
+            span {
+                margin: 0;
+            }
+        }
+    }
+}
+
 @media (min-width: 992px) {
     .container {
-        flex-direction: row;    
+        flex-direction: row;
     }
 
     .sidebar {

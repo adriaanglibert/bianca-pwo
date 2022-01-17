@@ -1,11 +1,13 @@
 import Activity from "components/Activity";
+import Collapsible from './Collapsible';
 import React from "react";
+import SmallActivity from "components/SmallActivity";
 import days from "data/days.json";
 import styles from "./WeekContainer.module.scss";
 
-const WeekContainer = ({ children, activities, handleDeleteActivity, handleEditActivity }) => {
+const WeekContainer = ({ children, activities, defaultActivities, handleDeleteActivity, handleEditActivity }) => {
   const keys = Object.keys(days);
-  
+
   return (
     <>
       {children}
@@ -35,6 +37,22 @@ const WeekContainer = ({ children, activities, handleDeleteActivity, handleEditA
                     handleEditActivity={handleEditActivity}
                   />
                 ))}
+
+              {defaultActivities && defaultActivities[day]?.length  &&
+                <Collapsible title="Standaardactiviteiten">
+                    {
+                      defaultActivities[day]?.map((activity, index) => (
+                        <SmallActivity
+                          key={`${day}-${index}-${activity.name}`}
+                          activity={activity}
+                          day={day}
+                          handleDeleteActivity={handleDeleteActivity}
+                          handleEditActivity={handleEditActivity}
+                        />
+                      ))
+                    }
+                </Collapsible>
+                }
             </div>
           ))}
         </div>

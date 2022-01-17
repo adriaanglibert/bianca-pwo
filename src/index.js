@@ -1,12 +1,13 @@
 import "styling/base.scss";
 import "styling/variables.scss";
 import 'i18n/config';
+import 'moment/locale/nl-be';
 
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import reportWebVitals from './reportWebVitals';
 import ReactModal from "react-modal";
+import reportWebVitals from './reportWebVitals';
 
 ReactModal.setAppElement('#root');
 

@@ -57,7 +57,10 @@
         "select_day": "Dag selecteren",
         "set_time": "Tijd instellen",
         "cancel": "Annuleren",
-        "plan": "Inplannen"
+        "plan": "Inplannen",
+        "next_week": "Volgende week",
+        "previous_week": "Vorige week",
+        "current_week": "Naar huidige week"
     },
     "activities": {
         "breakfast": {
