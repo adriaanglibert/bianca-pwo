@@ -3,7 +3,6 @@ import {FiSettings} from "react-icons/fi";
 import Nav from 'components/Nav';
 import React, { useContext, useState } from 'react'
 import { SETTINGS } from 'constants/routes';
-import { logout } from 'firebase-config';
 import { useTranslation } from 'react-i18next';
 import Container from 'components/Container';
 import Heading from 'components/Heading';
@@ -15,7 +14,7 @@ import general from '../styling/general.module.scss';
 
 const Dashboard = () => {
     const [d] = useContext(UserContext);
-    const [defaultActivities, setDefaultActivities] = useState(d?.settings);
+    const [defaultActivities, ] = useState(d?.settings);
 
     const {t} = useTranslation();
 
