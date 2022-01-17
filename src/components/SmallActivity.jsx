@@ -18,7 +18,7 @@ const SmallActivity = ({ activity, day, handleDeleteActivity, handleEditActivity
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.inner}>
         <small className={styles.time}>
           {formatDate(activity.from, activity.to)}

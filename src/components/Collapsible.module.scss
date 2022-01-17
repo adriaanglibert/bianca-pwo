@@ -4,7 +4,7 @@
   background-color: $white;
   border-radius: $radius-base;
   overflow: hidden;
-  margin-bottom: $gap * 2;
+  margin-bottom: $gap;
 }
 
 .collapse {
@@ -14,7 +14,7 @@
 
 .button {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: transparent;
   box-shadow: none;
@@ -22,9 +22,11 @@
   border: none;
   padding: 0.75rem 1rem;
   font-size: $font-small;
+  width: 100%;
+  background-color: $primary-light;
   cursor: pointer;
   &:focus {
-    background-color: $primary-light;
+    background-color: $white;
   }
 
   svg {

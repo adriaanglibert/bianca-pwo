@@ -27,7 +27,8 @@ const Dashboard = () => {
   }, []);
 
   const changeWeek = (method) => {
-    setDate(moment(date)[method](1, "weeks"));
+    const newDate = moment(date)[method](1, "weeks");
+    setDate(newDate);
   };
 
   return (
@@ -82,7 +83,10 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <Week defaultActivities={defaultActivities} />
+            <Week
+              activities={defaultActivities}
+              defaultActivities={defaultActivities}
+              firstMoment={date} />
           </main>
         </div>
     </>

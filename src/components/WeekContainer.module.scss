@@ -25,6 +25,11 @@
   text-transform: uppercase;
 }
 
+.date {
+  display: block;
+  color: $gray;
+}
+
 .line {
   border: 1px solid $faded;
   opacity: 0.25;

@@ -1,11 +1,19 @@
 import Activity from "components/Activity";
-import Collapsible from './Collapsible';
+import Collapsible from "./Collapsible";
 import React from "react";
 import SmallActivity from "components/SmallActivity";
 import days from "data/days.json";
+import moment from "moment";
 import styles from "./WeekContainer.module.scss";
 
-const WeekContainer = ({ children, activities, defaultActivities, handleDeleteActivity, handleEditActivity }) => {
+const WeekContainer = ({
+  children,
+  firstMoment,
+  activities,
+  defaultActivities,
+  handleDeleteActivity,
+  handleEditActivity,
+}) => {
   const keys = Object.keys(days);
 
   return (
@@ -16,13 +24,18 @@ const WeekContainer = ({ children, activities, defaultActivities, handleDeleteAc
         <div
           className={styles.grid}
           style={{
-            gridTemplateColumns: `repeat(${keys.length}, minmax(226px, 1fr))`,
+            gridTemplateColumns: `repeat(${keys.length}, minmax(150px, 1fr))`,
           }}
         >
-          {keys.map((day) => (
+          {keys.map((day, index) => (
             <div key={day} className={styles.column}>
               <header className={styles.header}>
                 <strong className={styles.title}>{days[day]}</strong>
+                {firstMoment && (
+                  <span className={styles.date}>
+                    {moment(firstMoment).add(index, "day").format("DD/MM")}
+                  </span>
+                )}
               </header>
 
               <hr className={styles.line} />
@@ -38,21 +51,19 @@ const WeekContainer = ({ children, activities, defaultActivities, handleDeleteAc
                   />
                 ))}
 
-              {defaultActivities && defaultActivities[day]?.length  &&
-                <Collapsible title="Standaardactiviteiten">
-                    {
-                      defaultActivities[day]?.map((activity, index) => (
-                        <SmallActivity
-                          key={`${day}-${index}-${activity.name}`}
-                          activity={activity}
-                          day={day}
-                          handleDeleteActivity={handleDeleteActivity}
-                          handleEditActivity={handleEditActivity}
-                        />
-                      ))
-                    }
+              {defaultActivities && defaultActivities[day]?.length && (
+                <Collapsible title="Standaard">
+                  {defaultActivities[day]?.map((activity, index) => (
+                    <SmallActivity
+                      key={`${day}-${index}-${activity.name}`}
+                      activity={activity}
+                      day={day}
+                      handleDeleteActivity={handleDeleteActivity}
+                      handleEditActivity={handleEditActivity}
+                    />
+                  ))}
                 </Collapsible>
-                }
+              )}
             </div>
           ))}
         </div>
