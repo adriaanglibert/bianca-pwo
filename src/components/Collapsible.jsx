@@ -46,7 +46,7 @@ const Collapsible = ({ open, title, children }) => {
       <div className={styles.collapse}>
         <button
           type="button"
-          className={styles.button}
+          className={`${styles.button} ${isOpen ? styles.activeButton : ""}`}
           onClick={handleFilterOpening}
         >
           {title}
