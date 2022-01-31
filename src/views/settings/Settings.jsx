@@ -5,16 +5,16 @@ import Container from "components/Container";
 import { FiSave } from "react-icons/fi";
 import { HOME } from "constants/routes";
 import Heading from "components/Heading";
+import IconModal from "components/IconModal";
+import Label from "components/Label";
 import Nav from "components/Nav";
 import { UserContext } from "context";
 import Week from "views/settings/Week";
+import general from "styling/general.module.scss";
 import useData from "hooks/useData";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { v4 as uuid } from 'uuid';
-import Label from "components/Label";
-import IconModal from "components/IconModal";
-import general from "styling/general.module.scss";
 
 const Settings = () => {
   let history = useHistory();
@@ -23,37 +23,6 @@ const Settings = () => {
   const [d] = useContext(UserContext);
   const [, setData] = useData(null, () => history.push(HOME));
   const [activities, setActivities] = useState(d?.settings);
-
-  const handleSaveActivity = (day, activity) => {
-    let activityToUpload = activity;
-    let activitiesToUpload = activities;
-
-    // Remove original if you're updating.
-    if (activity.uuid) {
-      Object.keys(activities).forEach(day => {
-        return activitiesToUpload[day] = activitiesToUpload[day].filter(act => act.uuid !== activity.uuid);
-      });
-    } else {
-      activityToUpload = {
-        ...activity,
-        uuid: uuid()
-      }
-    }
-
-    const daysActivities = [];
-
-    if (activitiesToUpload?.[day]) {
-      daysActivities.push(...activitiesToUpload[day]);
-    }
-
-    daysActivities.push(activityToUpload);
-    daysActivities.sort((a, b) => parseInt(a.from) - parseInt(b.from));
-
-    setActivities({
-      ...activitiesToUpload,
-      [day]: daysActivities,
-    });
-  };
 
   const handleDeleteActivity = (day, activity) => {
     setActivities({
@@ -85,7 +54,7 @@ const Settings = () => {
 
         <Week
           activities={activities}
-          handleSaveActivity={handleSaveActivity}
+          setActivities={setActivities}
           handleDeleteActivity={handleDeleteActivity}
         >
           <Label>

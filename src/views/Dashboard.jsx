@@ -1,10 +1,9 @@
-import { FiChevronLeft, FiChevronRight, FiRotateCcw } from "react-icons/fi";
-import React, { useContext, useEffect, useState } from "react";
+import { ACTIVITIES_SUB_COLLECTION, USERS_COLLECTION, db } from 'firebase-config';
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import Button from "components/Button";
 import Card from "components/Card";
 import { FiSettings } from "react-icons/fi";
-import Heading from "components/Heading";
 import Nav from "components/Nav";
 import { SETTINGS } from "constants/routes";
 import { UserContext } from "context";
@@ -14,16 +13,39 @@ import general from "../styling/general.module.scss";
 import moment from "moment";
 import styling from "./Dashboard.module.scss";
 import { useTranslation } from "react-i18next";
+import { v4 as uuid } from 'uuid';
 
 const Dashboard = () => {
   const { t } = useTranslation();
   const [d] = useContext(UserContext);
   const [date, setDate] = useState(moment().startOf("week"));
+  const [weekActivities, setWeekActivities] = useState([]);
   const [defaultActivities] = useState(d?.settings);
 
+  const fetchActivities =  useCallback(async () => {
+    const query = await db.collection(USERS_COLLECTION).doc(d?.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(date.toISOString()).get();
+    const data = await query;
+    const week = data.data();
+    // setWeekActivities(week);
+  }, []);
+
+  const saveActivities = (activities) => {
+    setWeekActivities(activities);
+
+    // PUSH TO FIREBASE
+  }
+
+  useEffect(() => {
+    fetchActivities();
+  }, [fetchActivities]);
+
   const changeWeek = (method) => {
-    const newDate = moment(date)[method](1, "weeks");
-    setDate(newDate);
+    if (method) {
+      const newDate = moment(date)[method](1, "weeks");
+      setDate(newDate);
+    }
+
+    fetchActivities();
   };
 
   return (
@@ -34,24 +56,26 @@ const Dashboard = () => {
         </Button>
       </Nav>
 
-        <div className={styling.container}>
-          <aside className={styling.sidebar}>
-            <Card styling={general.m0}>Help</Card>
-          </aside>
+      <div className={styling.container}>
+        <aside className={styling.sidebar}>
+          <Card styling={general.m0}>Help</Card>
+        </aside>
 
-          <main className={styling.main}>
-            <WeekNavigator
-              date={date}
-              setDate={setDate}
-              changeWeek={changeWeek}
-            />
+        <main className={styling.main}>
+          <WeekNavigator
+            date={date}
+            setDate={setDate}
+            changeWeek={changeWeek}
+          />
 
-            <Week
-              activities={defaultActivities}
-              defaultActivities={defaultActivities}
-              firstMoment={date} />
-          </main>
-        </div>
+          <Week
+            activities={weekActivities}
+            setActivities={saveActivities}
+            defaultActivities={defaultActivities}
+            firstMoment={date}
+          />
+        </main>
+      </div>
     </>
   );
 };

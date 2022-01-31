@@ -25,7 +25,7 @@ function WeekNavigator({date, setDate, changeWeek}) {
       <div className={styling.actions}>
         {date.week() !== moment().week() && (
           <Button
-            onClick={() => setDate(moment().startOf("week"))}
+            onClick={() => {setDate(moment().startOf("week")); changeWeek();}}
             icon={<FiRotateCcw />}
           >
             <span className={general.srOnly}>{t("actions.current_week")}</span>

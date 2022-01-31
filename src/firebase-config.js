@@ -18,6 +18,7 @@ const db = app.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 const USERS_COLLECTION = "users";
+const ACTIVITIES_SUB_COLLECTION = "activities";
 
 // Authentication Helper Functions
 const signInWithGoogle = async () => {
@@ -31,6 +32,8 @@ const signInWithGoogle = async () => {
       auth: "google",
       email: user.email,
     });
+
+    db.collection(USERS_COLLECTION).doc(user.uid).collection('activities');
   } catch (err) {
     console.error(err);
     toast.error(err.message);
@@ -56,6 +59,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       auth: "email",
       email,
     });
+
+    await db.collection(USERS_COLLECTION).doc(user.uid).collection('activities');
   } catch (err) {
     console.error(err);
     toast.error(err.message);
@@ -80,6 +85,7 @@ export {
   auth,
   db,
   USERS_COLLECTION,
+  ACTIVITIES_SUB_COLLECTION,
   signInWithGoogle,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
