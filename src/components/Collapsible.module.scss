@@ -23,11 +23,11 @@
   padding: 0.75rem 1rem;
   font-size: $font-small;
   width: 100%;
-  background-color: $faded;
+  background-color: $faded-light;
   cursor: pointer;
 
   &:hover, &:focus {
-    background-color: $primary-light;
+    background-color: $faded-light;
   }
 
   svg {
@@ -38,7 +38,7 @@
 }
 
 .activeButton, .activeButton:focus {
-  background-color: $white;
+  background-color: $faded-light;
 }
 
 .open {
@@ -48,4 +48,5 @@
 .content {
   overflow: hidden;
   transition: height 0.2s ease-in-out;
+  background-color: $faded-light;
 }

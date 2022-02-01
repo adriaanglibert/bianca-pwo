@@ -4,7 +4,7 @@ import WeekContainer from "components/WeekContainer";
 import { useState } from "react";
 import { v4 as uuid } from 'uuid';
 
-const Week = ({ activities, defaultActivities, setActivities, children, firstMoment, handleSaveActivity, handleDeleteActivity }) => {
+const Week = ({ activities, defaultActivities, setActivities, children, firstMoment, handleSaveActivity, handleDeleteActivity, isLoading }) => {
   const [defaultActivity, setDefaultActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState();
@@ -60,6 +60,7 @@ const Week = ({ activities, defaultActivities, setActivities, children, firstMom
       handleDeleteActivity={handleDeleteActivity}
       handleEditActivity={editActivity}
       firstMoment={firstMoment}
+      isLoading={isLoading}
     >
       {children}
 

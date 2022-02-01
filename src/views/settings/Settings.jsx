@@ -14,7 +14,6 @@ import general from "styling/general.module.scss";
 import useData from "hooks/useData";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { v4 as uuid } from 'uuid';
 
 const Settings = () => {
   let history = useHistory();

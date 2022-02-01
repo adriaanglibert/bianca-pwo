@@ -1,5 +1,5 @@
 import { ACTIVITIES_SUB_COLLECTION, USERS_COLLECTION, db } from 'firebase-config';
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import Button from "components/Button";
 import Card from "components/Card";
@@ -13,39 +13,61 @@ import general from "../styling/general.module.scss";
 import moment from "moment";
 import styling from "./Dashboard.module.scss";
 import { useTranslation } from "react-i18next";
-import { v4 as uuid } from 'uuid';
 
 const Dashboard = () => {
   const { t } = useTranslation();
   const [d] = useContext(UserContext);
   const [date, setDate] = useState(moment().startOf("week"));
-  const [weekActivities, setWeekActivities] = useState([]);
+  const [weekActivities, setWeekActivities] = useState({});
   const [defaultActivities] = useState(d?.settings);
+  const dateInISO = useMemo(() => date.toISOString(), [date]);
 
   const fetchActivities =  useCallback(async () => {
-    const query = await db.collection(USERS_COLLECTION).doc(d?.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(date.toISOString()).get();
-    const data = await query;
-    const week = data.data();
-    // setWeekActivities(week);
-  }, []);
+    if (d.activities && d.activities[dateInISO]) {
+      console.log('Activities from cache.');
+      setWeekActivities(d.activities[dateInISO]);
+    } else {
+      console.log('Activities from API.');
+      const query = await db.collection(USERS_COLLECTION).doc(d.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(dateInISO).get();
+      const data = await query;
+      const week = data.data();
 
-  const saveActivities = (activities) => {
+      setWeekActivities(week);
+    }
+  }, [d.activities, dateInISO, d.uid]);
+
+  const saveActivities = async (activities) => {
+    const doc = db.collection(USERS_COLLECTION).doc(d?.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(dateInISO);
+    await doc.set(activities, {merge: true});
+
     setWeekActivities(activities);
-
-    // PUSH TO FIREBASE
   }
 
   useEffect(() => {
     fetchActivities();
   }, [fetchActivities]);
 
+  // const setCache = (week) => {
+  //   const updatedContext = {
+  //     ...d,
+  //     activities: {
+  //       ...d.activities,
+  //       [dateInISO]: week
+  //     }
+  //   }
+  //   console.log(JSON.stringify(updatedContext) !== JSON.stringify(d));
+  //   console.log(updatedContext, d);
+
+  //   // if (JSON.stringify(updatedContext) !== JSON.stringify(d)) {
+  //   //   setContext(updatedContext);
+  //   // }
+  // }
+
   const changeWeek = (method) => {
     if (method) {
       const newDate = moment(date)[method](1, "weeks");
       setDate(newDate);
     }
-
-    fetchActivities();
   };
 
   return (
@@ -73,6 +95,7 @@ const Dashboard = () => {
             setActivities={saveActivities}
             defaultActivities={defaultActivities}
             firstMoment={date}
+            // isLoading={isLoading}
           />
         </main>
       </div>

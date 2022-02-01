@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { UserContext } from 'context';
 import { toast } from 'react-hot-toast';
 
-const useData = (dt = null, callback = null) => {
+const useData = (dt = null, callback = null, document) => {
     const [d, setD] = useContext(UserContext);
     const [data, setData] = useState(dt);
     const [loading, setLoading] = useState(false);
@@ -13,7 +13,8 @@ const useData = (dt = null, callback = null) => {
         async function postData() {
             try {
                 setLoading(true);
-                await db.collection(USERS_COLLECTION).doc(d.uid).update(data);
+                const doc = document ? document : db.collection(USERS_COLLECTION).doc(d.uid);
+                await doc.set(data, {merge: true});
 
                 setD({
                     ...d,
@@ -23,7 +24,9 @@ const useData = (dt = null, callback = null) => {
                 toast.error(e.message);
                 console.error(e);
             } finally {
-                callback();
+                if (callback) {
+                    callback();
+                }
                 setLoading(false);
             }
         };
@@ -36,7 +39,7 @@ const useData = (dt = null, callback = null) => {
             setData(dt);
             setLoading(false);
         }
-    }, [data, d, dt, callback, setD]);
+    }, [data, d, dt, callback, setD, document]);
 
     return [data, setData, loading];
 }
