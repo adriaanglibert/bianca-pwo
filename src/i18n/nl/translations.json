@@ -1,4 +1,6 @@
 {
+  "activity": "Activiteit",
+  "default_activity": "Standaardactiviteit",
   "next": "Volgende",
   "previous": "Vorige",
   "start": "Starten",
@@ -51,8 +53,9 @@
     "already_registered": "Heb je al een account?",
     "not_registered": "Nog geen account?",
     "default_plan": "Standaardactiviteit inplannen",
-    "edit_plan": "Activiteit bewerken",
-    "plan_activity": "Activiteit plannen",
+    "default_edit": "Standaardactiviteit aanpassen",
+    "activity_edit": "Activiteit bewerken",
+    "activity_plan": "Activiteit plannen",
     "select_activity": "Activiteit selecteren",
     "select_day": "Dag selecteren",
     "set_time": "Tijd instellen",

@@ -80,6 +80,9 @@ const Dashboard = () => {
             setActivities={saveActivities}
             defaultActivities={defaultActivities}
             firstMoment={date}
+            buttonLabel="activity"
+            defaultModalTitle="actions.activity_plan"
+            defaultModalEdit="actions.activity_edit"
             // isLoading={isLoading}
           />
         </main>

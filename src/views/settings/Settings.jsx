@@ -52,6 +52,9 @@ const Settings = () => {
         <Heading>{t("actions.settings")}</Heading>
 
         <Week
+          buttonLabel="default_activity"
+          defaultModalTitle="actions.default_plan"
+          defaultModalEdit="actions.default_edit"
           activities={activities}
           setActivities={setActivities}
           handleDeleteActivity={handleDeleteActivity}

@@ -2,12 +2,23 @@ import ActivityModal from "components/ActivityModal";
 import React from "react";
 import WeekContainer from "components/WeekContainer";
 import { useState } from "react";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-const Week = ({ activities, defaultActivities, setActivities, children, firstMoment, handleSaveActivity, handleDeleteActivity, isLoading }) => {
+const Week = ({
+  activities,
+  defaultActivities,
+  setActivities,
+  children,
+  firstMoment,
+  handleDeleteActivity,
+  isLoading,
+  buttonLabel,
+  defaultModalTitle,
+  defaultModalEdit,
+}) => {
   const [defaultActivity, setDefaultActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState();
+  const [modalTitle, setModalTitle] = useState(defaultModalTitle);
 
   const filterActivities = (day, activity) => {
     let activityToUpload = activity;
@@ -15,14 +26,16 @@ const Week = ({ activities, defaultActivities, setActivities, children, firstMom
 
     // Remove original if you're updating.
     if (activity.uuid) {
-      Object.keys(activities).forEach(day => {
-        return activitiesToUpload[day] = activitiesToUpload[day].filter(act => act.uuid !== activity.uuid);
+      Object.keys(activities).forEach((day) => {
+        return (activitiesToUpload[day] = activitiesToUpload[day].filter(
+          (act) => act.uuid !== activity.uuid
+        ));
       });
     } else {
       activityToUpload = {
         ...activity,
-        uuid: uuid()
-      }
+        uuid: uuid(),
+      };
     }
 
     const daysActivities = [];
@@ -38,20 +51,26 @@ const Week = ({ activities, defaultActivities, setActivities, children, firstMom
       ...activitiesToUpload,
       [day]: daysActivities,
     });
-  }
+  };
 
   const saveActivity = (obj) => {
     filterActivities(obj.day, obj);
 
     setIsOpen(false);
     setDefaultActivity({});
+  };
+
+  const closeActivity = () => {
+    setModalTitle(defaultModalTitle);
+    setIsOpen(false);
+    setDefaultActivity({});
   }
 
   const editActivity = (act) => {
-    setModalTitle('actions.edit_plan')
+    setModalTitle(defaultModalEdit);
     setDefaultActivity(act);
     setIsOpen(true);
-  }
+  };
 
   return (
     <WeekContainer
@@ -65,11 +84,13 @@ const Week = ({ activities, defaultActivities, setActivities, children, firstMom
       {children}
 
       <ActivityModal
+        buttonLabel={buttonLabel}
         title={modalTitle}
         setTitle={setModalTitle}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         saveActivity={saveActivity}
+        closeActivity={closeActivity}
         defaultActivity={defaultActivity}
         setDefaultActivity={setDefaultActivity}
       />

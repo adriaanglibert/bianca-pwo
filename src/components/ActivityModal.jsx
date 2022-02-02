@@ -29,14 +29,15 @@ const Actions = ({ save, info, cancel, disabled }) => {
 }
 
 const ActivityModal = ({
-    label = "settings.default.button",
-    title = "actions.default_plan",
+    buttonLabel,
+    title,
     setTitle,
     defaultActivity,
     setDefaultActivity,
     isOpen,
     setIsOpen,
-    saveActivity
+    saveActivity,
+    closeActivity
 }) => {
     const { t } = useTranslation();
     const [activityInfo, setActivityInfo] = useState({});
@@ -93,7 +94,7 @@ const ActivityModal = ({
     }, [defaultActivity])
 
     const open = () => {
-        setTitle('actions.default_plan');
+        setTitle(title);
         setIsOpen(true);
     }
 
@@ -106,8 +107,7 @@ const ActivityModal = ({
     }
 
     const cancel = () => {
-        setIsOpen(false);
-        setDefaultActivity({});
+        closeActivity();
     }
 
     const handleInput = (val) => {
@@ -149,7 +149,7 @@ const ActivityModal = ({
                 icon={<FiPlus />}
                 variant="primary"
             >
-                {t(label)}
+                {t(buttonLabel)}
             </Button>
 
             <Dialog
