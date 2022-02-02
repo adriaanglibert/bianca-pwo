@@ -5,6 +5,7 @@ import Progress from "components/Progress";
 import React from "react";
 import activities from "data/activities.json";
 import styles from "./Activity.module.scss";
+import translations from "i18n/nl/translations";
 import { useTranslation } from "react-i18next";
 
 const Activity = ({
@@ -37,10 +38,14 @@ const Activity = ({
       <Progress value={activities[activity.id]?.weight} />
 
       <div className={styles.actions}>
-        <IconModal variant="gray" title={t(`activities.${activity.id}.title`)}>
-          {activities[activity.id].description &&
-            t(`activities.${activity.id}.description`)}
-        </IconModal>
+        {translations.activities[activity.id].description && (
+          <IconModal
+            variant="gray"
+            title={t(`activities.${activity.id}.title`)}
+          >
+            {t(`activities.${activity.id}.description`)}
+          </IconModal>
+        )}
 
         <div className={styles.change}>
           <button
