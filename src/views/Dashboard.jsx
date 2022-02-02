@@ -21,11 +21,12 @@ const Dashboard = () => {
   const [weekActivities, setWeekActivities] = useState({});
   const [defaultActivities] = useState(d?.settings);
   const dateInISO = useMemo(() => date.toISOString(), [date]);
+  const cachedActivities = useMemo(() => d.activities[dateInISO], [dateInISO, d.activities]);
 
   const fetchActivities =  useCallback(async () => {
-    if (d.activities && d.activities[dateInISO]) {
+    if (cachedActivities) {
       console.log('Activities from cache.');
-      setWeekActivities(d.activities[dateInISO]);
+      setWeekActivities(cachedActivities);
     } else {
       console.log('Activities from API.');
       const query = await db.collection(USERS_COLLECTION).doc(d.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(dateInISO).get();
@@ -34,7 +35,7 @@ const Dashboard = () => {
 
       setWeekActivities(week);
     }
-  }, [d.activities, dateInISO, d.uid]);
+  }, [cachedActivities, dateInISO, d.uid]);
 
   const saveActivities = async (activities) => {
     const doc = db.collection(USERS_COLLECTION).doc(d?.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(dateInISO);
@@ -46,22 +47,6 @@ const Dashboard = () => {
   useEffect(() => {
     fetchActivities();
   }, [fetchActivities]);
-
-  // const setCache = (week) => {
-  //   const updatedContext = {
-  //     ...d,
-  //     activities: {
-  //       ...d.activities,
-  //       [dateInISO]: week
-  //     }
-  //   }
-  //   console.log(JSON.stringify(updatedContext) !== JSON.stringify(d));
-  //   console.log(updatedContext, d);
-
-  //   // if (JSON.stringify(updatedContext) !== JSON.stringify(d)) {
-  //   //   setContext(updatedContext);
-  //   // }
-  // }
 
   const changeWeek = (method) => {
     if (method) {

@@ -25,7 +25,7 @@ import { toast } from "react-hot-toast";
 import useAuthentication from "hooks/useAuthentication";
 
 const flatten = (target, children) => {
-  React.Children.forEach(children, child => {
+  React.Children.forEach(children, (child) => {
     if (React.isValidElement(child)) {
       if (child.type === Fragment) {
         flatten(target, child.props.children);
@@ -34,11 +34,21 @@ const flatten = (target, children) => {
       }
     }
   });
-}
+};
+
+const defaultContext = {
+  activities: {},
+  auth: null,
+  email: null,
+  name: null,
+  seenOnboarding: null,
+  settings: {},
+  uid: null,
+};
 
 function App() {
   const [user, loading, error] = useAuthentication(LOGIN);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(defaultContext);
 
   const fetchData = useCallback(async () => {
     try {
@@ -48,7 +58,7 @@ function App() {
 
       // Set fake 500ms delay so you see the spinner
       setTimeout(() => {
-        setData(res);
+        setData({ ...defaultContext, ...res });
       }, 500);
     } catch (err) {
       console.error(err);
@@ -56,11 +66,14 @@ function App() {
     }
   }, [user]);
 
-  const FragmentSupportingSwitch = ({children}) => {
+  const FragmentSupportingSwitch = ({ children }) => {
     const flattenedChildren = [];
     flatten(flattenedChildren, children);
-    return React.createElement.apply(React, [Switch, null].concat(flattenedChildren));
-  }
+    return React.createElement.apply(
+      React,
+      [Switch, null].concat(flattenedChildren)
+    );
+  };
 
   useEffect(() => {
     if (user && !loading && !error) {
@@ -75,7 +88,7 @@ function App() {
           <FragmentSupportingSwitch>
             {!loading ? (
               user ? (
-                !data ? (
+                !data.uid ? (
                   <Loading />
                 ) : !data.seenOnboarding ? (
                   <>
