@@ -1,13 +1,18 @@
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 
+import IconModal from "components/IconModal";
 import Progress from "components/Progress";
 import React from "react";
 import activities from "data/activities.json";
 import styles from "./Activity.module.scss";
 import { useTranslation } from "react-i18next";
-import IconModal from "components/IconModal";
 
-const Activity = ({ activity, day, handleDeleteActivity, handleEditActivity }) => {
+const Activity = ({
+  activity,
+  day,
+  handleDeleteActivity,
+  handleEditActivity,
+}) => {
   const { t } = useTranslation();
 
   const formatDate = (from, to) => {
@@ -25,15 +30,16 @@ const Activity = ({ activity, day, handleDeleteActivity, handleEditActivity }) =
         </span>
 
         <span className={styles.name}>
-          {t(`activities.${activity.value}.title`)}
+          {t(`activities.${activity.id}.title`)}
         </span>
       </div>
 
-      <Progress value={activities[activity.value].weight} />
+      <Progress value={activities[activity.id]?.weight} />
 
       <div className={styles.actions}>
-        <IconModal variant="gray" title={t(`activities.${activity.value}.title`)}>
-          {t(`activities.${activity.value}.description`)}
+        <IconModal variant="gray" title={t(`activities.${activity.id}.title`)}>
+          {activities[activity.id].description &&
+            t(`activities.${activity.id}.description`)}
         </IconModal>
 
         <div className={styles.change}>

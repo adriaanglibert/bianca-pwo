@@ -1,79 +1,155 @@
 {
-    "next": "Volgende",
-    "previous": "Vorige",
-    "start": "Starten",
-    "step": "Stap",
-    "save": "Opslaan",
-    "skip": "Overslaan",
-    "close": "Sluiten",
-    "info": "Meer info",
-    "until": "tot",
-    "no_options": "Geen resultaten",
-    "email": {
-        "label": "Email",
-        "placeholder": "janmodaal@email.be"
+  "next": "Volgende",
+  "previous": "Vorige",
+  "start": "Starten",
+  "step": "Stap",
+  "save": "Opslaan",
+  "skip": "Overslaan",
+  "close": "Sluiten",
+  "info": "Meer info",
+  "until": "tot",
+  "no_options": "Geen resultaten",
+  "email": {
+    "label": "Email",
+    "placeholder": "janmodaal@email.be"
+  },
+  "password": {
+    "label": "Wachtwoord",
+    "placeholder": "************"
+  },
+  "name": {
+    "label": "Naam",
+    "placeholder": "Jan Modaal"
+  },
+  "titles": {
+    "sign_in": "Meld je aan bij Bianca",
+    "register": "Maak een account aan bij Bianca"
+  },
+  "errors": {
+    "sign_out": "Er is iets misgelopen bij het afmelden.",
+    "time_range": "Je eindtijd moet voor je starttijd zijn."
+  },
+  "settings": {
+    "when": "Duid aan op welke dagen je naar de dialyse moet.",
+    "default": {
+      "title": "Dialysemomenten en andere herhalende activiteiten inplannen.",
+      "description": "Zodat je niet steeds opnieuw activiteiten zoals 'Naar de dialyse gaan', 'ontbijten' of 'wassen' moet instellen kan je hier je standaardweek samenstellen.\n\nLet wel op dat dit enkel activiteiten zijn die je elke week zal doen. Dit kan je later wel aanpassen, maar niet retroactief.",
+      "button": "Standaardactiviteit"
+    }
+  },
+  "actions": {
+    "settings": "Instellingen",
+    "sign_in": "Aanmelden",
+    "sign_out": "Afmelden",
+    "google_sign_in": "Aanmelden met Google",
+    "register": "Registreren",
+    "google_register": "Registeren met Google",
+    "reset": "Email versturen",
+    "reset_password": "Wachtwoord vergeten?",
+    "resetting_password": "Wachtwoord opnieuw instellen",
+    "resetting_password_instructions": "Gelieve je email in te vullen. We versturen je zo dadelijk een bericht met instructies om je wachtwoord opnieuw in te stellen.",
+    "already_registered": "Heb je al een account?",
+    "not_registered": "Nog geen account?",
+    "default_plan": "Standaardactiviteit inplannen",
+    "edit_plan": "Activiteit bewerken",
+    "plan_activity": "Activiteit plannen",
+    "select_activity": "Activiteit selecteren",
+    "select_day": "Dag selecteren",
+    "set_time": "Tijd instellen",
+    "cancel": "Annuleren",
+    "plan": "Inplannen",
+    "next_week": "Volgende week",
+    "previous_week": "Vorige week",
+    "current_week": "Naar huidige week"
+  },
+  "activities": {
+    "01010": {
+      "title": "Fietsen",
+      "description": null
     },
-    "password": {
-        "label": "Wachtwoord",
-        "placeholder": "************"
+    "04001": {
+      "title": "Vissen",
+      "description": null
     },
-    "name": {
-        "label": "Naam",
-        "placeholder": "Jan Modaal"
+    "05030": {
+      "title": "Poetsen",
+      "description": null
     },
-    "titles": {
-        "sign_in": "Meld je aan bij Bianca",
-        "register": "Maak een account aan bij Bianca"
+    "05041": {
+      "title": "Afwassen",
+      "description": null
     },
-    "errors": {
-        "sign_out": "Er is iets misgelopen bij het afmelden.",
-        "time_range": "Je eindtijd moet voor je starttijd zijn."
+    "05043": {
+      "title": "Stofzuigen",
+      "description": null
     },
-    "settings": {
-        "when": "Duid aan op welke dagen je naar de dialyse moet.",
-        "default": {
-            "title": "Dialysemomenten en andere herhalende activiteiten inplannen.",
-            "description": "Zodat je niet steeds opnieuw activiteiten zoals 'Naar de dialyse gaan', 'ontbijten' of 'wassen' moet instellen kan je hier je standaardweek samenstellen.\n\nLet wel op dat dit enkel activiteiten zijn die je elke week zal doen. Dit kan je later wel aanpassen, maar niet retroactief.",
-            "button": "Standaardactiviteit"
-        }
+    "05049": {
+      "title": "Koken, eten klaarmaken",
+      "description": "Koken, eten klaarmaken, een maaltijd bereiden"
     },
-    "actions": {
-        "settings": "Instellingen",
-        "sign_in": "Aanmelden",
-        "sign_out": "Afmelden",
-        "google_sign_in": "Aanmelden met Google",
-        "register": "Registreren",
-        "google_register": "Registeren met Google",
-        "reset": "Email versturen",
-        "reset_password": "Wachtwoord vergeten?",
-        "resetting_password": "Wachtwoord opnieuw instellen",
-        "resetting_password_instructions": "Gelieve je email in te vullen. We versturen je zo dadelijk een bericht met instructies om je wachtwoord opnieuw in te stellen.",
-        "already_registered": "Heb je al een account?",
-        "not_registered": "Nog geen account?",
-        "default_plan": "Standaardactiviteit inplannen",
-        "edit_plan": "Activiteit bewerken",
-        "plan_activity": "Activiteit plannen",
-        "select_activity": "Activiteit selecteren",
-        "select_day": "Dag selecteren",
-        "set_time": "Tijd instellen",
-        "cancel": "Annuleren",
-        "plan": "Inplannen",
-        "next_week": "Volgende week",
-        "previous_week": "Vorige week",
-        "current_week": "Naar huidige week"
+    "05055": {
+      "title": "Boodschappen wegzetten, uitladen",
+      "description": null
     },
-    "activities": {
-        "breakfast": {
-            "title": "Ontbijten",
-            "description": "Ontbijten is elke dag..."
-        },
-        "work": {
-            "title": "Werken",
-            "description": "Werken omschrijving"
-        },
-        "shower": {
-            "title": "Douchen",
-            "description": "Douchen is elke dag..."
-        }
+    "05060": {
+      "title": "Boodschappen doen",
+      "description": "Boodschappen doen in de supermarkt, bij de bakker, slager,..."
+    },
+    "05070": {
+      "title": "Strijken",
+      "description": null
+    },
+    "05090": {
+      "title": "De was doen",
+      "description": null
+    },
+    "05148": {
+      "title": "Planten of bloemen water geven",
+      "description": null
+    },
+    "07010": {
+      "title": "Televisie kijken",
+      "description": null
+    },
+    "07070": {
+      "title": "Lezen",
+      "description": null
+    },
+    "08245": {
+      "title": "Tuinieren",
+      "description": "Tuinieren, matige inspanning"
+    },
+    "09010": {
+      "title": "Kaarten, schaken, een gezelschapspel spelen",
+      "description": null
+    },
+    "09055": {
+      "title": "Een gesprek voeren (zittend)",
+      "description": null
+    },
+    "13020": {
+      "title": "Aankleden, uitkleden",
+      "description": null
+    },
+    "13030": {
+      "title": "Eten (zittend)",
+      "description": "Eten"
+    },
+    "13040": {
+      "title": "Tanden poetsen, handen wassen, scheren",
+      "description": null
+    },
+    "11580": {
+      "title": "Bureauwerk",
+      "description": null
+    },
+    "16015": {
+      "title": "Auto rijden",
+      "description": null
+    },
+    "17250": {
+      "title": "Wandelen",
+      "description": null
     }
   }
+}

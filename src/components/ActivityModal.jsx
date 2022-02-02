@@ -1,12 +1,13 @@
-import React, { useMemo, useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+import { FiCalendar, FiPlus } from 'react-icons/fi';
+import React, { useEffect, useMemo, useState } from 'react'
+
 import Button from 'components/Button';
-import { FiPlus, FiCalendar } from 'react-icons/fi';
-import SelectInput from "components/SelectInput";
 import Dialog from "components/Dialog";
+import SelectInput from "components/SelectInput";
+import TimeRange from 'components/TimeRange';
 import activities from 'data/activities.json';
 import days from 'data/days.json';
-import TimeRange from 'components/TimeRange';
+import { useTranslation } from 'react-i18next'
 
 const Actions = ({ save, info, cancel, disabled }) => {
     const { t } = useTranslation();
@@ -46,10 +47,10 @@ const ActivityModal = ({
 
     // Transform data
     const acts = useMemo(() => {
-        return Object.keys(activities).map(activity => {
+        return Object.keys(activities).map(id => {
             return {
-                value: activity,
-                label: t(`activities.${activity}.title`),
+                value: id,
+                label: t(`activities.${id}.title`),
                 type: 'activity'
             }
         })
@@ -120,7 +121,7 @@ const ActivityModal = ({
             case 'activity':
                 setActivityInfo({
                     ...activityInfo,
-                    value: val.value
+                    id: val.value
                 })
                 break;
             case 'from':
@@ -144,8 +145,8 @@ const ActivityModal = ({
         <>
             <Button
                 styling="add-activity-button"
-                onClick={() => open()} 
-                icon={<FiPlus />} 
+                onClick={() => open()}
+                icon={<FiPlus />}
                 variant="primary"
             >
                 {t(label)}
@@ -165,7 +166,7 @@ const ActivityModal = ({
                 onClose={cancel}
             >
                 <SelectInput
-                    value={activityInfo?.value}
+                    value={activityInfo?.id}
                     options={acts}
                     handleInput={handleInput}
                 >

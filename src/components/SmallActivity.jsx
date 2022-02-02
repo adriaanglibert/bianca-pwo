@@ -20,7 +20,7 @@ const SmallActivity = ({ activity, day, handleDeleteActivity, handleEditActivity
         </small>
 
         <small className={styles.name}>
-          {t(`activities.${activity.value}.title`)}
+          {t(`activities.${activity.id}.title`)}
         </small>
       </div>
     </div>
