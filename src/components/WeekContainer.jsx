@@ -1,9 +1,12 @@
 import Activity from "components/Activity";
 import Collapsible from "./Collapsible";
 import Loading from "views/Loading";
+import { MAX_DAY_WEIGHT } from "constants/values";
+import Progress from 'components/Progress';
 import React from "react";
 import SmallActivity from "components/SmallActivity";
-import days from "data/days.json";
+import { calculateDailyWeight } from "utils/helpers";
+import daysConstants from "data/days.json";
 import moment from "moment";
 import styles from "./WeekContainer.module.scss";
 
@@ -16,7 +19,7 @@ const WeekContainer = ({
   handleEditActivity,
   isLoading
 }) => {
-  const keys = Object.keys(days);
+  const days = Object.keys(daysConstants);
 
   return (
     <>
@@ -26,21 +29,24 @@ const WeekContainer = ({
         <div
           className={styles.grid}
           style={{
-            gridTemplateColumns: `repeat(${keys.length}, minmax(150px, 1fr))`,
+            gridTemplateColumns: `repeat(${days.length}, minmax(150px, 1fr))`,
           }}
         >
-          {keys.map((day, index) => (
+          {days.map((day, index) => (
             <div key={day} className={styles.column}>
               <header className={styles.header}>
-                <strong className={`${styles.title} ${firstMoment && moment().isSame(moment(firstMoment).add(index, "day"), 'day') && styles.active}`}>{days[day]}</strong>
+                <strong className={`${styles.title} ${firstMoment && moment().isSame(moment(firstMoment).add(index, "day"), 'day') && styles.active}`}>{daysConstants[day]}</strong>
                 {firstMoment && (
                   <span className={styles.date}>
                     {moment(firstMoment).add(index, "day").format("DD/MM")}
                   </span>
                 )}
-              </header>
 
-              <hr className={styles.line} />
+                <Progress
+                  value={calculateDailyWeight(activities?.[day])}
+                  max={MAX_DAY_WEIGHT}
+                  className={styles.progress} />
+              </header>
 
               {
                 isLoading ?

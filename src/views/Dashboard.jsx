@@ -9,6 +9,7 @@ import { SETTINGS } from "constants/routes";
 import { UserContext } from "context";
 import Week from "./settings/Week";
 import WeekNavigator from "components/WeekNavigator";
+import { calculateDailyWeight } from '../utils/helpers';
 import general from "../styling/general.module.scss";
 import moment from "moment";
 import styling from "./Dashboard.module.scss";
@@ -20,6 +21,7 @@ const Dashboard = () => {
   const [date, setDate] = useState(moment().startOf("week"));
   const [weekActivities, setWeekActivities] = useState({});
   const [defaultActivities] = useState(d?.settings);
+  const [valueOfActivities, setValueOfActivities] = useState();
   const dateInISO = useMemo(() => date.toISOString(), [date]);
   const cachedActivities = useMemo(() => d.activities[dateInISO], [dateInISO, d.activities]);
 
@@ -28,7 +30,6 @@ const Dashboard = () => {
       console.log('Activities from cache.');
       setWeekActivities(cachedActivities);
     } else {
-      console.log('Activities from API.');
       const query = await db.collection(USERS_COLLECTION).doc(d.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(dateInISO).get();
       const data = await query;
       const week = data.data();
@@ -37,16 +38,21 @@ const Dashboard = () => {
     }
   }, [cachedActivities, dateInISO, d.uid]);
 
+  useEffect(() => {
+    const sum = calculateDailyWeight(weekActivities);
+    setValueOfActivities(sum);
+  }, [weekActivities])
+
+  useEffect(() => {
+    fetchActivities();
+  }, [fetchActivities]);
+
   const saveActivities = async (activities) => {
     const doc = db.collection(USERS_COLLECTION).doc(d?.uid).collection(ACTIVITIES_SUB_COLLECTION).doc(dateInISO);
     await doc.set(activities, {merge: true});
 
     setWeekActivities(activities);
   }
-
-  useEffect(() => {
-    fetchActivities();
-  }, [fetchActivities]);
 
   const changeWeek = (method) => {
     if (method) {
@@ -65,7 +71,9 @@ const Dashboard = () => {
 
       <div className={styling.container}>
         <aside className={styling.sidebar}>
-          <Card styling={general.m0}>Help</Card>
+          <Card styling={general.m0}>
+            {valueOfActivities}
+          </Card>
         </aside>
 
         <main className={styling.main}>

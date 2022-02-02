@@ -4,6 +4,7 @@ import IconModal from "components/IconModal";
 import Progress from "components/Progress";
 import React from "react";
 import activities from "data/activities.json";
+import { formatDate } from "utils/helpers";
 import styles from "./Activity.module.scss";
 import translations from "i18n/nl/translations";
 import { useTranslation } from "react-i18next";
@@ -15,13 +16,6 @@ const Activity = ({
   handleEditActivity,
 }) => {
   const { t } = useTranslation();
-
-  const formatDate = (from, to) => {
-    return `${from.slice(0, 2)}:${from.slice(2, 4)} - ${to.slice(
-      0,
-      2
-    )}:${to.slice(2, 4)}`;
-  };
 
   return (
     <div className={styles.container}>

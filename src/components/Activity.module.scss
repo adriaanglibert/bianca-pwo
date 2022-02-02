@@ -43,6 +43,8 @@
     border: none;
     color: $gray;
     cursor: pointer;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     &:focus {
         outline: 2px solid $primary-light;
