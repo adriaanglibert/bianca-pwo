@@ -1,14 +1,17 @@
 import Activity from "components/Activity";
+import ActivityFeedback from "./ActivityFeedback";
 import Collapsible from "./Collapsible";
 import Loading from "views/Loading";
 import { MAX_DAY_KCAL } from "constants/values";
-import Progress from 'components/Progress';
+import Progress from "components/Progress";
 import React from "react";
 import SmallActivity from "components/SmallActivity";
 import { calculateDailyWeight } from "utils/helpers";
 import daysConstants from "data/days.json";
 import moment from "moment";
 import styles from "./WeekContainer.module.scss";
+
+const days = Object.keys(daysConstants);
 
 const WeekContainer = ({
   children,
@@ -17,12 +20,14 @@ const WeekContainer = ({
   defaultActivities,
   handleDeleteActivity,
   handleEditActivity,
-  isLoading
+  isLoading,
 }) => {
-  const days = Object.keys(daysConstants);
-  const mergeAllActivities = (dailyActivities = [], defaultDailyActivities = []) => {
+  const mergeAllActivities = (
+    dailyActivities = [],
+    defaultDailyActivities = []
+  ) => {
     return [...dailyActivities, ...defaultDailyActivities];
-  }
+  };
 
   return (
     <>
@@ -38,22 +43,49 @@ const WeekContainer = ({
           {days.map((day, index) => (
             <div key={day} className={styles.column}>
               <header className={styles.header}>
-                <strong className={`${styles.title} ${firstMoment && moment().isSame(moment(firstMoment).add(index, "day"), 'day') && styles.active}`}>{daysConstants[day]}</strong>
+                <strong
+                  className={`${styles.title} ${
+                    firstMoment &&
+                    moment().isSame(
+                      moment(firstMoment).add(index, "day"),
+                      "day"
+                    ) &&
+                    styles.active
+                  }`}
+                >
+                  {daysConstants[day]}
+                </strong>
                 {firstMoment && (
                   <span className={styles.date}>
                     {moment(firstMoment).add(index, "day").format("DD/MM")}
                   </span>
                 )}
 
+                <ActivityFeedback
+                  weekTotal={calculateDailyWeight(
+                    mergeAllActivities(
+                      activities?.[day],
+                      defaultActivities?.[day]
+                    )
+                  )}
+                  className={styles.feedback}
+                />
+
                 <Progress
-                  value={calculateDailyWeight(mergeAllActivities(activities?.[day], defaultActivities?.[day]))}
+                  value={calculateDailyWeight(
+                    mergeAllActivities(
+                      activities?.[day],
+                      defaultActivities?.[day]
+                    )
+                  )}
                   max={MAX_DAY_KCAL}
-                  className={styles.progress} />
+                  className={styles.progress}
+                />
               </header>
 
-              {
-                isLoading ?
-                <Loading/> :
+              {isLoading ? (
+                <Loading />
+              ) : (
                 <>
                   {activities &&
                     activities[day]?.map((activity, index) => (
@@ -80,7 +112,7 @@ const WeekContainer = ({
                     </Collapsible>
                   ) : null}
                 </>
-              }
+              )}
             </div>
           ))}
         </div>

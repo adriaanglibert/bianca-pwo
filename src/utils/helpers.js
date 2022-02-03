@@ -1,4 +1,4 @@
-import { AVERAGE_WEIGHT, INTENSITY } from 'constants/values';
+import { ACTIVITY_INTENSITY_MET, AVERAGE_WEIGHT } from 'constants/values';
 
 import  activities  from 'data/activities.json';
 import moment from 'moment';
@@ -17,21 +17,16 @@ export const kcalForTime = (met, obj) => {
 };
 
 export const getActivityIntensity = (met) => {
-    if (met < INTENSITY.REST) {
-        return 'rest';
+    let intensity = Object.keys(ACTIVITY_INTENSITY_MET).pop();
+
+    for (const key in ACTIVITY_INTENSITY_MET) {
+        if (met < ACTIVITY_INTENSITY_MET[key]) {
+            intensity = key;
+            break;
+        }
     }
-    if (met < INTENSITY.SITTING) {
-        return 'sitting';
-    }
-    if (met < INTENSITY.LIGHT) {
-        return 'light';
-    }
-    if (met < INTENSITY.MODERATE) {
-        return 'moderate';
-    }
-    if (met >= INTENSITY.MODERATE) {
-        return 'high';
-    }
+
+    return intensity;
 }
 
 export const formatDate = (from, to) => {
