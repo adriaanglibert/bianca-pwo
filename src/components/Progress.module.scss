@@ -13,4 +13,8 @@
     display: block;
     height: 100%;
     background-color: $accent;
+
+    &.rest {
+        background-color: $success;
+        }
 }

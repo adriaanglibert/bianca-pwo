@@ -1,10 +1,12 @@
 import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { formatDate, kcalForTime } from "utils/helpers";
 
 import IconModal from "components/IconModal";
+import { MAX_DAY_KCAL } from 'constants/values';
 import Progress from "components/Progress";
 import React from "react";
 import activities from "data/activities.json";
-import { formatDate } from "utils/helpers";
+import { getActivityIntensity } from '../utils/helpers';
 import styles from "./Activity.module.scss";
 import translations from "i18n/nl/translations";
 import { useTranslation } from "react-i18next";
@@ -16,9 +18,10 @@ const Activity = ({
   handleEditActivity,
 }) => {
   const { t } = useTranslation();
+  const metWeight = activities[activity.id]?.weight;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} title={t(`weight.${getActivityIntensity(metWeight)}`)}>
       <div className={styles.inner}>
         <span className={styles.time}>
           {formatDate(activity.from, activity.to)}
@@ -29,7 +32,10 @@ const Activity = ({
         </span>
       </div>
 
-      <Progress value={activities[activity.id]?.weight} />
+      <Progress
+        value={Math.abs(kcalForTime(metWeight, activity))}
+        max={MAX_DAY_KCAL}
+        isResting={Math.sign(metWeight) > 0 ? 'tiring' : 'rest'} />
 
       <div className={styles.actions}>
         {translations.activities[activity.id].description && (

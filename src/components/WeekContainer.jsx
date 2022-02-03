@@ -1,7 +1,7 @@
 import Activity from "components/Activity";
 import Collapsible from "./Collapsible";
 import Loading from "views/Loading";
-import { MAX_DAY_WEIGHT } from "constants/values";
+import { MAX_DAY_KCAL } from "constants/values";
 import Progress from 'components/Progress';
 import React from "react";
 import SmallActivity from "components/SmallActivity";
@@ -20,6 +20,9 @@ const WeekContainer = ({
   isLoading
 }) => {
   const days = Object.keys(daysConstants);
+  const mergeAllActivities = (dailyActivities = [], defaultDailyActivities = []) => {
+    return [...dailyActivities, ...defaultDailyActivities];
+  }
 
   return (
     <>
@@ -43,8 +46,8 @@ const WeekContainer = ({
                 )}
 
                 <Progress
-                  value={calculateDailyWeight(activities?.[day])}
-                  max={MAX_DAY_WEIGHT}
+                  value={calculateDailyWeight(mergeAllActivities(activities?.[day], defaultActivities?.[day]))}
+                  max={MAX_DAY_KCAL}
                   className={styles.progress} />
               </header>
 
@@ -63,7 +66,7 @@ const WeekContainer = ({
                       />
                     ))}
 
-                  {defaultActivities && defaultActivities[day]?.length && (
+                  {defaultActivities && defaultActivities[day]?.length ? (
                     <Collapsible title="Standaard">
                       {defaultActivities[day]?.map((activity, index) => (
                         <SmallActivity
@@ -75,7 +78,7 @@ const WeekContainer = ({
                         />
                       ))}
                     </Collapsible>
-                  )}
+                  ) : null}
                 </>
               }
             </div>

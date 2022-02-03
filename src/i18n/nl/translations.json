@@ -66,6 +66,10 @@
     "current_week": "Naar huidige week"
   },
   "activities": {
+    "00000": {
+      "title": "Rusten",
+      "description": null
+    },
     "01010": {
       "title": "Fietsen",
       "description": null
@@ -154,5 +158,12 @@
       "title": "Wandelen",
       "description": null
     }
+  },
+  "weight": {
+    "rest": "Met deze activiteit laad je je batterijen op",
+    "sitting": "Dit is een rustige activiteit",
+    "light": "Dit is een lichte activiteit maar kan vermoeiend zijn zonder voldoende pauze",
+    "moderate": "Dit is een vrij zware activiteit die je snel zal vermoeien",
+    "high": "Dit is een heel zware activiteit, plan voldoende rust"
   }
 }

@@ -1,4 +1,18 @@
 {
+  "00000": {
+    "weight": -15,
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": "https://bianca.care/rust/"
+  },
   "01010": {
     "weight": 40,
     "strategies": [
