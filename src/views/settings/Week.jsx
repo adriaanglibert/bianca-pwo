@@ -10,13 +10,12 @@ const Week = ({
   setActivities,
   children,
   firstMoment,
-  handleDeleteActivity,
   isLoading,
   buttonLabel,
   defaultModalTitle,
   defaultModalEdit,
 }) => {
-  const [defaultActivity, setDefaultActivity] = useState({});
+  const [modalActivity, setModalActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState(defaultModalTitle);
 
@@ -55,20 +54,26 @@ const Week = ({
 
   const saveActivity = (obj) => {
     filterActivities(obj.day, obj);
-
     setIsOpen(false);
-    setDefaultActivity({});
+    setModalActivity({});
   };
 
   const closeActivity = () => {
     setModalTitle(defaultModalTitle);
     setIsOpen(false);
-    setDefaultActivity({});
+    setModalActivity({});
+  }
+
+  const deleteActivity = (day, activity) => {
+    setActivities({
+      ...activities,
+      [day]: activities[day].filter(act => act !== activity)
+    })
   }
 
   const editActivity = (act) => {
     setModalTitle(defaultModalEdit);
-    setDefaultActivity(act);
+    setModalActivity(act);
     setIsOpen(true);
   };
 
@@ -76,7 +81,7 @@ const Week = ({
     <WeekContainer
       activities={activities}
       defaultActivities={defaultActivities}
-      handleDeleteActivity={handleDeleteActivity}
+      handleDeleteActivity={deleteActivity}
       handleEditActivity={editActivity}
       firstMoment={firstMoment}
       isLoading={isLoading}
@@ -91,8 +96,8 @@ const Week = ({
         setIsOpen={setIsOpen}
         saveActivity={saveActivity}
         closeActivity={closeActivity}
-        defaultActivity={defaultActivity}
-        setDefaultActivity={setDefaultActivity}
+        modalActivity={modalActivity}
+        setModalActivity={setModalActivity}
       />
     </WeekContainer>
   );

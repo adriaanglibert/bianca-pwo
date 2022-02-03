@@ -1,11 +1,11 @@
-import React from 'react'
-import Modal from 'react-modal';
+import Button from './Button';
+import { FiX } from "react-icons/fi";
 import Heading from './Heading';
+import Modal from 'react-modal';
+import React from 'react'
 import { defaultStyles } from 'react-modal';
 import styles from 'components/Dialog.module.scss';
-import Button from './Button';
 import { useTranslation } from 'react-i18next';
-import { FiX } from "react-icons/fi";
 
 const customStyles = {
     ...defaultStyles,
@@ -14,7 +14,8 @@ const customStyles = {
         borderRadius: '0.4rem',
         boxShadow: '0.25rem 0.25rem 0.5rem rgba(16,16,16, 0.10)',
         padding: '0',
-        maxWidth: '90%',
+        minWidth: '320px',
+        maxWidth: '320px',
         maxHeight: '90%',
         position: 'relative',
         inset: '0',
@@ -28,7 +29,6 @@ const customStyles = {
         padding: '1rem'
     },
 };
-
 
 const Dialog = ({ title, variant, children, open = false, setOpen, icon, actions = false, onClose }) => {
     const { t } = useTranslation();

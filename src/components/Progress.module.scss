@@ -1,20 +1,24 @@
-@import 'styling/variables';
+@import "styling/variables";
 
 .progress {
-    display: block;
-    width: 100%;
-    border-radius: 0;
-    height: 0.25rem;
-    background-color: $primary-light;
-    overflow: hidden;
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  height: 0.25rem;
+  background-color: $primary-light;
+  overflow: hidden;
 }
 
 .bar {
-    display: block;
-    height: 100%;
-    background-color: $accent;
+  display: block;
+  height: 100%;
+  background-color: $accent;
 
-    &.rest {
-        background-color: $success;
-        }
+  &.rest {
+    background-color: $success;
+  }
+}
+
+.danger {
+    background-color: $danger;
 }

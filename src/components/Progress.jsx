@@ -7,8 +7,12 @@ const Progress = ({value = 0, max = MAX_ACTIVITY_MET, className, isResting}) => 
     const width = `${value * coefficient}%`;
 
     return (
-        <div className={`${styles.progress} ${className}`} title={`${value}/${max}`}>
-            <span className={`${styles.bar} ${styles[isResting]}`} style={{width: width}}></span>
+        <div
+            className={`${styles.progress} ${className}`}
+            title={`${value}/${max}`}>
+            <span
+                className={`${styles.bar} ${value > max ? styles.danger : ''} ${styles[isResting]}`}
+                style={{width: width}}></span>
         </div>
     )
 }

@@ -23,13 +23,6 @@ const Settings = () => {
   const [, setData] = useData(null, () => history.push(HOME));
   const [activities, setActivities] = useState(d?.settings);
 
-  const handleDeleteActivity = (day, activity) => {
-    setActivities({
-      ...activities,
-      [day]: activities[day].filter(act => act !== activity)
-    })
-  }
-
   const saveSettings = () => {
     setData({
       settings: activities,
@@ -57,7 +50,6 @@ const Settings = () => {
           defaultModalEdit="actions.default_edit"
           activities={activities}
           setActivities={setActivities}
-          handleDeleteActivity={handleDeleteActivity}
         >
           <Label>
             {t("settings.default.title")}
