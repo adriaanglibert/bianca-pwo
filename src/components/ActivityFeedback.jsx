@@ -20,7 +20,7 @@ const showMessage = (value) => {
 
 const Modal = ({ message, icon }) => {
   const { t } = useTranslation();
-  console.log(message);
+
   return (
     message && (
       <IconModal
