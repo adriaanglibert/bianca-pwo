@@ -5,6 +5,7 @@ import IconModal from "components/IconModal";
 import { MAX_DAY_KCAL } from 'constants/values';
 import Progress from "components/Progress";
 import React from "react";
+import ReactTooltip from 'react-tooltip';
 import activities from "data/activities.json";
 import { getActivityIntensity } from '../utils/helpers';
 import styles from "./Activity.module.scss";
@@ -21,7 +22,7 @@ const Activity = ({
   const metWeight = activities[activity.id]?.weight;
 
   return (
-    <div className={styles.container} title={t(`weight.${getActivityIntensity(metWeight)}`)}>
+    <div className={styles.container} data-tip={t(`weight.${getActivityIntensity(metWeight)}`)}>
       <div className={styles.inner}>
         <span className={styles.time}>
           {formatDate(activity.from, activity.to)}
@@ -63,6 +64,8 @@ const Activity = ({
           </button>
         </div>
       </div>
+
+      <ReactTooltip delayShow={500}/>
     </div>
   );
 };
