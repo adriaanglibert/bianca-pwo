@@ -2,7 +2,7 @@
 
 $spacing: $gap * 2;
 
-.header, 
+.header,
 .content,
 .actions {
     padding: $spacing;
@@ -11,7 +11,7 @@ $spacing: $gap * 2;
 .header {
     display: flex;
     border-bottom: 1px solid $faded;
-    
+
     h2 {
         max-width: $text-width;
         margin-bottom: 0;
@@ -21,7 +21,6 @@ $spacing: $gap * 2;
 }
 
 .icon {
-    color: lighten($primary, 10);
     font-size: $font-medium;
     position: relative;
     top: 3px;

@@ -165,5 +165,27 @@
     "light": "Dit is een lichte activiteit maar kan vermoeiend zijn zonder voldoende pauze",
     "moderate": "Dit is een vrij zware activiteit die je snel zal vermoeien",
     "high": "Dit is een heel zware activiteit, plan voldoende rust"
+  },
+  "week": {
+    "minimum": {
+      "title": "Rustige dag",
+      "description": "Dit is een rustige dag, hier kan je gerust nog wat zaken inplannen."
+    },
+    "light": {
+      "title": "Doorsnee dag",
+      "description": "Deze dag begint voller te geraken, plan zorgvuldig in."
+    },
+    "medium": {
+      "title": "Behoorlijk volle dag",
+      "description": "Dit is een vermoeiende dag. Plan zeker en vast genoeg rust in."
+    },
+    "strong": {
+      "title": "Erg lastige dag",
+      "description": "Dit is een ontzettend lastige dag, hou rekening dat je de volgende dagen het rustiger aandoet."
+    },
+    "heavy": {
+      "title": "Te zware dag",
+      "description": "Let op! Je dag is te vermoeiend."
+    }
   }
 }

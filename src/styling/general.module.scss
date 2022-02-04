@@ -38,7 +38,6 @@
 	white-space: nowrap !important;
 }
 
-
 .text-dark {
     color: $dark;
 }
@@ -47,7 +46,8 @@
     color: $gray;
 }
 
-.text-primary {
+.text-primary,
+.text-strong {
     color: $primary;
 }
 
@@ -55,7 +55,8 @@
     color: $success;
 }
 
-.text-danger {
+.text-danger,
+.text-heavy {
     color: $danger;
 }
 

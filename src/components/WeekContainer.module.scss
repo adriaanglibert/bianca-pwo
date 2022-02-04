@@ -18,6 +18,13 @@
 
 .header {
     margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.feedback {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 0;
 }
 
 .title {
