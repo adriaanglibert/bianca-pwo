@@ -3,13 +3,7 @@ import {
   USERS_COLLECTION,
   db,
 } from "firebase-config";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
 import Button from "components/Button";
 import Card from "components/Card";
@@ -17,10 +11,10 @@ import { FiSettings } from "react-icons/fi";
 import Nav from "components/Nav";
 import { SETTINGS } from "constants/routes";
 import { UserContext } from "context";
-import Week from "./settings/Week";
+import Week from "views/settings/Week";
 import WeekNavigator from "components/WeekNavigator";
-import { calculateDailyWeight } from "../utils/helpers";
-import general from "../styling/general.module.scss";
+import { calculateDailyWeight } from "utils/helpers";
+import general from "styling/general.module.scss";
 import moment from "moment";
 import styling from "./Dashboard.module.scss";
 import { useTranslation } from "react-i18next";
@@ -41,30 +35,30 @@ const Dashboard = () => {
   }, [weekActivities]);
 
   useEffect(() => {
-    const fetchActivities = async (date) => {
-      console.log("Activities from API.");
+    const fetchActivities = async (dateInISO) => {
+      console.log("Fetching activities from API.");
       const query = await db
         .collection(USERS_COLLECTION)
         .doc(d.uid)
         .collection(ACTIVITIES_SUB_COLLECTION)
-        .doc(date)
+        .doc(dateInISO)
         .get();
       const data = await query;
-      const week = data.data();
+      const activities = data.data();
 
       setCachedActivities({
-          ...cachedActivities,
-          [date]: week,
+        ...cachedActivities,
+        [dateInISO]: activities,
       });
-      setWeekActivities(week);
     };
 
     if (dateInISO in cachedActivities) {
+      console.log("Setting activities from Cache.");
       setWeekActivities(cachedActivities?.[dateInISO]);
     } else {
       fetchActivities(dateInISO);
     }
-  }, [date]);
+  }, [dateInISO, cachedActivities, d.uid]);
 
   const saveActivities = async (activities) => {
     const doc = db
@@ -74,6 +68,10 @@ const Dashboard = () => {
       .doc(dateInISO);
     await doc.set(activities, { merge: true });
 
+    setCachedActivities({
+      ...cachedActivities,
+      [dateInISO]: activities,
+    });
     setWeekActivities(activities);
   };
 
