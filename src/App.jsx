@@ -88,7 +88,7 @@ function App() {
           <FragmentSupportingSwitch>
             {!loading ? (
               user ? (
-                !data.uid ? (
+                !data?.uid ? (
                   <Loading />
                 ) : !data.seenOnboarding ? (
                   <>
