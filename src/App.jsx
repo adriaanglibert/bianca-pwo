@@ -62,7 +62,9 @@ function App() {
       }, 500);
     } catch (err) {
       console.error(err);
-      toast.error("An error occured while fetching user data");
+      toast.error("An error occured while fetching user data", {
+        id: 'global'
+      });
     }
   }, [user]);
 

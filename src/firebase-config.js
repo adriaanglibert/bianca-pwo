@@ -36,7 +36,9 @@ const signInWithGoogle = async () => {
     db.collection(USERS_COLLECTION).doc(user.uid).collection('activities');
   } catch (err) {
     console.error(err);
-    toast.error(err.message);
+    toast.error(err.message, {
+      id: 'global'
+    });
   }
 };
 
@@ -44,7 +46,9 @@ const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
   } catch (err) {
-    toast.error(err.message);
+    toast.error(err.message, {
+      id: 'global'
+    });
     console.error(err);
   }
 };
@@ -63,7 +67,9 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     await db.collection(USERS_COLLECTION).doc(user.uid).collection('activities');
   } catch (err) {
     console.error(err);
-    toast.error(err.message);
+    toast.error(err.message, {
+      id: 'global'
+    });
   }
 };
 
@@ -73,7 +79,9 @@ const sendPasswordResetEmail = async (email) => {
     toast.error("Password reset link sent!");
   } catch (err) {
     console.error(err);
-    toast.error(err.message);
+    toast.error(err.message, {
+      id: 'global'
+    });
   }
 };
 

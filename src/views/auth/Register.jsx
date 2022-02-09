@@ -28,7 +28,9 @@ function Register() {
   const [name, setName] = useState("");
 
   const register = () => {
-    if (!name) toast.error("Please enter name");
+    if (!name) toast.error("Please enter name", {
+      id: 'global'
+    });
     registerWithEmailAndPassword(name, email, password);
   };
 

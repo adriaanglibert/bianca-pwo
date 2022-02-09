@@ -5,6 +5,7 @@ import {
 } from "firebase-config";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 
+import Buddy from "components/Buddy";
 import Button from "components/Button";
 import Card from "components/Card";
 import { FiSettings } from "react-icons/fi";
@@ -91,8 +92,8 @@ const Dashboard = () => {
       </Nav>
 
       <div className={styling.container}>
-        <aside className={styling.sidebar}>
-          <Card styling={general.m0}>{valueOfActivities}</Card>
+        <aside className={styling.buddy}>
+          <Buddy weekActivities={weekActivities}>{valueOfActivities}</Buddy>
         </aside>
 
         <main className={styling.main}>

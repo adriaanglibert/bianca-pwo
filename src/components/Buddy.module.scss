@@ -1,0 +1,58 @@
+@use "sass:math";
+@import "/src/styling/variables.scss";
+
+$dimension: 57px;
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: math.div($dimension, 2);
+  height: $dimension;
+  width: $dimension;
+  border: none;
+  box-shadow: $shadow;
+  cursor: pointer;
+
+  .animate {
+      animation: shake 8s ease both infinite;
+  }
+
+  &:focus {
+    outline: 2px solid $primary;
+  }
+}
+
+.avatar {
+  height: $dimension;
+  width: $dimension;
+  pointer-events: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  1.78571% {
+    transform: translate(5px, 0);
+  }
+  3.57143% {
+    transform: translate(0, 0);
+  }
+  5.35714% {
+    transform: translate(5px, 0);
+  }
+  7.14286% {
+    transform: translate(0, 0);
+  }
+  8.92857% {
+    transform: translate(5px, 0);
+  }
+  10.71429% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

@@ -17,7 +17,9 @@ const Nav = ({ children }) => {
       await logout();
       setData(null);
     } catch {
-      toast.error(t("errors.sign_out"));
+      toast.error(t("errors.sign_out"), {
+        id: 'global'
+      });
     }
   };
 

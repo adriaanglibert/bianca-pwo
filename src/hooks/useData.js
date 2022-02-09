@@ -21,7 +21,9 @@ const useData = (dt = null, callback = null, document) => {
                     ...data
                 });
             } catch (e) {
-                toast.error(e.message);
+                toast.error(e.message, {
+                    id: 'global'
+                  });
                 console.error(e);
             } finally {
                 if (callback) {

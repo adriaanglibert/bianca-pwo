@@ -16,7 +16,9 @@ const useAuthentication = (path = HOME) => {
 
         if (error) {
             // trigger error screen
-            toast.error(error);
+            toast.error(error, {
+                id: 'global'
+              });
             return;
         }
 
