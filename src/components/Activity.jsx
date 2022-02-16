@@ -6,7 +6,9 @@ import { MAX_DAY_KCAL } from 'constants/values';
 import Progress from "components/Progress";
 import React from "react";
 import ReactTooltip from 'react-tooltip';
+import Truncate from "components/Truncate";
 import activities from "data/activities.json";
+import general from 'styling/general.module.scss';
 import { getActivityIntensity } from '../utils/helpers';
 import styles from "./Activity.module.scss";
 import translations from "i18n/nl/translations";
@@ -22,21 +24,25 @@ const Activity = ({
   const metWeight = activities[activity.id]?.weight;
 
   return (
-    <div className={styles.container} data-tip={t(`weight.${getActivityIntensity(metWeight)}`)}>
+    <div className={styles.container}>
       <div className={styles.inner}>
-        <span className={styles.time}>
+        <span className={styles.time} data-tip={t(`weight.${getActivityIntensity(metWeight)}`)}>
           {formatDate(activity.from, activity.to)}
         </span>
 
-        <span className={styles.name}>
-          {t(`activities.${activity.id}.title`)}
+        <span className={`${styles.name}`}>
+          <Truncate className={styles.truncate}>
+            {t(`activities.${activity.id}.title`)}
+          </Truncate>
         </span>
       </div>
 
-      <Progress
-        value={Math.abs(kcalForTime(metWeight, activity))}
-        max={MAX_DAY_KCAL}
-        isResting={Math.sign(metWeight) > 0 ? 'tiring' : 'rest'} />
+      <div data-tip={t(`weight.${getActivityIntensity(metWeight)}`)}>
+        <Progress
+          value={Math.abs(kcalForTime(metWeight, activity))}
+          max={MAX_DAY_KCAL}
+          isResting={Math.sign(metWeight) > 0 ? 'tiring' : 'rest'} />
+      </div>
 
       <div className={styles.actions}>
         {translations.activities[activity.id].description && (
