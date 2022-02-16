@@ -1,17 +1,36 @@
+@import "../styling/variables.scss";
+
 .date {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: $gap;
 
-    .actions {
-        display: flex;
-        margin-bottom: 1rem;
+  .heading {
+    font-size: $font-large;
 
-        button {
-            margin-left: 0.5rem;
-            span {
-                margin: 0;
-            }
-        }
+    span {
+        display: inline-block;
+        word-break: keep-all;
     }
+  }
+
+  .actions {
+    display: flex;
+    margin-bottom: 1rem;
+
+    button {
+      margin-left: 0.5rem;
+      span {
+        margin: 0;
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint) {
+    .heading {
+      font-size: $font-extra;
+    }
+  }
 }

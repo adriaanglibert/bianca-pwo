@@ -14,21 +14,25 @@ const Button = ({
   return to ? (
     <Link
       to={to}
-      className={`${styles.btn} ${styling} ${styles[variant]}`}
+      className={`${styles.btn} ${styling} ${styles[variant]} ${
+        icon && styles.iconButton
+      }`}
       onClick={onClick}
       {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}
-      {children}
+      <span>{children}</span>
     </Link>
   ) : (
     <button
-      className={`${styles.btn} ${styling} ${styles[variant]}`}
+      className={`${styles.btn} ${styling} ${styles[variant]} ${
+        icon && styles.iconButton
+      }`}
       onClick={onClick}
       {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}
-      {children}
+      <span>{children}</span>
     </button>
   );
 };

@@ -14,6 +14,11 @@
   display: grid;
   column-gap: $gap;
   margin-top: 2rem;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+
+  @media (min-width: $breakpoint) {
+    grid-template-columns: repeat(var(--grid-columns), minmax(150px, 1fr));
+  }
 }
 
 .header {

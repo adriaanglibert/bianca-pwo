@@ -8,7 +8,7 @@ import moment from "moment";
 import styling from "./WeekNavigator.module.scss";
 import { useTranslation } from "react-i18next";
 
-function WeekNavigator({date, setDate, changeWeek}) {
+function WeekNavigator({ date, setDate, changeWeek }) {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -17,15 +17,21 @@ function WeekNavigator({date, setDate, changeWeek}) {
 
   return (
     <div className={styling.date}>
-      <Heading>
-        {moment(date).format("DD MMMM")} -{" "}
-        {moment(date).add(6, "days").format("DD MMMM")} {moment(date).year()}
+      <Heading className={styling.heading}>
+        <span>{moment(date).format("DD MMMM")} - </span>
+
+        <span>
+          {moment(date).add(6, "days").format("DD MMMM")} {moment(date).year()}
+        </span>
       </Heading>
 
       <div className={styling.actions}>
         {date.week() !== moment().week() && (
           <Button
-            onClick={() => {setDate(moment().startOf("week")); changeWeek();}}
+            onClick={() => {
+              setDate(moment().startOf("week"));
+              changeWeek();
+            }}
             icon={<FiRotateCcw />}
           >
             <span className={general.srOnly}>{t("actions.current_week")}</span>

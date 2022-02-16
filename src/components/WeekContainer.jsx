@@ -37,7 +37,7 @@ const WeekContainer = ({
         <div
           className={styles.grid}
           style={{
-            gridTemplateColumns: `repeat(${days.length}, minmax(150px, 1fr))`,
+            '--grid-columns' : days.length,
           }}
         >
           {days.map((day, index) => (
