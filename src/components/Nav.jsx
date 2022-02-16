@@ -2,6 +2,7 @@ import Button from "components/Button";
 import { FiLogOut } from "react-icons/fi";
 import React from "react";
 import { UserContext } from "context";
+import logo from 'assets/images/logo.png';
 import { logout } from "firebase-config";
 import styling from "./Nav.module.scss";
 import { toast } from "react-hot-toast";
@@ -30,7 +31,7 @@ const Nav = ({ children }) => {
         rel="noopener noreferrer"
         href={process.env.REACT_APP_WEBSITE}
       >
-        <img src="/images/logo.png" alt="logo" />
+        <img src={logo} alt="logo" />
       </a>
 
       <div className={styling.buttons}>

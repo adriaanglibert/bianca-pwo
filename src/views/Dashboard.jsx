@@ -7,7 +7,6 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 
 import Buddy from "components/Buddy";
 import Button from "components/Button";
-import Card from "components/Card";
 import { FiSettings } from "react-icons/fi";
 import Nav from "components/Nav";
 import { SETTINGS } from "constants/routes";
@@ -15,7 +14,6 @@ import { UserContext } from "context";
 import Week from "views/settings/Week";
 import WeekNavigator from "components/WeekNavigator";
 import { calculateDailyWeight } from "utils/helpers";
-import general from "styling/general.module.scss";
 import moment from "moment";
 import styling from "./Dashboard.module.scss";
 import { useTranslation } from "react-i18next";

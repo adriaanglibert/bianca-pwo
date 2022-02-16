@@ -1,37 +1,48 @@
 import React, { useEffect } from "react";
 
-import { MAX_DAY_KCAL } from 'constants/values';
-import { Toaster } from 'react-hot-toast';
+import { MAX_DAY_KCAL } from "constants/values";
+import avatar from 'assets/images/avatar.svg';
 import { calculateDailyWeight } from "utils/helpers";
-import days from 'data/days.json';
 import styling from "./Buddy.module.scss";
-import { toast } from 'react-hot-toast';
+import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
-const Buddy = ({weekActivities}) => {
-    useEffect(() => {
-        // Dismiss toast
-        console.log(weekActivities);
-        const heavyDays = weekActivities && Object.keys(weekActivities).map(day => {
+const Buddy = ({ weekActivities }) => {
+  const {t} = useTranslation();
+  const [feedback, setFeedback] = useState(null);
+
+  useEffect(() => {
+    // Dismiss toast
+    const heavyDays =
+      weekActivities &&
+      Object.keys(weekActivities).map((day) => {
+        if (calculateDailyWeight(weekActivities[day]) > MAX_DAY_KCAL) {
           return {
             day: day,
-            weight: calculateDailyWeight(weekActivities[day])}
-        })
+            weight: calculateDailyWeight(weekActivities[day]),
+          };
+        }
 
-        console.log(heavyDays);
-    }, [weekActivities]);
+        return null;
+      });
+    setFeedback(heavyDays);
+  }, [weekActivities]);
 
-    const notify = () => toast('Here is your toast.', {
-        id: 'chat'
-    });
+  const handleClick = () => {
+    console.log("open buddy");
+  };
 
   return (
     <div>
-      <button onClick={notify} className={styling.button}>
+      <button onClick={handleClick} className={styling.button}>
         <img
+          alt={t('buddy_intro')}
           className={styling.avatar}
-          src={process.env.PUBLIC_URL + "/images/avatar.svg"}
+          src={avatar}
         />
       </button>
+
+      {feedback && <dialog>Feedback</dialog>}
     </div>
   );
 };
