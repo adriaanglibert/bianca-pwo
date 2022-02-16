@@ -28,6 +28,7 @@ const customStyles = {
     alignItems: "center",
     backgroundColor: "rgba(16, 16, 16, 0.75)",
     padding: "1rem",
+    zIndex: "100"
   },
 };
 

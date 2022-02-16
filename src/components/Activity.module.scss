@@ -12,7 +12,8 @@
 }
 
 .time,
-.name {
+.name,
+.small {
     display: block;
 }
 
@@ -56,4 +57,9 @@
 
 .delete {
     color: $danger;
+}
+
+.small {
+    font-size: 0.85rem;
+    padding: 0 1rem 0.5rem 1rem;
 }

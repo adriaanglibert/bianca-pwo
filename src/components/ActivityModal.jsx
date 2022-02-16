@@ -177,19 +177,19 @@ const ActivityModal = ({
         onClose={cancel}
       >
         <SelectInput
-          value={activityInfo?.id}
-          options={acts}
-          handleInput={handleInput}
-        >
-          {t("actions.select_activity")}
-        </SelectInput>
-
-        <SelectInput
           value={activityInfo?.day}
           options={dys}
           handleInput={handleInput}
         >
           {t("actions.select_day")}
+        </SelectInput>
+
+        <SelectInput
+          value={activityInfo?.id}
+          options={acts}
+          handleInput={handleInput}
+        >
+          {t("actions.select_activity")}
         </SelectInput>
 
         <TimeRange

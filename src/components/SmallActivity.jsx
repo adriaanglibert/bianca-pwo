@@ -1,4 +1,5 @@
 import React from "react";
+import Truncate from "components/Truncate";
 import styles from "./Activity.module.scss";
 import { useTranslation } from "react-i18next";
 
@@ -19,9 +20,9 @@ const SmallActivity = ({ activity, day, handleDeleteActivity, handleEditActivity
           {formatDate(activity.from, activity.to)}
         </small>
 
-        <small className={styles.name}>
+        <Truncate className={styles.small}>
           {t(`activities.${activity.id}.title`)}
-        </small>
+        </Truncate>
       </div>
     </div>
   );
