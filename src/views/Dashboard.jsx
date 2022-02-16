@@ -91,7 +91,11 @@ const Dashboard = () => {
 
       <div className={styling.container}>
         <aside className={styling.buddy}>
-          <Buddy weekActivities={weekActivities}>{valueOfActivities}</Buddy>
+          <Buddy
+            defaultActivities={defaultActivities}
+            weekActivities={weekActivities}>
+              {valueOfActivities}
+          </Buddy>
         </aside>
 
         <main className={styling.main}>

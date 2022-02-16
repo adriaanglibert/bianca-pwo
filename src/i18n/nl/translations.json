@@ -1,4 +1,5 @@
 {
+  "and": "en",
   "activity": "Activiteit",
   "default_activity": "Standaardactiviteit",
   "next": "Volgende",
@@ -12,6 +13,7 @@
   "until": "tot",
   "no_options": "Geen resultaten",
   "buddy_intro": "Jouw persoonlijke assistent",
+  "buddy_feedback": "Probeer het wat kalmer aan te doen. Je hebt deze week een vrij drukke dag op ",
   "email": {
     "label": "Email",
     "placeholder": "janmodaal@email.be"
