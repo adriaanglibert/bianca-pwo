@@ -1,6 +1,7 @@
-import firebase from "firebase";
 import toast from "react-hot-toast";
-
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 // Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDj4mP9Yg9rjOYyjCXUKYJzR7i-svmyZm8",
