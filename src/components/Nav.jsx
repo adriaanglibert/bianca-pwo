@@ -29,7 +29,7 @@ const Nav = ({ children }) => {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={process.env.REACT_APP_WEBSITE}
+        href={process?.env.REACT_APP_WEBSITE}
       >
         <img src={logo} alt="logo" />
       </a>

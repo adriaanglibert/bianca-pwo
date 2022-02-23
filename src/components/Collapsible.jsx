@@ -30,7 +30,7 @@ const Collapsible = ({ open, title, children }) => {
   useEffect(() => {
     if (isOpen) {
         setDisplay('block');
-        process.nextTick(() => {
+        process?.nextTick(() => {
             setHeight(collapse.current?.getBoundingClientRect().height);
         })
     } else {
