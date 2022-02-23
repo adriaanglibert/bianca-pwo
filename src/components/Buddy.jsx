@@ -42,7 +42,7 @@ const Buddy = ({ weekActivities, defaultActivities }) => {
       clearTimeout(timeout);
       setFeedbackOpen(false);
     }
-  }, [weekActivities]);
+  }, [weekActivities, defaultActivities]);
 
   const handleClick = (currentState) => {
     setFeedbackOpen(!currentState);

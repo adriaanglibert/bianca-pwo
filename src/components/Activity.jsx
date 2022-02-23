@@ -8,7 +8,6 @@ import React from "react";
 import ReactTooltip from 'react-tooltip';
 import Truncate from "components/Truncate";
 import activities from "data/activities.json";
-import general from 'styling/general.module.scss';
 import { getActivityIntensity } from '../utils/helpers';
 import styles from "./Activity.module.scss";
 import translations from "i18n/nl/translations";
