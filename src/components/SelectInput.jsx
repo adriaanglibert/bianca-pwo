@@ -4,22 +4,23 @@ import Select from 'react-select';
 import Label from './Label';
 import styles from './SelectInput.module.scss';
 
-const customStyles = {
+export const customSelectStyles = {
     container: (provided) => ({
         ...provided,
         padding: 0,
         margin: 0,
-        cursor: 'pointer'
+        cursor: 'pointer',
     }),
     menuList: (provided) => ({
         ...provided,
-        padding: 0
+        padding: 0,
     }),
     option: (provided, state) => ({
       ...provided,
       borderBottom: '1px solid #CECECE',
       backgroundColor: state.isSelected ? '#4856F4' : state.isFocused ? '#DEE4FF' : '#FFF',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      borderRadius: 0
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
@@ -30,7 +31,7 @@ const customStyles = {
         display: 'none',
         opacity: 0
     })
-  }
+}
 
 const SelectInput = ({value, children, options, handleInput}) => {
     const {t} = useTranslation();
@@ -44,7 +45,7 @@ const SelectInput = ({value, children, options, handleInput}) => {
             <Select
                 value={options.find(option => option.value === value)}
                 noOptionsMessage={t('no_options')}
-                styles={customStyles}
+                styles={customSelectStyles}
                 options={options}
                 onChange={e => handleInput(e)}
             />

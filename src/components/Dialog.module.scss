@@ -31,7 +31,7 @@ $spacing: $gap * 2;
     display: flex;
     justify-content: flex-end;
     border-top: 1px solid $faded;
-    padding: $gap $spacing;
+    padding: 0 $spacing;
 
     button {
         margin-left: $gap;

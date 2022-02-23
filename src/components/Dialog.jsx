@@ -8,7 +8,7 @@ import general from "styling/general.module.scss";
 import styles from "components/Dialog.module.scss";
 import { useTranslation } from "react-i18next";
 
-const customStyles = {
+const customDialogStyles = {
   ...defaultStyles,
   content: {
     border: "none",
@@ -49,7 +49,7 @@ const Dialog = ({
       isOpen={open}
       onRequestClose={() => setOpen(false)}
       contentLabel={title}
-      style={customStyles}
+      style={customDialogStyles}
       shouldCloseOnOverlayClick={true}
       onAfterClose={onClose}
     >
