@@ -23,7 +23,7 @@ const Step = ({step}) => {
                     width={600}
                     height={550}
                     alt={step.title}
-                    src={`${process.env.PUBLIC_URL}/images/${step.image}`} />
+                    src={`${process?.env.PUBLIC_URL}/images/${step.image}`} />
             }
 
             {
