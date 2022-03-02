@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+
 import Label from './Label';
 import styles from './TimeRange.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const formatTime = (time) => {
     return `${time.slice(0, 2)}:${time.slice(2, 4)}:00`;
 }
 
-const TimeRange = ({ handleInput, from, to, setValidation, validation }) => {
+const TimeRange = ({ handleInput, from, to, setValidation, validation, children }) => {
     const { t } = useTranslation();
     const [error, setError] = useState();
 
@@ -31,11 +32,10 @@ const TimeRange = ({ handleInput, from, to, setValidation, validation }) => {
         return handleInput({ type: type, value: val.replace(':', '') });
     }
 
-
     return (
         <div className={styles.container}>
             <Label>
-                {t('actions.set_time')}
+                {children}
             </Label>
 
             <div className={styles.fields}>

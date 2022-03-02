@@ -50,6 +50,7 @@ const Settings = () => {
           defaultModalEdit="actions.default_edit"
           activities={activities}
           setActivities={setActivities}
+          initAllowMultipleDays={true}
         >
           <Label>
             {t("settings.default.title")}

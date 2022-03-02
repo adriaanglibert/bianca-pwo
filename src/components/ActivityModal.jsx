@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import Button from "components/Button";
 import Dialog from "components/Dialog";
+import SelectCheckbox from "components/SelectCheckbox";
 import SelectInput from "components/SelectInput";
 import TimeRange from "components/TimeRange";
 import activities from "data/activities.json";
@@ -33,13 +34,15 @@ const ActivityModal = ({
   setIsOpen,
   saveActivity,
   closeActivity,
+  isEdit = false,
 }) => {
   const { t } = useTranslation();
-  const [activityInfo, setActivityInfo] = useState({});
+  const [activityInfo, setActivityInfo] = useState({ days: [] });
   const [validation, setValidation] = useState({
     filledRequired: false,
     timeValidation: true,
   });
+  const label = isEdit ? 'edit' : 'select';
 
   // Transform data
   const acts = useMemo(() => {
@@ -121,6 +124,20 @@ const ActivityModal = ({
 
   const handleInput = (val) => {
     switch (val.type) {
+      case "days":
+        val.value?.forEach((day) => {
+          let prevDays = [];
+
+          if (activityInfo.days) {
+            prevDays = activityInfo.days;
+          }
+
+          setActivityInfo({
+            ...activityInfo,
+            days: [...prevDays, day.value],
+          });
+        });
+        break;
       case "day":
         setActivityInfo({
           ...activityInfo,
@@ -176,20 +193,30 @@ const ActivityModal = ({
         setOpen={setIsOpen}
         onClose={cancel}
       >
-        <SelectInput
-          value={activityInfo?.day}
-          options={dys}
-          handleInput={handleInput}
-        >
-          {t("actions.select_day")}
-        </SelectInput>
+        {isEdit ? (
+          <SelectInput
+            value={activityInfo?.day}
+            options={dys}
+            handleInput={handleInput}
+          >
+            {t("actions.edit_day")}
+          </SelectInput>
+        ) : (
+          <SelectCheckbox
+            value={activityInfo?.day}
+            options={dys}
+            handleInput={handleInput}
+          >
+            {t("actions.select_days")}
+          </SelectCheckbox>
+        )}
 
         <SelectInput
           value={activityInfo?.id}
           options={acts}
           handleInput={handleInput}
         >
-          {t("actions.select_activity")}
+          {t(`actions.${label}_activity`)}
         </SelectInput>
 
         <TimeRange
@@ -198,7 +225,9 @@ const ActivityModal = ({
           handleInput={handleInput}
           validation={validation}
           setValidation={setValidation}
-        />
+        >
+            {t(`actions.${label}_time`)}
+        </TimeRange>
       </Dialog>
     </>
   );

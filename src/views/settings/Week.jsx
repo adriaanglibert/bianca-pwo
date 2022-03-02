@@ -14,12 +14,16 @@ const Week = ({
   buttonLabel,
   defaultModalTitle,
   defaultModalEdit,
+  initAllowMultipleDays = false,
 }) => {
   const [modalActivity, setModalActivity] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  const [allowMultipleDays, setAllowMultipleDays] = useState(
+    initAllowMultipleDays
+  );
   const [modalTitle, setModalTitle] = useState(defaultModalTitle);
 
-  const filterActivities = (day, activity) => {
+  const filterDayActivities = (day, activity) => {
     let activityToUpload = activity;
     let activitiesToUpload = activities;
 
@@ -46,32 +50,53 @@ const Week = ({
     daysActivities.push(activityToUpload);
     daysActivities.sort((a, b) => parseInt(a.from) - parseInt(b.from));
 
-    setActivities({
-      ...activitiesToUpload,
-      [day]: daysActivities,
-    });
+    return daysActivities;
   };
 
-  const saveActivity = (obj) => {
-    filterActivities(obj.day, obj);
+  const filterActivities = (activity) => {
+    let { day, days } = activity;
+    let dailyActs = [];
+    let multidayActs = {};
+
+    if (day) {
+      dailyActs = filterDayActivities(activity.day, activity);
+      console.log("Single day:", dailyActs);
+
+      setActivities({
+        ...activities,
+        [day]: dailyActs,
+      });
+    } else if (days) {
+      days.forEach((day) => {
+        multidayActs[day] = filterDayActivities(day, { day: day, ...activity });
+        setActivities({ ...multidayActs, ...activities });
+      });
+    }
+  };
+
+  const saveActivity = (act) => {
+    setAllowMultipleDays(false);
+    filterActivities(act);
     setIsOpen(false);
     setModalActivity({});
   };
 
   const closeActivity = () => {
+    setAllowMultipleDays(true);
     setModalTitle(defaultModalTitle);
     setIsOpen(false);
     setModalActivity({});
-  }
+  };
 
   const deleteActivity = (day, activity) => {
     setActivities({
       ...activities,
-      [day]: activities[day].filter(act => act !== activity)
-    })
-  }
+      [day]: activities[day].filter((act) => act !== activity),
+    });
+  };
 
   const editActivity = (act) => {
+    setAllowMultipleDays(false);
     setModalTitle(defaultModalEdit);
     setModalActivity(act);
     setIsOpen(true);
@@ -98,6 +123,7 @@ const Week = ({
         closeActivity={closeActivity}
         modalActivity={modalActivity}
         setModalActivity={setModalActivity}
+        isEdit={!allowMultipleDays}
       />
     </WeekContainer>
   );

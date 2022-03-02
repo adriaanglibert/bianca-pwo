@@ -113,6 +113,7 @@ const Dashboard = () => {
             buttonLabel="activity"
             defaultModalTitle="actions.activity_plan"
             defaultModalEdit="actions.activity_edit"
+            initAllowMultipleDays={true}
             // isLoading={isLoading}
           />
         </main>
