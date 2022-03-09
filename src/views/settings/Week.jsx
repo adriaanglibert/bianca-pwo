@@ -69,8 +69,9 @@ const Week = ({
     } else if (days) {
       days.forEach((day) => {
         multidayActs[day] = filterDayActivities(day, { day: day, ...activity });
-        setActivities({ ...multidayActs, ...activities });
       });
+
+      setActivities({ ...activities, ...multidayActs });
     }
   };
 
