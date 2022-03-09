@@ -1,26 +1,21 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import Select from 'react-select';
 import Label from './Label';
-import styles from './SelectInput.module.scss';
+import React from 'react';
+import Select from 'react-select';
+import checkboxStyles from './SelectCheckbox.module.scss';
 import { components } from "react-select";
 import { customSelectStyles } from 'components/SelectInput';
+import styles from './SelectInput.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const Option = (props) => {
   return (
     <div>
       <components.Option {...props}>
-      <label class="container">
-          {props.label}
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-      </label>
-        <input
-          type="checkbox"
-          checked={props.isSelected}
-          onChange={() => null}
-        />{" "}
-        <label>{props.label}</label>
+        <label className={checkboxStyles.container}>
+            {props.label}
+            <input className={checkboxStyles.input} type="checkbox" checked={props.isSelected}  onChange={() => null}/>
+            <span className={checkboxStyles.checkmark}></span>
+        </label>
       </components.Option>
     </div>
   );
