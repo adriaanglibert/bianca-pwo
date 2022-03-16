@@ -7,7 +7,7 @@ import {
   RESET,
   SETTINGS,
 } from "constants/routes";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import Dashboard from "views/Dashboard";
 import Loading from "views/Loading";
