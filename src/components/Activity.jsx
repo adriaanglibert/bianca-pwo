@@ -63,7 +63,7 @@ const Activity = ({
               title={`${translations.activities[activity.id].title} - ${t('advice')}`}
             >
               {
-                strategies?.map((strategy, index) => <div key={index} className={index + 2 == strategies?.length ? styles.text : ''}>
+                strategies?.map((strategy, index) => <div key={index} className={index + 2 === strategies?.length ? styles.text : ''}>
                   <strong>
                     {strategy.title}
                   </strong>
