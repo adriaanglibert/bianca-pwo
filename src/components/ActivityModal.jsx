@@ -52,11 +52,15 @@ const ActivityModal = ({
           value: id,
           label: t(`activities.${id}.title`),
           type: "activity",
+          highlight: activities[id]?.highlight
         };
       })
       .sort((a, b) => {
         var nameA = a.label.toUpperCase(); // ignore upper and lowercase
         var nameB = b.label.toUpperCase(); // ignore upper and lowercase
+        if (a.highlight || b.highlight) {
+          return -1;
+        }
         if (nameA < nameB) {
           return -1;
         }
