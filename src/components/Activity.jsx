@@ -1,6 +1,7 @@
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { formatDate, kcalForTime } from "utils/helpers";
 
+import { FiHelpCircle } from "react-icons/fi";
 import IconModal from "components/IconModal";
 import { MAX_DAY_KCAL } from 'constants/values';
 import Progress from "components/Progress";
@@ -21,6 +22,7 @@ const Activity = ({
 }) => {
   const { t } = useTranslation();
   const metWeight = activities[activity.id]?.weight;
+  const strategies = activities[activity.id]?.strategies;
 
   return (
     <div className={styles.container}>
@@ -44,14 +46,35 @@ const Activity = ({
       </div>
 
       <div className={styles.actions}>
-        {translations.activities[activity.id].description && (
-          <IconModal
-            variant="gray"
-            title={t(`activities.${activity.id}.title`)}
-          >
-            {t(`activities.${activity.id}.description`)}
-          </IconModal>
-        )}
+        <div>
+          {translations.activities[activity.id].description && (
+            <IconModal
+              variant="gray"
+              title={t(`activities.${activity.id}.title`)}
+            >
+              {t(`activities.${activity.id}.description`)}
+            </IconModal>
+          )}
+
+          {strategies?.length && (
+            <IconModal
+              icon={<FiHelpCircle/>}
+              variant="gray"
+              title={`${translations.activities[activity.id].title} - ${t('advice')}`}
+            >
+              {
+                strategies?.map((strategy, index) => <div key={index} className={index + 2 == strategies?.length ? styles.text : ''}>
+                  <strong>
+                    {strategy.title}
+                  </strong>
+                  <p>
+                    {strategy.description}
+                  </p>
+                </div>)
+              }
+            </IconModal>
+          )}
+        </div>
 
         <div className={styles.change}>
           <button
