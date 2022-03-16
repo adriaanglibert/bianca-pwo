@@ -10,6 +10,47 @@ import activities from "data/activities.json";
 import days from "data/days.json";
 import { useTranslation } from "react-i18next";
 
+function groupByKey(array, key, keys, t) {
+  const grouped = array.reduce((hash, obj, index) => {
+    return Object.assign(hash, {
+      [obj[key]]: (hash[obj[key]] || []).concat({ id: keys[index], ...obj }),
+    });
+  }, {});
+
+  return Object.keys(grouped).map((group) => {
+    return {
+      label: group,
+      options: grouped[group]
+        .map((el) => {
+          const id = el.id;
+
+          return {
+            value: id,
+            label: t(`activities.${id}.title`),
+            type: "activity",
+            highlight: activities[id]?.highlight,
+          };
+        })
+        .sort((a, b) => {
+          var nameA = a.label.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.label.toUpperCase(); // ignore upper and lowercase
+          if (a.highlight || b.highlight) {
+            return -1;
+          }
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+          // names must be equal
+          return 0;
+        }),
+    };
+  });
+}
+
 const Actions = ({ save, info, cancel, disabled }) => {
   const { t } = useTranslation();
 
@@ -42,35 +83,28 @@ const ActivityModal = ({
     filledRequired: false,
     timeValidation: true,
   });
-  const label = isEdit ? 'edit' : 'select';
+  const label = isEdit ? "edit" : "select";
 
   // Transform data
   const acts = useMemo(() => {
-    return Object.keys(activities)
-      .map((id) => {
-        return {
-          value: id,
-          label: t(`activities.${id}.title`),
-          type: "activity",
-          highlight: activities[id]?.highlight
-        };
-      })
-      .sort((a, b) => {
-        var nameA = a.label.toUpperCase(); // ignore upper and lowercase
-        var nameB = b.label.toUpperCase(); // ignore upper and lowercase
-        if (a.highlight || b.highlight) {
-          return -1;
-        }
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
+    return groupByKey(
+      Object.values(activities),
+      "category",
+      Object.keys(activities),
+      t
+    ).sort((a, b) => {
+      var nameA = a.label.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.label.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
 
-        // names must be equal
-        return 0;
-      });
+      // names must be equal
+      return 0;
+    });
   }, [t]);
 
   const dys = useMemo(() => {
@@ -219,6 +253,7 @@ const ActivityModal = ({
           value={activityInfo?.id}
           options={acts}
           handleInput={handleInput}
+          grouped={true}
         >
           {t(`actions.${label}_activity`)}
         </SelectInput>
@@ -230,7 +265,7 @@ const ActivityModal = ({
           validation={validation}
           setValidation={setValidation}
         >
-            {t(`actions.${label}_time`)}
+          {t(`actions.${label}_time`)}
         </TimeRange>
       </Dialog>
     </>

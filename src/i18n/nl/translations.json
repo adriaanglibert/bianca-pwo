@@ -197,5 +197,10 @@
       "title": "Te zware dag",
       "description": "Let op! Je dag is te vermoeiend."
     }
+  },
+  "categories": {
+    "undefined": "Algemene activiteiten",
+    "general": "Basisactiviteiten",
+    "sport": "Fysieke activiteiten"
   }
 }

@@ -2,6 +2,7 @@
   "00000": {
     "weight": -15,
     "highlight": true,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -17,6 +18,7 @@
   "00001": {
     "weight": 50,
     "highlight": true,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -31,6 +33,7 @@
   },
   "01010": {
     "weight": 40,
+    "category": "sport",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -45,6 +48,7 @@
   },
   "04001": {
     "weight": 35,
+    "category": "sport",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -337,6 +341,7 @@
   },
   "17250": {
     "weight": 35,
+    "category": "sport",
     "strategies": [
       {
         "title": "Hier komt een advies",

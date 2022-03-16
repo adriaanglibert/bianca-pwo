@@ -15,10 +15,10 @@ const setBackgroundColor = (data, isFocused, isSelected) => {
 
     if (data?.highlight) {
         if (data.value > 0) {
-            return "#e6e6e6";
+            return "#f7f8ff";
         }
 
-        return "#f0f0f0";
+        return "#f7f8ff";
     }
 }
 
@@ -53,19 +53,27 @@ export const customSelectStyles = {
   }),
 };
 
-const SelectInput = ({ value, children, options, handleInput }) => {
+const formatGroupLabel = (data, t) => (
+    <div>
+      <span>{t(`categories.${data.label}`)}</span>
+    </div>
+  );
+
+const SelectInput = ({ value, children, options, handleInput, grouped = false }) => {
   const { t } = useTranslation();
+  const val = grouped ? options.map(group => group.options.find(option => option.value === value)) : options.find((option) => option.value === value);
 
   return (
     <div className={styles.container}>
       <Label>{children}</Label>
 
       <Select
-        value={options.find((option) => option.value === value)}
+        value={val}
         noOptionsMessage={t("no_options")}
         styles={customSelectStyles}
         options={options}
         onChange={(e) => handleInput(e)}
+        formatGroupLabel={e => formatGroupLabel(e, t)}
       />
     </div>
   );
