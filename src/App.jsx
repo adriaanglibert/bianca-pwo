@@ -1,3 +1,4 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import {
   HOME,
   LOGIN,
@@ -7,13 +8,11 @@ import {
   SETTINGS,
 } from "constants/routes";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Dashboard from "views/Dashboard";
 import Loading from "views/Loading";
 import Login from "views/auth/Login";
 import Onboarding from "views/onboarding/Onboarding";
-import { Redirect } from "react-router-dom";
 import Register from "views/auth/Register";
 import Reset from "views/auth/Reset";
 import Settings from "views/settings/Settings";
@@ -23,18 +22,6 @@ import { db } from "firebase-config";
 import styles from "./App.module.scss";
 import { toast } from "react-hot-toast";
 import useAuthentication from "hooks/useAuthentication";
-
-const flatten = (target, children) => {
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child)) {
-      if (child.type === Fragment) {
-        flatten(target, child.props.children);
-      } else {
-        target.push(child);
-      }
-    }
-  });
-};
 
 const defaultContext = {
   activities: {},
@@ -62,20 +49,11 @@ function App() {
       }, 500);
     } catch (err) {
       console.error(err);
-      toast.error("An error occured while fetching user data", {
-        id: 'global'
+      toast.error("An error occurred while fetching user data", {
+        id: "global",
       });
     }
   }, [user]);
-
-  const FragmentSupportingSwitch = ({ children }) => {
-    const flattenedChildren = [];
-    flatten(flattenedChildren, children);
-    return React.createElement.apply(
-      React,
-      [Switch, null].concat(flattenedChildren)
-    );
-  };
 
   useEffect(() => {
     if (user && !loading && !error) {
@@ -86,40 +64,36 @@ function App() {
   return (
     <div className={styles.app}>
       <UserContext.Provider value={[data, setData]}>
-        <Router>
-          <FragmentSupportingSwitch>
-            {!loading ? (
-              user ? (
-                !data?.uid ? (
-                  <Loading />
-                ) : !data.seenOnboarding ? (
-                  <>
-                    <Route exact path={ONBOARDING} component={Onboarding} />
-                    <Redirect to={ONBOARDING} />
-                  </>
+        {loading || (user && !data?.uid) ? (
+          <Loading />
+        ) : (
+          <BrowserRouter>
+              {user ? (
+                !data.seenOnboarding ? (
+                  <Routes>
+                    <Route exact path={ONBOARDING} element={<Onboarding/>} />
+                    <Route path="*" element={<Navigate to={ONBOARDING} />} />
+                  </Routes>
                 ) : (
-                  <>
-                    <Route exact path={ONBOARDING} component={Onboarding} />
-                    <Route exact path={SETTINGS} component={Settings} />
-                    <Route exact path={HOME} component={Dashboard} />
+                  <Routes>
+                    <Route exact path={ONBOARDING} element={<Onboarding/>} />
+                    <Route exact path={SETTINGS} element={<Settings/>} />
+                    <Route exact path={HOME} element={<Dashboard/>} />
 
-                    <Redirect to={HOME} />
-                  </>
+                    <Route path="*" element={<Navigate to={HOME} />} />
+                  </Routes>
                 )
               ) : (
-                <>
-                  <Route exact path={RESET} component={Reset} />
-                  <Route exact path={REGISTER} component={Register} />
-                  <Route exact path={LOGIN} component={Login} />
+                <Routes>
+                  <Route exact path={RESET} element={<Reset/>} />
+                  <Route exact path={REGISTER} element={<Register/>} />
+                  <Route exact path={LOGIN} element={<Login/>} />
 
-                  <Redirect to={LOGIN} />
-                </>
-              )
-            ) : (
-              <Loading />
-            )}
-          </FragmentSupportingSwitch>
-        </Router>
+                  <Route path="*" element={<Navigate to={LOGIN} />} />
+                </Routes>
+              )}
+          </BrowserRouter>
+        )}
       </UserContext.Provider>
 
       <Toast />

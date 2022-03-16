@@ -12,15 +12,15 @@ import { UserContext } from "context";
 import Week from "views/settings/Week";
 import general from "styling/general.module.scss";
 import useData from "hooks/useData";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Settings = () => {
-  let history = useHistory();
+  let navigate = useNavigate();
   const { t } = useTranslation();
 
   const [d] = useContext(UserContext);
-  const [, setData] = useData(null, () => history.push(HOME));
+  const [, setData] = useData(null, () => navigate(HOME));
   const [activities, setActivities] = useState(d?.settings);
 
   const saveSettings = () => {

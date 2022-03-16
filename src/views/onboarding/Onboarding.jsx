@@ -8,15 +8,15 @@ import general from 'styling/general.module.scss';
 import steps from 'data/onboarding.json';
 import styles from 'views/onboarding/Onboarding.module.scss'
 import useData from 'hooks/useData';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Onboarding = () => {
-    let history = useHistory();
+    let navigate = useNavigate();
     const [activeStep, setActiveStep] = useState(0);
     const {t} = useTranslation();
-    const [, setData] = useData(null, () => history.push(SETTINGS));
+    const [, setData] = useData(null, () => navigate(SETTINGS));
 
     const updateSeenOnboarding = () => {
         setData({

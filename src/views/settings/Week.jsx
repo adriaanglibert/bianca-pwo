@@ -60,7 +60,6 @@ const Week = ({
 
     if (day) {
       dailyActs = filterDayActivities(activity.day, activity);
-      console.log("Single day:", dailyActs);
 
       setActivities({
         ...activities,
