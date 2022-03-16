@@ -2,6 +2,8 @@
 
 > Do not update firebase dependency as it will not work as expected with React 17.
 
+"react-scripts": "^4.0.3", is needed because v5 does not understand process.
+
 ## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
