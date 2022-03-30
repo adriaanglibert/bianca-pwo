@@ -70,10 +70,12 @@ const Buddy = ({ weekActivities, defaultActivities }) => {
 
       <div className={styling.dialog} open={feedbackOpen}>
         <div>
-          {t('buddy_feedback')}
-          <span className={styling.days}>
+          {t('buddy_feedback', {
+            days: feedback && formatDayList(feedback)
+          })}
+          {/* <span className={styling.days}>
             {feedback && formatDayList(feedback)}
-          </span>.
+          </span>. */}
         </div>
 
         <button

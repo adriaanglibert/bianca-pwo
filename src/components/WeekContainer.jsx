@@ -99,7 +99,7 @@ const WeekContainer = ({
                     ))}
 
                   {defaultActivities && defaultActivities[day]?.length ? (
-                    <Collapsible title="Standaard">
+                    <Collapsible title="Vaste activiteiten">
                       {defaultActivities[day]?.map((activity, index) => (
                         <SmallActivity
                           key={`${day}-${index}-${activity.name}`}

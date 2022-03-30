@@ -42,23 +42,19 @@ const Settings = () => {
       </Nav>
 
       <Container>
-        <Heading>{t("actions.settings")}</Heading>
+        <Heading>{t("actions.settings_title")}</Heading>
 
         <Week
-          buttonLabel="default_activity"
+          buttonLabel="settings.default.button"
           defaultModalTitle="actions.default_plan"
           defaultModalEdit="actions.default_edit"
           activities={activities}
           setActivities={setActivities}
           initAllowMultipleDays={true}
         >
-          <Label>
+          <p>
             {t("settings.default.title")}
-
-            <IconModal title={t("settings.default.title")} variant='dark'>
-              <p className={general.preLine}>{t("settings.default.description")}</p>
-            </IconModal>
-          </Label>
+          </p>
         </Week>
       </Container>
     </>

@@ -2,19 +2,19 @@
   "advice": "Advies",
   "and": "en",
   "activity": "Activiteit",
-  "default_activity": "Standaardactiviteit",
+  "default_activity": "Vaste activiteit",
   "next": "Volgende",
   "previous": "Vorige",
   "start": "Starten",
   "step": "Stap",
-  "save": "Opslaan",
+  "save": "Planning opslaan",
   "skip": "Overslaan",
   "close": "Sluiten",
   "info": "Meer info",
   "until": "tot",
   "no_options": "Geen resultaten",
   "buddy_intro": "Jouw persoonlijke assistent",
-  "buddy_feedback": "Probeer het wat kalmer aan te doen. Je hebt deze week een vrij drukke dag op ",
+  "buddy_feedback": "Probeer het wat kalmer aan te doen. Je hebt het {{days}} druk.",
   "email": {
     "label": "Email",
     "placeholder": "janmodaal@email.be"
@@ -38,13 +38,14 @@
   "settings": {
     "when": "Duid aan op welke dagen je naar de dialyse moet.",
     "default": {
-      "title": "Dialysemomenten en andere herhalende activiteiten inplannen.",
+      "title": "Plan je dialysemomenten en andere routineactiviteiten, denk bijvoorbeeld aan het buitenzetten van het vuilnis.",
       "description": "Zodat je niet steeds opnieuw activiteiten zoals 'Naar de dialyse gaan', 'ontbijten' of 'wassen' moet instellen kan je hier je standaardweek samenstellen.\n\nLet wel op dat dit enkel activiteiten zijn die je elke week zal doen. Dit kan je later wel aanpassen, maar niet retroactief.",
-      "button": "Standaardactiviteit"
+      "button": "Vaste activiteit inplannen"
     }
   },
   "actions": {
-    "settings": "Instellingen",
+    "settings_title": "Vaste activiteiten instellen",
+    "settings": "Vaste activiteiten aanpassen",
     "sign_in": "Aanmelden",
     "sign_out": "Afmelden",
     "google_sign_in": "Aanmelden met Google",
@@ -56,10 +57,10 @@
     "resetting_password_instructions": "Gelieve je email in te vullen. We versturen je zo dadelijk een bericht met instructies om je wachtwoord opnieuw in te stellen.",
     "already_registered": "Heb je al een account?",
     "not_registered": "Nog geen account?",
-    "default_plan": "Standaardactiviteit inplannen",
-    "default_edit": "Standaardactiviteit aanpassen",
+    "default_plan": "Vaste activiteit inplannen",
+    "default_edit": "Vaste activiteit aanpassen",
     "activity_edit": "Activiteit bewerken",
-    "activity_plan": "Activiteit plannen",
+    "activity_plan": "Losse activiteit inplannen",
     "select_activity": "Activiteit selecteren",
     "edit_activity": "Activiteit aanpassen",
     "select_days": "Dag(en) selecteren",
@@ -171,11 +172,12 @@
     }
   },
   "weight": {
-    "rest": "Met deze activiteit laad je je batterijen op",
-    "sitting": "Dit is een rustige activiteit",
-    "light": "Dit is een lichte activiteit maar kan vermoeiend zijn zonder voldoende pauze",
-    "moderate": "Dit is een vrij zware activiteit die je snel zal vermoeien",
-    "high": "Dit is een heel zware activiteit, plan voldoende rust"
+    "rest": "Rustige inspanning",
+    "sitting": "Lichte inspanning",
+    "light": "Behoorlijke inspanning",
+    "moderate": "Zware inspanning",
+    "high": "Heel zware inspanning",
+    "max": "Maximale inspanning"
   },
   "week": {
     "minimum": {
@@ -191,12 +193,12 @@
       "description": "Dit is een vermoeiende dag. Plan zeker en vast genoeg rust in."
     },
     "strong": {
-      "title": "Erg lastige dag",
-      "description": "Dit is een ontzettend lastige dag, hou rekening dat je de volgende dagen het rustiger aandoet."
+      "title": "Je heb een vrij zware dag ingepland",
+      "description": "BIANCA vindt dat je dag tamelijk druk is. Let op dat je je grenzen niet overschrijdt. Bouw voldoende rust in."
     },
     "heavy": {
-      "title": "Te zware dag",
-      "description": "Let op! Je dag is te vermoeiend."
+      "title": "Je heb een te zware dag ingepland",
+      "description": "BIANCA stelt vast dat je wellicht te veel hooi op je vork neemt. Bepaal je prioriteiten en plan voldoende rustmomenten in.\n\nWens je nog meer tips? Raadpleeg dan <a href='https://www.bianca.care/adviezenbibliotheek/'>onze website</a>."
     }
   },
   "categories": {

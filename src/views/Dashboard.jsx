@@ -110,7 +110,7 @@ const Dashboard = () => {
             setActivities={saveActivities}
             defaultActivities={defaultActivities}
             firstMoment={date}
-            buttonLabel="activity"
+            buttonLabel="actions.activity_plan"
             defaultModalTitle="actions.activity_plan"
             defaultModalEdit="actions.activity_edit"
             initAllowMultipleDays={true}

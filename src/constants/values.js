@@ -6,8 +6,8 @@ const ACTIVITY_INTENSITY_MET = Object.freeze({
     rest: 10,
     sitting: 15,
     light: 30,
-    moderate: 60,
-    high: 100
+    moderate: 39,
+    high: 49
 });
 
 const DAY_INTENSITY_PERCENTAGE = Object.freeze({
