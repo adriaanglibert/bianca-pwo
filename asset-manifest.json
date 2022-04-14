@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bianca-pwo/static/css/main.ceec8d43.chunk.css",
-    "main.js": "/bianca-pwo/static/js/main.adef0682.chunk.js",
-    "main.js.map": "/bianca-pwo/static/js/main.adef0682.chunk.js.map",
+    "main.js": "/bianca-pwo/static/js/main.bf98dfcd.chunk.js",
+    "main.js.map": "/bianca-pwo/static/js/main.bf98dfcd.chunk.js.map",
     "runtime-main.js": "/bianca-pwo/static/js/runtime-main.43e9abfb.js",
     "runtime-main.js.map": "/bianca-pwo/static/js/runtime-main.43e9abfb.js.map",
     "static/js/2.6bc738d2.chunk.js": "/bianca-pwo/static/js/2.6bc738d2.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.43e9abfb.js",
     "static/js/2.6bc738d2.chunk.js",
     "static/css/main.ceec8d43.chunk.css",
-    "static/js/main.adef0682.chunk.js"
+    "static/js/main.bf98dfcd.chunk.js"
   ]
 }
