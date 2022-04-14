@@ -67,7 +67,7 @@ function App() {
         {loading || (user && !data?.uid) ? (
           <Loading />
         ) : (
-          <BrowserRouter>
+          <BrowserRouter basename="/bianca-pwo">
               {user ? (
                 !data.seenOnboarding ? (
                   <Routes>
