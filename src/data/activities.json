@@ -1,36 +1,4 @@
 {
-  "00000": {
-    "weight": -15,
-    "highlight": true,
-    "category": "general",
-    "strategies": [
-      {
-        "title": "Hier komt een advies",
-        "description": "Hier komt een beschrijving van een advies"
-      },
-      {
-        "title": "Hier komt een advies",
-        "description": "Hier komt een beschrijving van een advies"
-      }
-    ],
-    "link": "https://bianca.care/rust/"
-  },
-  "00001": {
-    "weight": 50,
-    "highlight": true,
-    "category": "general",
-    "strategies": [
-      {
-        "title": "Hier komt een advies",
-        "description": "Hier komt een beschrijving van een advies"
-      },
-      {
-        "title": "Hier komt een advies",
-        "description": "Hier komt een beschrijving van een advies"
-      }
-    ],
-    "link": "https://bianca.care/dialyse/"
-  },
   "01010": {
     "weight": 40,
     "category": "sport",
@@ -44,7 +12,7 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/fietsen/"
+    "link": "bianca.care/fietsen/"
   },
   "04001": {
     "weight": 35,
@@ -59,10 +27,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/vissen/"
+    "link": "bianca.care/vissen/"
   },
   "05030": {
     "weight": 33,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -73,10 +42,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/poetsen/"
+    "link": "bianca.care/poetsen/"
   },
   "05041": {
     "weight": 18,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -87,10 +57,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/afwassen/"
+    "link": "bianca.care/afwassen/"
   },
   "05043": {
     "weight": 35,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -101,10 +72,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/stofzuigen/"
+    "link": "bianca.care/stofzuigen/"
   },
   "05049": {
     "weight": 20,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -115,10 +87,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/koken/"
+    "link": "bianca.care/koken/"
   },
   "05055": {
     "weight": 25,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -129,13 +102,14 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/boodschappenwegzetten/"
+    "link": "bianca.care/boodschappenwegzetten/"
   },
   "05060": {
     "weight": 23,
+    "category": "home",
     "strategy": [
       {
-        "title": "Vereenvoudig het boodschappen doen",
+        "title": "Maak het eenvoudiger",
         "description": "Ga steeds naar dezelfde winkel, dan weet je alles staan en moet je minder zoeken."
       },
       {
@@ -155,10 +129,11 @@
         "description": "Gebruik een trolley met wielen om zwaardere boodschappen te halen."
       }
     ],
-    "link": null
+    "link": "bianca.care/boodschappendoen"
   },
   "05070": {
     "weight": 18,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -169,10 +144,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/strijken/"
+    "link": "bianca.care/strijken/"
   },
   "05090": {
     "weight": 20,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -183,10 +159,26 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/dewasdoen/"
+    "link": null
+  },
+  "05095": {
+    "weight": 23,
+    "category": "home",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": "bianca.care/dewasdoen/"
   },
   "05148": {
     "weight": 25,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -197,10 +189,86 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/plantenwatergeven/"
+    "link": "bianca.care/plantenwatergeven/"
+  },
+  "05184": {
+    "weight": 25,
+    "category": "care",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
+  },
+  "05197": {
+    "weight": 23,
+    "category": "care",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
+  },
+  "05200": {
+    "weight": 40,
+    "category": "care",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
+  },
+  "05205": {
+    "weight": 23,
+    "category": "care",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
   },
   "07010": {
-    "weight": 10,
+    "weight": -10,
+    "category": "rest",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
+  },
+  "07021": {
+    "weight": -13,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -215,6 +283,7 @@
   },
   "07070": {
     "weight": 13,
+    "category": "rest",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -229,6 +298,7 @@
   },
   "08245": {
     "weight": 40,
+    "category": "home",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -239,10 +309,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/tuinieren/"
+    "link": "bianca.care/tuinieren/"
   },
   "09010": {
     "weight": 15,
+    "category": "social",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -253,10 +324,26 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/kaartenschakengezelschapspel/"
+    "link": "bianca.care/kaartenschakengezelschapsspel/"
+  },
+  "09045": {
+    "weight": 10,
+    "category": "general",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
   },
   "09055": {
     "weight": 15,
+    "category": "social",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -267,10 +354,26 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/eengesprekvoeren/"
+    "link": null
+  },
+  "09100": {
+    "weight": 18,
+    "category": "social",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
   },
   "13020": {
     "weight": 25,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -281,10 +384,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/aanenuitkleden/"
+    "link": "bianca.care/aanenuitkleden/"
   },
   "13030": {
     "weight": 15,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -295,10 +399,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/eten/"
+    "link": "bianca.care/eten/"
   },
   "13040": {
     "weight": 20,
+    "category": "care",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -309,10 +414,26 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/zichwassen/"
+    "link": "bianca.care/zichwassen/"
+  },
+  "13009": {
+    "weight": 18,
+    "category": "general",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
   },
   "11580": {
     "weight": 15,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -323,10 +444,11 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/bureauwerk/"
+    "link": "bianca.care/bureauwerk/"
   },
   "16015": {
     "weight": 13,
+    "category": "general",
     "strategies": [
       {
         "title": "Hier komt een advies",
@@ -337,7 +459,7 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/autorijden/"
+    "link": "bianca.care/autorijden/"
   },
   "17250": {
     "weight": 35,
@@ -352,6 +474,52 @@
         "description": "Hier komt een beschrijving van een advies"
       }
     ],
-    "link": "https://bianca.care/wandelen/"
+    "link": "bianca.care/wandelen/"
+  },
+  "999": {
+    "weight": -13,
+    "category": "rest",
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
+  },
+  "9999": {
+    "weight": -14,
+    "category": "rest",
+    "highlight": true,
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
+  },
+  "99999": {
+    "weight": 20,
+    "highlight": true,
+    "strategies": [
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      },
+      {
+        "title": "Hier komt een advies",
+        "description": "Hier komt een beschrijving van een advies"
+      }
+    ],
+    "link": null
   }
 }

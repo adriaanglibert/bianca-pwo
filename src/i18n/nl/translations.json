@@ -74,14 +74,6 @@
     "current_week": "Naar huidige week"
   },
   "activities": {
-    "00000": {
-      "title": "Rusten",
-      "description": null
-    },
-    "00001": {
-      "title": "Dialyse",
-      "description": null
-    },
     "01010": {
       "title": "Fietsen",
       "description": null
@@ -119,6 +111,10 @@
       "description": null
     },
     "05090": {
+      "title": "De was opplooien",
+      "description": null
+    },
+    "05095": {
       "title": "De was doen",
       "description": null
     },
@@ -126,8 +122,28 @@
       "title": "Planten of bloemen water geven",
       "description": null
     },
+    "05184": {
+      "title": "Een (klein)kind verzorgen",
+      "description": null
+    },
+    "05197": {
+      "title": "Een huisdier verzorgen",
+      "description": null
+    },
+    "05200": {
+      "title": "Een volwassene verzorgen (zware inspanning)",
+      "description": null
+    },
+    "05205": {
+      "title": "Een volwassene verzorgen (lichte inspanning)",
+      "description": null
+    },
     "07010": {
       "title": "Televisie kijken",
+      "description": null
+    },
+    "07021": {
+      "title": "Vervoerd worden",
       "description": null
     },
     "07070": {
@@ -142,8 +158,16 @@
       "title": "Kaarten, schaken, een gezelschapspel spelen",
       "description": null
     },
+    "09045": {
+      "title": "Computerwerk",
+      "description": null
+    },
     "09055": {
       "title": "Een gesprek voeren (zittend)",
+      "description": null
+    },
+    "09100": {
+      "title": "Familiebezoek",
       "description": null
     },
     "13020": {
@@ -158,6 +182,10 @@
       "title": "Tanden poetsen, handen wassen, scheren",
       "description": null
     },
+    "13009": {
+      "title": "Naar toilet gaan",
+      "description": null
+    },
     "11580": {
       "title": "Bureauwerk",
       "description": null
@@ -168,6 +196,18 @@
     },
     "17250": {
       "title": "Wandelen",
+      "description": null
+    },
+    "999": {
+      "title": "Rusten",
+      "description": null
+    },
+    "9999": {
+      "title": "Slapen",
+      "description": null
+    },
+    "99999": {
+      "title": "Dialyse",
       "description": null
     }
   },
@@ -204,6 +244,10 @@
   "categories": {
     "undefined": "Algemene activiteiten",
     "general": "Basisactiviteiten",
+    "home": "Huishoudelijke activiteiten",
+    "care": "Verzorging",
+    "rest": "Ontspannende activiteiten",
+    "social": "Sociale activiteiten",
     "sport": "Fysieke activiteiten"
   }
 }

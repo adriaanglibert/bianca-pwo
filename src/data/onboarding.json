@@ -8,21 +8,21 @@
     {
         "title": "BIANCA helpt je om je week te plannen",
         "prefix": "Jouw persoonlijke assistent om een balans te vinden in het leven met een chronische aandoening",
-        "image": "calendar.png"
+        "image": "calendar.webp"
     },
     {
         "title": "Stel eerst je vaste activiteiten in",
         "prefix": "Dit zijn activiteiten die deel uitmaken van je wekelijkse routine, bijvoorbeeld naar de dialyse gaan",
-        "image": "plan.png"
+        "image": "default.webp"
     },
     {
         "title": "Voeg nadien je losse activiteiten toe aan de planning",
         "prefix": "Dit zijn activiteiten die niet tot je routine behoren, bijvoorbeeld naar een feest gaan",
-        "image": "feedback.png"
+        "image": "daily.webp"
     },
     {
         "title": "Ten slotte ontvang je gepersonaliseerde feedback",
         "prefix": "BIANCA zal je tips geven om je vaste en losse activiteiten in balans te brengen",
-        "image": "feedback.png"
+        "image": "feedback.webp"
     }
 ]

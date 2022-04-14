@@ -67,9 +67,7 @@ const Activity = ({
                   <strong>
                     {strategy.title}
                   </strong>
-                  <p>
-                    {strategy.description}
-                  </p>
+                  <p dangerouslySetInnerHTML={strategy.description}></p>
                 </div>)
               }
             </IconModal>

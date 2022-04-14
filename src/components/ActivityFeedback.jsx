@@ -28,7 +28,7 @@ const Modal = ({ message, icon }) => {
         variant={message}
         title={t(`week.${message}.title`)}
       >
-        {t(`week.${message}.description`)}
+        <div dangerouslySetInnerHTML={{ __html: t(`week.${message}.description`)}}></div>
       </IconModal>
     )
   );
