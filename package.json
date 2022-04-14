@@ -37,7 +37,7 @@
     "react-error-overlay": "6.0.9"
   },
   "scripts": {
-    "predeploy": "npm run build && mv build docs",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
