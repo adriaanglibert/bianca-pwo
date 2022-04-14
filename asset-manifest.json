@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bianca-pwo/static/css/main.ceec8d43.chunk.css",
+    "main.js": "/bianca-pwo/static/js/main.adef0682.chunk.js",
+    "main.js.map": "/bianca-pwo/static/js/main.adef0682.chunk.js.map",
+    "runtime-main.js": "/bianca-pwo/static/js/runtime-main.43e9abfb.js",
+    "runtime-main.js.map": "/bianca-pwo/static/js/runtime-main.43e9abfb.js.map",
+    "static/js/2.6bc738d2.chunk.js": "/bianca-pwo/static/js/2.6bc738d2.chunk.js",
+    "static/js/2.6bc738d2.chunk.js.map": "/bianca-pwo/static/js/2.6bc738d2.chunk.js.map",
+    "static/js/3.98a5ae06.chunk.js": "/bianca-pwo/static/js/3.98a5ae06.chunk.js",
+    "static/js/3.98a5ae06.chunk.js.map": "/bianca-pwo/static/js/3.98a5ae06.chunk.js.map",
+    "index.html": "/bianca-pwo/index.html",
+    "static/css/main.ceec8d43.chunk.css.map": "/bianca-pwo/static/css/main.ceec8d43.chunk.css.map",
+    "static/js/2.6bc738d2.chunk.js.LICENSE.txt": "/bianca-pwo/static/js/2.6bc738d2.chunk.js.LICENSE.txt",
+    "static/media/avatar.d875a7e4.svg": "/bianca-pwo/static/media/avatar.d875a7e4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.43e9abfb.js",
+    "static/js/2.6bc738d2.chunk.js",
+    "static/css/main.ceec8d43.chunk.css",
+    "static/js/main.adef0682.chunk.js"
+  ]
+}
