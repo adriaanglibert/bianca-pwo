@@ -164,15 +164,9 @@ const ActivityModal = ({
     switch (val.type) {
       case "days":
         val.value?.forEach((day) => {
-          let prevDays = [];
-
-          if (activityInfo.days) {
-            prevDays = activityInfo.days;
-          }
-
           setActivityInfo({
             ...activityInfo,
-            days: [...prevDays, day.value],
+            days: val.value.map(v => v.value),
           });
         });
         break;
