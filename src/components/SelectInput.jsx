@@ -68,8 +68,9 @@ const SelectInput = ({ value, children, options, handleInput, grouped = false })
       <Label>{children}</Label>
 
       <Select
+        isSearchable={ false }
         value={val}
-        noOptionsMessage={t("no_options")}
+        noOptionsMessage={() => t("no_options")}
         styles={customSelectStyles}
         options={options}
         onChange={(e) => handleInput(e)}

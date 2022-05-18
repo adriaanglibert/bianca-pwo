@@ -11,11 +11,11 @@ const Option = (props) => {
   return (
     <div>
       <components.Option {...props}>
-        <label className={checkboxStyles.container}>
+        <span className={checkboxStyles.container}>
             {props.label}
             <input className={checkboxStyles.input} type="checkbox" checked={props.isSelected}  onChange={() => null}/>
             <span className={checkboxStyles.checkmark}></span>
-        </label>
+        </span>
       </components.Option>
     </div>
   );
@@ -38,10 +38,12 @@ const SelectCheckbox = ({value, children, options, handleInput}) => {
             </Label>
 
             <Select
-                noOptionsMessage={t('no_options')}
+                isSearchable={ false }
+                noOptionsMessage={() => t('no_options')}
                 styles={customSelectStyles}
                 options={options}
                 isMulti
+                autoBlur={false}
                 closeMenuOnSelect={false}
                 hideSelectedOptions={false}
                 components={{
