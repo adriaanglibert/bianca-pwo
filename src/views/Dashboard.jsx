@@ -35,7 +35,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchActivities = async (dateInISO) => {
-      console.log("Fetching activities from API.");
       const query = await db
         .collection(USERS_COLLECTION)
         .doc(d.uid)
@@ -52,7 +51,6 @@ const Dashboard = () => {
     };
 
     if (dateInISO in cachedActivities) {
-      console.log("Setting activities from Cache.");
       setWeekActivities(cachedActivities?.[dateInISO]);
     } else {
       fetchActivities(dateInISO);
