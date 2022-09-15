@@ -1,16 +1,20 @@
-import toast from "react-hot-toast";
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+
+import firebase from 'firebase/compat/app';
+import toast from "react-hot-toast";
+
 // Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDj4mP9Yg9rjOYyjCXUKYJzR7i-svmyZm8",
-  authDomain: "bianca-pwo.firebaseapp.com",
-  projectId: "bianca-pwo",
-  storageBucket: "bianca-pwo.appspot.com",
-  messagingSenderId: "629095808757",
-  appId: "1:629095808757:web:417bacb1bb9f58579fcfbc",
+  apiKey: process.env.REACT_APP_FB_API,
+  authDomain: process.env.REACT_APP_FB_AUTH,
+  projectId: process.env.REACT_APP_FB_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FB_STORAGE,
+  messagingSenderId: process.env.REACT_APP_FB_SENDER_ID,
+  appId: process.env.REACT_APP_FB_APP_ID,
 };
+
+console.log(firebaseConfig)
 
 // Initialization
 const app = firebase.initializeApp(firebaseConfig);
