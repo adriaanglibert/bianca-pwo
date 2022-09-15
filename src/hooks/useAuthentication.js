@@ -9,7 +9,6 @@ const useAuthentication = (path = HOME) => {
 
     useEffect(() => {
         if (loading) {
-            console.log('Loading...')
             // maybe trigger a loading screen
             return;
         }
