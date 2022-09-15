@@ -30,9 +30,9 @@ const Collapsible = ({ open, title, children }) => {
   useEffect(() => {
     if (isOpen) {
         setDisplay('block');
-        process?.nextTick(() => {
-            setHeight(collapse.current?.getBoundingClientRect().height);
-        })
+        setTimeout(() => {
+          setHeight(collapse.current?.getBoundingClientRect().height);
+      }, 50);
     } else {
         setHeight(0);
         setTimeout(() => {

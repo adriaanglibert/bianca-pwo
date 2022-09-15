@@ -24,12 +24,15 @@ const Nav = ({ children }) => {
     }
   };
 
+  // Strange bug when using process directly in the href.
+  const REACT_APP_WEBSITE = process.env.REACT_APP_WEBSITE;
+
   return (
     <nav className={styling.navbar}>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={process?.env.REACT_APP_WEBSITE}
+        href={REACT_APP_WEBSITE}
       >
         <img src={logo} alt="logo" />
       </a>

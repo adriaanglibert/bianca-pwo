@@ -3,6 +3,9 @@ import React from 'react';
 import styles from './Step.module.scss';
 
 const Step = ({step}) => {
+    // Strange bug when using process directly in the href.
+    const PUBLIC_URL = process?.env.PUBLIC_URL;
+
     return (
         <article className={styles.step}>
             <Heading>
@@ -23,7 +26,7 @@ const Step = ({step}) => {
                     width={600}
                     height={550}
                     alt={step.title}
-                    src={`${process?.env.PUBLIC_URL}/images/${step.image}`} />
+                    src={`${PUBLIC_URL}/images/${step.image}`} />
             }
 
             {
